@@ -151,7 +151,7 @@ table .img-thumbnail {
 }
 
 .carousel .card img {
-  height: 4em;
+  height: 3em;
 }
 
 @media (min-width: 768px) {
