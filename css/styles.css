@@ -126,7 +126,7 @@ table .img-thumbnail {
   min-width: 130px;
 }
 
-.carousel .card {
+.carousel#myCarousel .card {
   margin: 0 0.5em;
   box-shadow: 2px 6px 8px 0 rgba(22, 22, 26, 0.18);
   border: none;
@@ -134,8 +134,8 @@ table .img-thumbnail {
   height: 100%;
 }
 
-.carousel .carousel-control-prev,
-.carousel .carousel-control-next {
+.carousel#myCarousel .carousel-control-prev,
+.carousel#myCarousel .carousel-control-next {
   background-color: #222;
   width: 5vh;
   height: 5vh;
@@ -144,21 +144,21 @@ table .img-thumbnail {
   transform: translateY(-50%);
 }
 
-.carousel-inner{
+.carousel#myCarousel .carousel-inner{
   padding: 1em;
   height: auto;
   display: flex;
 }
 
-.carousel .card img {
+.carousel#myCarousel .card img {
   height: 3em;
 }
 
 @media (min-width: 768px) {
-  .carousel-inner {
+  .carousel#myCarousel .carousel-inner {
     display: flex;
   }
-  .carousel-item {
+  .carousel#myCarousel .carousel-item {
     margin-right: 0;
     flex: 0 0 33.333333%;
     display: block;
