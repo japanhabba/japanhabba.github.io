@@ -11,10 +11,20 @@
   <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/7.2.3/css/flag-icons.min.css" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.css" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" rel="stylesheet"/>
 
   <style>
     * {
       font-family: 'inter';
+    }
+
+    .swiper-wrapper {
+      width: 100%;
+      height: max-content !important;
+      padding-bottom: 64px !important;
+      -webkit-transition-timing-function: linear !important;
+      transition-timing-function: linear !important;
+      position: relative;
     }
   </style>
 </head>
@@ -79,52 +89,47 @@
             </div>
           </div>
         </header>
-
-        <div class="relative isolate px-6 pt-20 lg:px-8">
-
-          <div id="default-carousel" class="pt-20 relative w-full" data-carousel="slide">
-            <!-- Carousel wrapper -->
-            <div class="relative overflow-hidden rounded-lg" style="height: 32rem;">
-                <!-- Item 1 -->
-                <div class="hidden duration-2000 ease-in-out" data-carousel-item>
-                    <img src="images/slideshow1.jpg" class="absolute block -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 v-full">
-                </div>
-                <!-- Item 2 -->
-                <div class="hidden duration-2000 ease-in-out" data-carousel-item>
-                    <img src="images/slideshow2.jpg" class="absolute block -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 v-full">
-                </div>
-                <!-- Item 3 -->
-                <div class="hidden duration-2000 ease-in-out" data-carousel-item>
-                    <img src="images/slideshow3.jpg" class="absolute block -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 v-full">
-                </div>
-                <!-- Item 4 -->
-                <div class="hidden duration-2000 ease-in-out" data-carousel-item>
-                    <img src="images/slideshow4.jpg" class="absolute block -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 v-full">
-                </div>
-                <!-- Item 5 -->
-                <div class="hidden duration-2000 ease-in-out" data-carousel-item>
-                    <img src="images/slideshow5.jpg" class="absolute block -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 v-full">
-                </div>
-            </div>
-            <!-- Slider indicators -->
-            <div class="absolute z-30 flex -translate-x-1/2 bottom-5 left-1/2 space-x-3 rtl:space-x-reverse">
-                <button type="button" class="w-3 h-3 rounded-full" aria-current="true" aria-label="Slide 1" data-carousel-slide-to="0"></button>
-                <button type="button" class="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide 2" data-carousel-slide-to="1"></button>
-                <button type="button" class="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide 3" data-carousel-slide-to="2"></button>
-                <button type="button" class="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide 4" data-carousel-slide-to="3"></button>
-                <button type="button" class="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide 5" data-carousel-slide-to="4"></button>
-            </div>
+        
+        <div class="w-full relative pt-20" id="slider">
+          <div class="swiper default-carousel swiper-container pt-10">
+          <div class="swiper-wrapper">
+           <div class="swiper-slide">
+             <div class="text-center">
+               <img src="images/slideshow1.jpg" class="size-fit mx-auto">
+             </div>
+           </div>
+           <div class="swiper-slide">
+             <div class="text-center">
+               <img src="images/slideshow2.jpg" class="size-fit mx-auto">
+             </div>
+           </div>
+           <div class="swiper-slide">
+             <div class="text-center">
+               <img src="images/slideshow3.jpg" class="size-fit mx-auto">
+             </div>
+           </div>
+           <div class="swiper-slide">
+             <div class="text-center">
+               <img src="images/slideshow4.jpg" class="size-fit mx-auto">
+             </div>
+           </div>
+           <div class="swiper-slide">
+             <div class="text-center">
+               <img src="images/slideshow5.jpg" class="size-fit mx-auto">
+             </div>
+           </div>
           </div>
-
+          <div class="swiper-pagination"></div>
+          </div>
         </div>
         
-        <div class="relative isolate px-6 pt-2 lg:px-8">
+        <div class="relative pt-0 isolate px-6 lg:px-8">
           <div class="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80" aria-hidden="true">
             <div class="relative left-[calc(50%-11rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 rotate-[30deg] bg-gradient-to-tr from-pink-600 to-pink-400 opacity-30 sm:left-[calc(50%-30rem)] sm:w-[72.1875rem]" style="clip-path: polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)"></div>
           </div>
-          <div class="mx-auto max-w-2xl py-32 sm:py-12 lg:py-12">
+          <div class="mx-auto max-w-2xl py-6 sm:py-12 lg:p-12 lg:pb-20">
             <div class="text-center">
-              <h1 class="text-balance text-xl font-semibold tracking-tight text-gray-900 sm:text-3xl">India's biggest celebration of <span class="bg-gradient-to-r from-pink-600 via-pink-400 to-pink-600 text-transparent bg-clip-text" id="typewriter"></span>!</h1>
+              <h1 class="text-balance text-xl font-semibold tracking-tight text-gray-900 sm:text-3xl pt-8">India's biggest celebration of <span class="bg-gradient-to-r from-pink-600 via-pink-400 to-pink-600 text-transparent bg-clip-text" id="typewriter"></span>!</h1>
               <p class="mt-2 text-pretty text-lg font-medium text-gray-500 sm:text-xl/8">...Is back at <b>Chamara Vajra, Bengaluru</b> on <b>January 12, 2025</b>.</p>
               <div class="mt-4 flex items-center justify-center gap-x-6">
                 <a href="https://in.bookmyshow.com/events/japan-habba-2025/ET00418323" target="_blank" class="rounded-md bg-pink-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-red-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-pink-600">Buy Tickets on BookMyShow</a>
@@ -733,5 +738,20 @@
 
 
     <script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+    <script>
+    var swiper = new Swiper(".default-carousel", {
+      loop: true,
+      autoplay: {
+        delay: 2000
+      },
+      pagination: {
+        el: ".swiper-pagination",
+        clickable: true,
+      }
+    });
+    </script>
+
 </body>
 </html>
