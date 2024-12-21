@@ -1,0 +1,29 @@
+    <div class="relative hidden" style="z-index: 100;" aria-labelledby="modal-title" role="dialog" aria-modal="true" id="@@id@@">
+      <div class="fixed inset-0 bg-gray-500/75 transition-opacity" aria-hidden="true"></div>
+    
+      <div class="fixed inset-0 z-10 w-screen overflow-y-auto">
+        <div class="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
+          <div class="relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-xl">
+            <div class="bg-white px-4 pb-4 pt-5 sm:p-6 sm:pb-4">
+              <div class="sm:flex sm:items-start">
+                <div class="mt-3 text-left sm:mt-0"  style="max-height: 70vh; overflow: scroll;">
+                  <div class="flex flex-col justify-top items-center rounded-t-xl">
+                    <img src="images/events/@@image@@.jpg" class="rounded-t-lg">
+                  </div>
+                  <div class="p-4 md:p-6">
+                    @@title and flavor@@
+
+                    @@description@@
+                  </div>
+                </div>
+              </div>
+              <div class="bg-gray-50 px-4 py-3 sm:flex sm:flex-row-reverse sm:px-6">
+                <a href="https://forms.gle/3itkmne3bseJnwBJA" target="_blank" class="inline-flex w-full justify-center rounded-md bg-pink-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-pink-500 sm:ml-3 sm:w-auto">Register</a>
+                <button type="button" onclick="toggleThing()" class="mt-3 inline-flex w-full justify-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 sm:mt-0 sm:w-auto">Close</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>  
+    </div>
+    
