@@ -217,16 +217,14 @@
                     <i>Strategize! Battle! Cosplay!</i> Are you ready to witness an epic showdown where your favorite characters come to life on a massive chessboard? Japan Habba presents the <i>first-ever</i> Cosplay Chess in India - where strategy meets spectacle and pop culture erupts into an unforgettable performance!
                   </p>
                 </div>
-                <!--
                 <div class="mt-auto flex border-t border-gray-200 divide-x divide-gray-200">
-                  <a class="w-full py-3 px-4 inline-flex justify-center items-center gap-x-2 text-sm font-medium rounded-es-xl bg-white text-gray-800 shadow-sm hover:bg-gray-50 focus:outline-none focus:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none-800-800" href="#">
+                  <button class="w-full py-3 px-4 inline-flex justify-center items-center gap-x-2 text-sm font-medium rounded-es-xl bg-white text-gray-800 shadow-sm hover:bg-gray-50 focus:outline-none focus:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none-800-800" onclick="toggleChess()">
                     More Information
-                  </a>
-                  <a class="w-full py-3 px-4 inline-flex justify-center items-center gap-x-2 text-sm font-medium rounded-ee-xl bg-white text-gray-800 shadow-sm hover:bg-gray-50 focus:outline-none focus:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none-800-800" href="#">
+                  </button>
+                  <a class="w-full py-3 px-4 inline-flex justify-center items-center gap-x-2 text-sm font-medium rounded-ee-xl bg-white text-gray-800 shadow-sm hover:bg-gray-50 focus:outline-none focus:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none-800-800" href="https://forms.gle/3itkmne3bseJnwBJA" target="_blank">
                     Register Now
                   </a>
                 </div>
-                -->
               </div>
               <!-- End Card -->
 
@@ -275,7 +273,7 @@
                     Want to strike your best power pose like a superhero?  Ready to bring your favorite character to life and have a blast doing it? The Cosplay Showcase at Japan Habba 2025 is all about having fun and embracing your love for cosplay—whether you've spent weeks perfecting your outfit or just threw together some clothes, cardboard and glitter in a last-minute DIY session.
                   </p>
                 </div>
-                <!--
+                
                 <div class="mt-auto flex border-t border-gray-200 divide-x divide-gray-200">
                   <a class="w-full py-3 px-4 inline-flex justify-center items-center gap-x-2 text-sm font-medium rounded-es-xl bg-white text-gray-800 shadow-sm hover:bg-gray-50 focus:outline-none focus:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none-800-800" href="#">
                     More Information
@@ -284,7 +282,6 @@
                     Register Now
                   </a>
                 </div>
-                -->
               </div>
               <!-- End Card -->
 
@@ -1146,6 +1143,132 @@
         </div>
     </div>
 
+    <div class="relative hidden" style="z-index: 100;" aria-labelledby="modal-title" role="dialog" aria-modal="true"  id="cosplay-chess">
+      <!--
+        Background backdrop, show/hide based on modal state.
+    
+        Entering: "ease-out duration-300"
+          From: "opacity-0"
+          To: "opacity-100"
+        Leaving: "ease-in duration-200"
+          From: "opacity-100"
+          To: "opacity-0"
+      -->
+      <div class="fixed inset-0 bg-gray-500/75 transition-opacity" aria-hidden="true"></div>
+    
+      <div class="fixed inset-0 z-10 w-screen overflow-y-auto">
+        <div class="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
+          <!--
+            Modal panel, show/hide based on modal state.
+    
+            Entering: "ease-out duration-300"
+              From: "opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
+              To: "opacity-100 translate-y-0 sm:scale-100"
+            Leaving: "ease-in duration-200"
+              From: "opacity-100 translate-y-0 sm:scale-100"
+              To: "opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
+          -->
+          <div class="relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-xl">
+            <div class="bg-white px-4 pb-4 pt-5 sm:p-6 sm:pb-4">
+              <div class="sm:flex sm:items-start">
+                <div class="mt-3 text-left sm:mt-0"  style="max-height: 70vh; overflow: scroll;">
+                  <div class="flex flex-col justify-top items-center rounded-t-xl">
+                    <img src="images/events/cosplay-chess.jpg" class="rounded-t-lg">
+                  </div>
+                  <div class="p-4 md:p-6">
+                    <span class="block mb-1 text-xs font-semibold uppercase text-purple-500">
+                      Festival Stage
+                    </span>
+                    <h3 class="text-xl font-semibold text-gray-800">
+                      Cosplay Chess
+                    </h3>
+                    <p class="mt-3 text-gray-500">
+                      <i>Strategize! Battle! Cosplay!</i> Are you ready to witness an epic showdown where your favorite characters come to life on a massive chessboard? Japan Habba presents the <i>first-ever</i> Cosplay Chess in India - where strategy meets spectacle and pop culture erupts into an unforgettable performance!
+                    </p>
+
+                    <h2 class="mt-16 text-2xl font-bold tracking-tight text-gray-900">Description:</h2>
+                    <p class="mt-3 text-gray-500">
+                        Imagine a chess match like no other - where iconic characters from anime, manga, and video games transform a traditional 
+                        board game into a jaw-dropping live entertainment experience! Cosplay Chess brings your favorite pop culture heroes 
+                        to life in an electrifying, larger-than-life battle.
+                    </p>
+
+                    <p class="mt-3 text-gray-500">
+                        Two chess masters control the game, directing cosplayers dressed as beloved characters from Japanese media. Each piece 
+                        moves with strategic precision, but here's the twist - when pieces (i.e the cosplayers) "battle", they engage in dramatic, 
+                        over-the-top performances that will have the audience cheering! Picture Mario squaring off against Goku, or Sailor Moon 
+                        challenging Link in epic, choreographed confrontations.
+                    </p>
+                    <p class="mt-3 text-gray-500">
+                        This isn't just a game - it's a performance that blends the challenge of chess with the raw excitement of cosplay. Every 
+                        move is a potential showstopper, every capture a theatrical moment of pure entertainment. Audience members will be 
+                        experiencing a unique blend of strategy, performance, and pop culture celebration.
+                    </p>
+                    <p class="mt-3 text-gray-500">
+                        Open to cosplayers 18 and above, whether you're a chess enthusiast, a cosplay lover, or just looking for some fun entertainment, 
+                        Cosplay Chess offers something truly unique!
+                    </p>
+
+                    <h2 class="mt-16 text-2xl font-bold tracking-tight text-gray-900">Rules:</h2>
+                    <ol class="space-y-4 text-gray-500 list-decimal list-inside"">
+                        <li class="mt-2">Registrations should be done in advance using the google form, <b>deadlines and additional rules are mentioned in the form.</b></li>
+                        <li class="mt-2">All cosplayers applying should be over the age of 18, no minors allowed.</li>
+                        <li class="mt-2">There shall be little or no physical contact between cosplayers. There will only be mock battles and dramatic representations.</li>
+                        <li class="mt-2">There will be a pre-meetup/pre-game on 4th/5th January for Bangalore participants and the same on 11th Jan for Non-Bangalore participants.</li>
+                    </ol>
+
+                    <h2 class="mt-16 text-2xl font-bold tracking-tight text-gray-900">Prizes:</h2>
+                    <p class="mt-3 text-gray-500">
+                        All selected participants will be getting a gift hamper and Amazon gift vouchers as our token of gratitude for participating 
+                        in Cosplay Chess.
+                    </p>
+
+                    <h2 class="mt-16 text-2xl font-bold tracking-tight text-gray-900">Registration Link</h2>
+                    <p class="mt-3 text-gray-500">Online registration only.</p>
+                    <a class="inline-block mt-2 rounded-md bg-pink-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-pink-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-pink-600" href="https://forms.gle/3itkmne3bseJnwBJA">Click here to Register</a>
+
+                    <h2 class="mt-16 text-2xl font-bold tracking-tight text-gray-900">Event Sponsors:</h2>
+                    <p class="mt-3 text-gray-500">AnimeTimes</p>
+
+                    <h2 class="mt-16 text-2xl font-bold tracking-tight text-gray-900">FAQ:</h2>
+                    <h3 class="mt-8 text-lg font-bold tracking-tight text-gray-700">Do I need to know chess?</h3>
+                    <p class="mt-3 text-gray-500">
+                        No. The game masters will tell you what moves to make. Being able to count, and to distinguish left from right, 
+                        will be very useful.
+                    </p>
+                    <h3 class="mt-8 text-lg font-bold tracking-tight text-gray-700">Can I sign up for Cosplay Chess and Cosplay Showcase?</h3>
+                    <p class="mt-3 text-gray-500">Yes. Selection for each is separate, and the events will not clash.</p>
+                    <h3 class="mt-8 text-lg font-bold tracking-tight text-gray-700">Can I register on the spot?</h3>
+                    <p class="mt-3 text-gray-500">Unfortunately, we need exactly 32 people. So we cannot allow on-spot registration.</p>
+                    <h3 class="mt-8 text-lg font-bold tracking-tight text-gray-700">Do I have to dress up as a chess piece?</h3>
+                    <p class="mt-3 text-gray-500">No, this is not required.</p>
+                    <h3 class="mt-8 text-lg font-bold tracking-tight text-gray-700">Can I bring a real weapon (sword / spear / knife / holy hand-grenade of Antioch)?</h3>
+                    <p class="mt-3 text-gray-500">
+                        <b>NO.</b> Do not bring weapons or props that can injure people. Foam props are alright Bringing or using real 
+                        weapons is immediate grounds for disqualification. Also please make sure that your costume does not contain any 
+                        protruding parts (trailing ribbons, etc.) that could trip or get in the way of other participants.
+                    </p>
+                    <h3 class="mt-8 text-lg font-bold tracking-tight text-gray-700">What if I don't live in Bangalore?</h3>
+                    <p class="mt-3 text-gray-500">
+                        Please apply, we can make special considerations if you are selected, details are in the form. Please mention 
+                        your requests or questions in the form field or reach out to <a href="mailto:popculture@japanhabba.org" class="text-pink-600">popculture@japanhabba.org</a> for any doubts and queries. 
+                        Mention your name, which days you plan to attend, and where you are from.
+                    </p>
+                    <h3 class="mt-8 text-lg font-bold tracking-tight text-gray-700">Will Cosplay Chess be in conflict with other Cosplay Events?</h3>
+                    <p class="mt-3 text-gray-500">No, all the conflict events are at separate times and are not in conflict with each other.</p>
+
+                </div>
+              </div>
+            </div>
+            <div class="bg-gray-50 px-4 py-3 sm:flex sm:flex-row-reverse sm:px-6">
+              <a href="https://forms.gle/3itkmne3bseJnwBJA" target="_blank" class="inline-flex w-full justify-center rounded-md bg-pink-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-pink-500 sm:ml-3 sm:w-auto">Register</a>
+              <button type="button" onclick="toggleChess()" class="mt-3 inline-flex w-full justify-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 sm:mt-0 sm:w-auto">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>    
+
 
     <footer class="bg-gray-100">
       <div class="mx-auto max-w-5xl px-4 py-16 sm:px-6 lg:px-8">
@@ -1216,6 +1339,9 @@
     <script>
       const menu = document.getElementById('menu');
       const toggle = () => menu.classList.toggle("hidden");
+
+      const chess = document.getElementById('cosplay-chess');
+      const toggleChess = () => chess.classList.toggle("hidden");
     </script>
     
     <script>
