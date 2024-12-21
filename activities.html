@@ -101,16 +101,11 @@
                     Celebrate the charm and culture of Japan at the 4koma Interactive Booth! Dive into the world of 4koma (四コマ漫画) &mdash; a four-panel comic format—by creating your very own comic inspired by the theme Japan Habba. Whether you're a seasoned artist or a first-time doodler, this is your chance to explore creativity while honoring Japanese traditions and fun!
                   </p>
                 </div>
-                <!--
                 <div class="mt-auto flex border-t border-gray-200 divide-x divide-gray-200">
-                  <a class="w-full py-3 px-4 inline-flex justify-center items-center gap-x-2 text-sm font-medium rounded-es-xl bg-white text-gray-800 shadow-sm hover:bg-gray-50 focus:outline-none focus:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none-800-800" href="#">
+                  <button type="button" class="w-full py-3 px-4 inline-flex justify-center items-center gap-x-2 text-sm font-medium rounded-es-xl bg-white text-gray-800 shadow-sm hover:bg-gray-50 focus:outline-none focus:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none-800-800" onclick="toggleYonkoma()">
                     More Information
-                  </a>
-                  <a class="w-full py-3 px-4 inline-flex justify-center items-center gap-x-2 text-sm font-medium rounded-ee-xl bg-white text-gray-800 shadow-sm hover:bg-gray-50 focus:outline-none focus:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none-800-800" href="#">
-                    Register Now
-                  </a>
+                  </button>
                 </div>
-                -->
               </div>
               <!-- End Card -->
 
@@ -1143,31 +1138,74 @@
         </div>
     </div>
 
-    <div class="relative hidden" style="z-index: 100;" aria-labelledby="modal-title" role="dialog" aria-modal="true"  id="cosplay-chess">
-      <!--
-        Background backdrop, show/hide based on modal state.
-    
-        Entering: "ease-out duration-300"
-          From: "opacity-0"
-          To: "opacity-100"
-        Leaving: "ease-in duration-200"
-          From: "opacity-100"
-          To: "opacity-0"
-      -->
+    <div class="relative hidden" style="z-index: 100;" aria-labelledby="modal-title" role="dialog" aria-modal="true" id="4koma">
       <div class="fixed inset-0 bg-gray-500/75 transition-opacity" aria-hidden="true"></div>
     
       <div class="fixed inset-0 z-10 w-screen overflow-y-auto">
         <div class="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
-          <!--
-            Modal panel, show/hide based on modal state.
+          <div class="relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-xl">
+            <div class="bg-white px-4 pb-4 pt-5 sm:p-6 sm:pb-4">
+              <div class="sm:flex sm:items-start">
+                <div class="mt-3 text-left sm:mt-0"  style="max-height: 70vh; overflow: scroll;">
+                  <div class="flex flex-col justify-top items-center rounded-t-xl">
+                    <img src="images/events/4koma.jpg" class="rounded-t-lg">
+                  </div>
+                  <div class="p-4 md:p-6">
+                    <span class="block mb-1 text-xs font-semibold uppercase text-pink-600">
+                      Booth Event
+                    </span>
+                    <h3 class="text-xl font-semibold text-gray-800">
+                      4Koma Experience
+                    </h3>
+                    <p class="mt-3 text-gray-500">
+                      Celebrate the charm and culture of Japan at the 4koma Interactive Booth! Dive into the world of 4koma (四コマ漫画) &mdash; a four-panel comic format—by creating your very own comic inspired by the theme Japan Habba. Whether you're a seasoned artist or a first-time doodler, this is your chance to explore creativity while honoring Japanese traditions and fun!
+                    </p>
+  
+                    <h2 class="mt-16 text-2xl font-bold tracking-tight text-gray-900">Event Details:</h2>
+                      <ul class="mt-3 space-y-4 text-gray-500 list-desc list-inside">
+                          <li>Interactive 4Koma Creation Station</li>
+                          <li>Design your own 4koma comic based on the theme Japan Habba.</li>
+                          <li>
+                              Materials provided:
+                              <ul class="mt-3 space-y-4 text-gray-500 list-desc list-inside">
+                                  <li>Blank 4koma templates</li>
+                                  <li>Pencils</li>
+                                  <li>Markers</li>
+                                  <li>Erasers</li>
+                              </ul>
+                          </li>
+                          <li>Explore Japan-themed prompts like traditional festivals, food, or iconic symbols to inspire your comic.</li>
+                          <li>Display your finished work on the Community Wall to share your creation with others attending the event!</li>
+                      </ul>
+  
+                      <h2 class="mt-16 text-2xl font-bold tracking-tight text-gray-900">How It Works:</h2>
+                      <ol class="mt-3 space-y-4 text-gray-500 list-decimal list-inside">
+                          <li>Walk in during booth hours to participate.</li>
+                          <li>Pick up your template and art supplies at the booth.</li>
+                          <li>Let your creativity flow—whether it’s a story about Japan’s vibrant culture or a funny slice-of-life comic inspired by Japanese traditions!</li>
+                          <li>Submit your creation to a volunteer at the booth and watch your creation be displayed on the booth screen!</li>
+                      </ol>
+  
+                      <p class="mt-3 text-gray-500">Supplies Provided: Yes (all materials are available at the booth for use during the event) - You can choose to bring your own as well!</p>
+  
+                      <p class="mt-3 text-gray-500">Share your JH experience in just four panels and leave your mark on this cultural celebration.</p>
+                </div>
+              </div>
+            </div>
+            <div class="bg-gray-50 px-4 py-3 sm:flex sm:flex-row-reverse sm:px-6">
+              <button type="button" onclick="toggleYonkoma()" class="mt-3 inline-flex w-full justify-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 sm:mt-0 sm:w-auto">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>  
+  
+
+    <div class="relative hidden" style="z-index: 100;" aria-labelledby="modal-title" role="dialog" aria-modal="true"  id="cosplay-chess">
+      <div class="fixed inset-0 bg-gray-500/75 transition-opacity" aria-hidden="true"></div>
     
-            Entering: "ease-out duration-300"
-              From: "opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
-              To: "opacity-100 translate-y-0 sm:scale-100"
-            Leaving: "ease-in duration-200"
-              From: "opacity-100 translate-y-0 sm:scale-100"
-              To: "opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
-          -->
+      <div class="fixed inset-0 z-10 w-screen overflow-y-auto">
+        <div class="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
           <div class="relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-xl">
             <div class="bg-white px-4 pb-4 pt-5 sm:p-6 sm:pb-4">
               <div class="sm:flex sm:items-start">
@@ -1210,11 +1248,11 @@
                     </p>
 
                     <h2 class="mt-16 text-2xl font-bold tracking-tight text-gray-900">Rules:</h2>
-                    <ol class="space-y-4 text-gray-500 list-decimal list-inside"">
-                        <li class="mt-2">Registrations should be done in advance using the google form, <b>deadlines and additional rules are mentioned in the form.</b></li>
-                        <li class="mt-2">All cosplayers applying should be over the age of 18, no minors allowed.</li>
-                        <li class="mt-2">There shall be little or no physical contact between cosplayers. There will only be mock battles and dramatic representations.</li>
-                        <li class="mt-2">There will be a pre-meetup/pre-game on 4th/5th January for Bangalore participants and the same on 11th Jan for Non-Bangalore participants.</li>
+                    <ol class="mt-3 space-y-4 text-gray-500 list-decimal list-inside">
+                        <li>Registrations should be done in advance using the google form, <b>deadlines and additional rules are mentioned in the form.</b></li>
+                        <li>All cosplayers applying should be over the age of 18, no minors allowed.</li>
+                        <li>There shall be little or no physical contact between cosplayers. There will only be mock battles and dramatic representations.</li>
+                        <li>There will be a pre-meetup/pre-game on 4th/5th January for Bangalore participants and the same on 11th Jan for Non-Bangalore participants.</li>
                     </ol>
 
                     <h2 class="mt-16 text-2xl font-bold tracking-tight text-gray-900">Prizes:</h2>
@@ -1340,8 +1378,38 @@
       const menu = document.getElementById('menu');
       const toggle = () => menu.classList.toggle("hidden");
 
+      const yonkoma = document.getElementById('4koma');
+      const toggleYonkoma = () => yonkoma.classList.toggle("hidden");
+
+      const animathon = document.getElementById('animathon');
+      const toggleAnimathon = () => animathon.classList.toggle("hidden");
+
       const chess = document.getElementById('cosplay-chess');
       const toggleChess = () => chess.classList.toggle("hidden");
+
+      const cosplayContest = document.getElementById('cosplay-contest');
+      const toggleCosplay = () => cosplayContest.classList.toggle("hidden");
+
+      const cosplayShowcase = document.getElementById('cosplay-showcase');
+      const toggleShowcase = () => cosplayShowcase.classList.toggle("hidden");
+
+      const idol = document.getElementById('idol');
+      const toggleIdol = () => idol.classList.toggle("hidden");
+
+      const lnmadlibs = document.getElementById('ln-madlibs');
+      const toggleLnmadlibs = () => lnmadlibs.classList.toggle("hidden");
+
+      const manga = document.getElementById('manga');
+      const toggleManga = () => manga.classList.toggle("hidden");
+
+      const movie = document.getElementById('movie');
+      const toggleMovie = () => movie.classList.toggle("hidden");
+
+      const openutau = document.getElementById('openutau');
+      const toggleOpenUtau = () => openutau.classList.toggle("hidden");
+
+      const sakuga = document.getElementById('ln-madlibs');
+      const toggleSakuga = () => sakuga.classList.toggle("hidden");
     </script>
     
     <script>
