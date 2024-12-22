@@ -2734,78 +2734,35 @@
     </footer>    
 
     <script>
-      const menu = document.getElementById('menu');
-      const toggle = () => menu.classList.toggle("hidden");
+      function toggleModal(element) {
+        element.classList.toggle("hidden");
+        document.body.classList.toggle("overflow-hidden");
+      }
 
-      const yonkoma = document.getElementById('4koma');
-      const toggleYonkoma = () => yonkoma.classList.toggle("hidden");
-
-      const animathon = document.getElementById('animathon');
-      const toggleAnimathon = () => animathon.classList.toggle("hidden");
-
-      const chess = document.getElementById('cosplay-chess');
-      const toggleChess = () => chess.classList.toggle("hidden");
-
-      const cosplayContest = document.getElementById('cosplay-contest');
-      const toggleCosplay = () => cosplayContest.classList.toggle("hidden");
-
-      const cosplayShowcase = document.getElementById('cosplay-showcase');
-      const toggleShowcase = () => cosplayShowcase.classList.toggle("hidden");
-
-      const idol = document.getElementById('idol');
-      const toggleIdol = () => idol.classList.toggle("hidden");
-
-      const lnmadlibs = document.getElementById('ln-madlibs');
-      const toggleLnmadlibs = () => lnmadlibs.classList.toggle("hidden");
-
-      const manga = document.getElementById('manga');
-      const toggleManga = () => manga.classList.toggle("hidden");
-
-      const movie = document.getElementById('movie');
-      const toggleMovie = () => movie.classList.toggle("hidden");
-
-      const openutau = document.getElementById('openutau');
-      const toggleOpenUtau = () => openutau.classList.toggle("hidden");
-
-      const sakuga = document.getElementById('sakuga');
-      const toggleSakuga = () => sakuga.classList.toggle("hidden");
-
-      const bonsai = document.getElementById('bonsai')
-      const toggleBonsai = () => bonsai.classList.toggle("hidden");
-
-      const haiku = document.getElementById('haiku')
-      const toggleHaiku = () => haiku.classList.toggle("hidden");
-
-      const hayabusa = document.getElementById('hayabusa')
-      const toggleHayabusa = () => hayabusa.classList.toggle("hidden");
-
-      const ikebana = document.getElementById('ikebana')
-      const toggleIkebana = () => ikebana.classList.toggle("hidden");
-
-      const japanese = document.getElementById('japanese')
-      const toggleJapanese = () => japanese.classList.toggle("hidden");
-
-      const jdm = document.getElementById('jdm')
-      const toggleJdm = () => jdm.classList.toggle("hidden");
-
-      const karaoke = document.getElementById('karaoke')
-      const toggleKaraoke = () => karaoke.classList.toggle("hidden");
-
-      const megathon = document.getElementById('megathon')
-      const toggleMegathon = () => megathon.classList.toggle("hidden");
-
-      const matsuri = document.getElementById('matsuri')
-      const toggleMatsuri = () => matsuri.classList.toggle("hidden");
-
-      const origami = document.getElementById('origami')
-      const toggleOrigami = () => origami.classList.toggle("hidden");
-
-      const influencer = document.getElementById('influencer')
-      const toggleInfluencer = () => influencer.classList.toggle("hidden");
-
-      const toubashi = document.getElementById('toubashi')
-      const toggleToubashi = () => toubashi.classList.toggle("hidden");
-
+      const toggle = () => toggleModal(document.getElementById('menu'));
+      const toggleYonkoma = () => toggleModal(document.getElementById('4koma'));
+      const toggleAnimathon = () => toggleModal(document.getElementById('animathon'));
+      const toggleChess = () => toggleModal(document.getElementById('cosplay-chess'));
+      const toggleCosplay = () => toggleModal(document.getElementById('cosplay-contest'));
+      const toggleShowcase = () => toggleModal(document.getElementById('cosplay-showcase'));
+      const toggleIdol = () => toggleModal(document.getElementById('idol'));
+      const toggleLnmadlibs = () => toggleModal(document.getElementById('ln-madlibs'));
+      const toggleManga = () => toggleModal(document.getElementById('manga'));
+      const toggleMovie = () => toggleModal(document.getElementById('movie'));
+      const toggleOpenUtau = () => toggleModal(document.getElementById('openutau'));
+      const toggleSakuga = () => toggleModal(document.getElementById('sakuga'));
+      const toggleBonsai = () => toggleModal(document.getElementById('bonsai'));
+      const toggleHaiku = () => toggleModal(document.getElementById('haiku'));
+      const toggleHayabusa = () => toggleModal(document.getElementById('hayabusa'));
+      const toggleIkebana = () => toggleModal(document.getElementById('ikebana'));
+      const toggleJapanese = () => toggleModal(document.getElementById('japanese'));
+      const toggleJdm = () => toggleModal(document.getElementById('jdm'));
+      const toggleKaraoke = () => toggleModal(document.getElementById('karaoke'));
+      const toggleMegathon = () => toggleModal(document.getElementById('megathon'));
+      const toggleMatsuri = () => toggleModal(document.getElementById('matsuri'));
+      const toggleOrigami = () => toggleModal(document.getElementById('origami'));
+      const toggleInfluencer = () => toggleModal(document.getElementById('influencer'));
+      const toggleToubashi = () => toggleModal(document.getElementById('toubashi'));
     </script>
 
     <script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.js"></script>
