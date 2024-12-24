@@ -11,10 +11,32 @@
   <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/7.2.3/css/flag-icons.min.css" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/zoomist@2/zoomist.css" />
 
   <style>
     * {
       font-family: 'inter';
+    }
+ 
+    .zoomist-container {
+      width: 90%;
+      border: 1px solid #000;
+    }
+
+    .zoomist-image {
+      width: 100%;
+    }
+
+    @media only screen and (max-width: 600px) {
+      .zoomist-image {
+      }
+    }
+
+    .zoomist-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
     }
   </style>
 </head>
@@ -38,8 +60,8 @@
             </div>
             <div class="hidden lg:flex lg:gap-x-12">
               <a href="floormap.html" class="text-sm/6 font-semibold text-gray-900 bg-white px-5 py-2 bg-opacity-50 rounded-xl">Floormap</a>
-              <a href="exhibition.html" class="text-sm/6 font-semibold text-gray-900 bg-white px-5 py-2 bg-opacity-50 rounded-xl">Exhibition</a>
-              <a href="stage.html" class="text-sm/6 font-semibold text-gray-900 bg-white px-5 py-2 bg-opacity-50 rounded-xl">Stage</a>
+              <!-- <a href="exhibition.html" class="text-sm/6 font-semibold text-gray-900 bg-white px-5 py-2 bg-opacity-50 rounded-xl">Exhibition</a>
+              <a href="stage.html" class="text-sm/6 font-semibold text-gray-900 bg-white px-5 py-2 bg-opacity-50 rounded-xl">Stage</a> -->
               <a href="activities.html" class="text-sm/6 font-semibold text-gray-900 bg-white px-5 py-2 bg-opacity-50 rounded-xl">Activities</a>
             </div>
             <div class="hidden lg:flex lg:flex-1 lg:justify-end">
@@ -67,8 +89,8 @@
                 <div class="-my-6 divide-y divide-gray-500/10">
                   <div class="space-y-2 py-6">
                     <a href="floormap.html" class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 hover:bg-gray-50">Floormap</a>
-                    <a href="exhibition.html" class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 hover:bg-gray-50">Exhibition</a>
-                    <a href="stage.html" class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 hover:bg-gray-50">Stage</a>
+                    <!-- <a href="exhibition.html" class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 hover:bg-gray-50">Exhibition</a>
+                    <a href="stage.html" class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 hover:bg-gray-50">Stage</a> -->
                     <a href="activities.html" class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 hover:bg-gray-50">Activities</a>
                   </div>
                   <div class="py-6">
@@ -80,9 +102,21 @@
           </div>
         </header>
 
-        <div class="relative isolate px-6 pt-20 lg:px-8">
-            <p class="text-center text-balance mt-20 mb-20 text-4xl font-semibold tracking-tight text-gray-950 sm:text-3xl">Coming soon!</p>
-            <img src="images/koujichuu.webp" class="h-96 block justify-center mx-auto">
+        <div class="pt-5 pb-20">&nbsp;</div>
+
+        <div class="p-2">
+
+          <!-- zoomist-container -->
+          <div class="zoomist-container m-auto">
+            <!-- zoomist-wrapper is required -->
+            <div class="zoomist-wrapper">
+              <!-- zoomist-image is required -->
+              <div class="zoomist-image">
+                <!-- you can add anything you want to zoom here. -->
+                <img src="images/map.jpg" />
+              </div>
+            </div>
+          </div>
         </div>
     </div>
 
@@ -193,6 +227,23 @@
     </script>
 
     <script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.js"></script>
+
+    <script src="pleaserotate.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/zoomist@2/zoomist.umd.js"></script>
+
+    <script>
+      new Zoomist('.zoomist-container', {
+        // Optional parameters
+        maxScale: 30,
+        bounds: true,
+        // if you need slider
+        slider: true,
+        // if you need zoomer
+        zoomer: true
+      });
+    </script>
+    
 
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZMX1C9ZMXR"></script>
