@@ -279,6 +279,23 @@
     </div>
   </section>
 
+  <!-- Gallery Section -->
+  <section id="gallery" class="py-20 px-6 bg-white border-y border-pink-50">
+    <div class="max-w-7xl mx-auto">
+      <div class="text-center max-w-2xl mx-auto mb-12">
+        <span class="text-xs font-bold tracking-widest text-brand-pink-600 uppercase">Gallery</span>
+        <h2 class="text-3xl font-extrabold text-gray-900 tracking-tight mt-1">Japan Habba 2025</h2>
+        <p class="mt-2 text-sm text-gray-500">
+          Moments captured from the previous edition of Japan Habba.
+        </p>
+      </div>
+
+      <div id="gallery-scroll" class="flex gap-4 overflow-x-auto pb-4 scroll-smooth" style="scrollbar-width: thin; scrollbar-color: #DB2777 #FCE7F3;">
+        <!-- Cards injected + duplicated by script for seamless autoscroll -->
+      </div>
+    </div>
+  </section>
+
   <!-- Supporters Section -->
   <section id="supporters" class="py-20 px-6 bg-white border-y border-pink-50">
     <div class="max-w-7xl mx-auto">
@@ -461,6 +478,21 @@
     </div>
   </div>
 
+  <!-- Gallery Lightbox -->
+  <div id="gallery-lightbox" class="fixed inset-0 z-[60] flex items-center justify-center p-4 bg-black/80 hidden">
+    <button class="absolute top-5 right-5 text-white/80 hover:text-white transition" aria-label="Close" onclick="closeGalleryLightbox()">
+      <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+    </button>
+    <button class="gallery-prev absolute left-3 sm:left-6 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-white/10 hover:bg-white/20 text-white flex items-center justify-center transition" aria-label="Previous">
+      <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
+    </button>
+    <img id="gallery-lightbox-img" src="" alt="" class="max-w-full max-h-[90vh] rounded-2xl shadow-2xl object-contain">
+    <button class="gallery-next absolute right-3 sm:right-6 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-white/10 hover:bg-white/20 text-white flex items-center justify-center transition" aria-label="Next">
+      <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+    </button>
+    <div id="gallery-lightbox-count" class="absolute bottom-5 left-1/2 -translate-x-1/2 text-white/70 text-xs"></div>
+  </div>
+
   <!-- Footer -->
   <footer class="bg-gray-900 text-white mt-auto">
     <div class="mx-auto max-w-7xl px-6 pt-16 pb-8">
@@ -594,6 +626,95 @@
         closeBioModal();
       }
     });
+
+    // Gallery auto-scroll with seamless wrap-around + lightbox
+    (function () {
+      const files = [
+        "DSC04526.jpg", "DSC04574.jpg", "DSC04779.jpg", "DSC05154.jpg",
+        "DSC05251.jpg", "DSC06914.jpg", "DSC07107.jpg", "DSC07236.jpg",
+        "DSC08047.jpg", "DSC08134.jpg", "DSC08743.jpg", "DSC08796.jpg",
+        "ARJ01845.jpg", "IMG_7992.JPG", "IMG_8004.JPG", "IMG_8023.JPG", "IMG_8114.JPG"
+      ];
+      const scroller = document.getElementById('gallery-scroll');
+      if (!scroller) return;
+
+      const cardHTML = (file) => `
+        <div class="w-64 sm:w-72 md:w-80 flex-shrink-0">
+          <button type="button" data-full="../images/gallery/${file}" class="gallery-item block w-full rounded-2xl overflow-hidden border border-pink-100 shadow-sm hover:shadow-md transition group cursor-pointer">
+            <img src="../images/gallery/thumbs/${file}" alt="Japan Habba Gallery" loading="lazy" class="w-full aspect-[4/3] object-cover group-hover:scale-105 transition duration-500">
+          </button>
+        </div>`;
+
+      const set = files.map(cardHTML).join('');
+      scroller.innerHTML = set + set;
+
+      const lightbox = document.getElementById('gallery-lightbox');
+      const lightboxImg = document.getElementById('gallery-lightbox-img');
+      const lightboxCount = document.getElementById('gallery-lightbox-count');
+      let lightboxOpen = false;
+      let current = 0;
+      const last = files.length - 1;
+
+      function showAt(index) {
+        current = (index + files.length) % files.length;
+        lightboxImg.src = '../images/gallery/' + files[current];
+        lightboxImg.alt = 'Japan Habba Gallery';
+        lightboxCount.textContent = (current + 1) + ' / ' + files.length;
+      }
+      function openLightboxAt(index) {
+        showAt(index);
+        lightbox.classList.remove('hidden');
+        document.body.style.overflow = 'hidden';
+        lightboxOpen = true;
+      }
+      function closeGalleryLightbox() {
+        lightbox.classList.add('hidden');
+        lightboxImg.src = '';
+        document.body.style.overflow = '';
+        lightboxOpen = false;
+      }
+      window.closeGalleryLightbox = closeGalleryLightbox;
+
+      scroller.querySelectorAll('.gallery-item').forEach((btn, i) => {
+        btn.addEventListener('click', () => {
+          openLightboxAt(i % files.length);
+        });
+      });
+      lightbox.querySelector('.gallery-prev').addEventListener('click', (e) => {
+        e.stopPropagation();
+        showAt(current - 1);
+      });
+      lightbox.querySelector('.gallery-next').addEventListener('click', (e) => {
+        e.stopPropagation();
+        showAt(current + 1);
+      });
+      lightbox.addEventListener('click', (e) => {
+        if (e.target === lightbox) closeGalleryLightbox();
+      });
+      document.addEventListener('keydown', (e) => {
+        if (!lightboxOpen) return;
+        if (e.key === 'Escape') closeGalleryLightbox();
+        else if (e.key === 'ArrowLeft') showAt(current - 1);
+        else if (e.key === 'ArrowRight') showAt(current + 1);
+      });
+
+      let paused = false;
+      scroller.addEventListener('mouseenter', () => paused = true);
+      scroller.addEventListener('mouseleave', () => paused = false);
+
+      const SPEED = 2;
+      function tick() {
+        if (!paused && !lightboxOpen) {
+          scroller.scrollLeft += SPEED;
+          const half = scroller.scrollWidth / 2;
+          if (scroller.scrollLeft >= half) {
+            scroller.scrollLeft -= half;
+          }
+        }
+        requestAnimationFrame(tick);
+      }
+      requestAnimationFrame(tick);
+    })();
   </script>
 
 </body>
