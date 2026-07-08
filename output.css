@@ -1708,6 +1708,10 @@ video {
   background-color: rgb(236 72 153 / var(--tw-bg-opacity, 1));
 }
 
+.bg-brand-pink-500\/10 {
+  background-color: rgb(236 72 153 / 0.1);
+}
+
 .bg-brand-pink-500\/5 {
   background-color: rgb(236 72 153 / 0.05);
 }
