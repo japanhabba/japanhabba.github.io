@@ -4,118 +4,39 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Japan Habba 2027 | India's Biggest Japanese Cultural Festival</title>
-  <meta name="description" content="Japan Habba is India's biggest celebration of Japanese culture! Returning to Bengaluru on January 9th & 10th, 2027. Explore sponsorship opportunities, our organizing committee, and supporters.">
-  <meta name="keywords" content="japan, habba, japanese culture, bengaluru, bangalore, anime, cosplay, tea ceremony, ikebana, sushi, sponsors, 2027">
+  <meta name="description" content="Japan Habba returns to Bengaluru on January 9th & 10th, 2027. Sponsorship, committee, and event details.">
+  <meta name="keywords" content="japan, habba, japanese culture, bengaluru, bangalore, anime, cosplay, sponsors, 2027">
   <link rel="canonical" href="https://japanhabba.org/" />
-  
+
   <!-- Tailwind CSS -->
   <link rel="stylesheet" href="./output.css">
-  
+
   <!-- Inter Font -->
   <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
-  
+
   <style>
     * { font-family: 'Inter', sans-serif; }
-    
-    /* Japanese traditional wave / grid inspired background pattern */
-    .bg-pattern {
-      background-color: #FAF8F5; /* Warm washi-paper white */
-      background-image: radial-gradient(rgba(219, 39, 119, 0.05) 1px, transparent 1px);
-      background-size: 24px 24px;
-    }
-    
-    /* Smooth card shadow transition */
-    .hover-lift {
-      transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.3s ease;
-    }
-    .hover-lift:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 12px 30px -10px rgba(219, 39, 119, 0.15);
-    }
-    
-    /* Floating keyframes for badge */
-    @keyframes float {
-      0%, 100% { transform: translateY(0px); }
-      50% { transform: translateY(-6px); }
-    }
-    .animate-float {
-      animation: float 4s ease-in-out infinite;
-    }
-    
-    /* Glassmorphism utility */
-    .glass-nav {
-      background: rgba(250, 248, 245, 0.8);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      border-bottom: 1px solid rgba(219, 39, 119, 0.08);
-    }
-
-    /* Rotating hero gallery background */
-    .hero-bg {
-      position: absolute;
-      inset: 0;
-      z-index: -10;
-      overflow: hidden;
-    }
-    .hero-bg__img {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      opacity: 0;
-      animation: heroFade 25s infinite;
-    }
-    .hero-bg__img:nth-child(1) { animation-delay: 0s; }
-    .hero-bg__img:nth-child(2) { animation-delay: 5s; }
-    .hero-bg__img:nth-child(3) { animation-delay: 10s; }
-    .hero-bg__img:nth-child(4) { animation-delay: 15s; }
-    .hero-bg__img:nth-child(5) { animation-delay: 20s; }
-
-    @keyframes heroFade {
-      0%   { opacity: 0; }
-      2%   { opacity: 1; }
-      18%  { opacity: 1; }
-      20%  { opacity: 0; }
-      100% { opacity: 0; }
-    }
-
-    /* Legibility scrim over the photos */
-    .hero-scrim {
-      position: absolute;
-      inset: 0;
-      z-index: -9;
-      background:
-        linear-gradient(to bottom, rgba(250,248,245,0.92) 0%, rgba(250,248,245,0.75) 45%, rgba(250,248,245,0.92) 100%);
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      .hero-bg__img { animation: none; opacity: 0; }
-      .hero-bg__img:nth-child(1) { opacity: 1; }
-    }
   </style>
 </head>
-<body class="bg-pattern min-h-screen flex flex-col text-gray-800 antialiased selection:bg-brand-pink-200 selection:text-brand-pink-800">
+<body class="bg-white min-h-screen flex flex-col text-gray-800 antialiased">
 
   <!-- Navigation Header -->
-  <header class="sticky top-0 z-50 glass-nav transition-all duration-300">
-    <nav class="flex items-center justify-between max-w-7xl mx-auto px-6 py-4">
+  <header class="sticky top-0 z-50 bg-white border-b border-gray-100">
+    <nav class="flex items-center justify-between max-w-5xl mx-auto px-6 py-4">
       <a href="#" class="flex items-center gap-3 focus:outline-none">
-        <img class="h-12 w-auto transition-transform hover:scale-105" src="images/jh-pink.png" alt="Japan Habba Logo">
+        <img class="h-10 w-auto" src="images/jh-pink.png" alt="Japan Habba Logo">
         <span class="sr-only">Japan Habba 2027</span>
       </a>
-      
+
       <!-- Desktop Links -->
-      <div class="hidden md:flex items-center gap-8">
-        <a href="#about" class="text-sm font-medium text-gray-600 hover:text-brand-pink-600 transition">About</a>
-        <a href="#video" class="text-sm font-medium text-gray-600 hover:text-brand-pink-600 transition">Video</a>
-        <a href="#gallery" class="text-sm font-medium text-gray-600 hover:text-brand-pink-600 transition">Gallery</a>
-        <a href="#sponsorship" class="text-sm font-medium text-gray-600 hover:text-brand-pink-600 transition">Sponsorship</a>
-        <a href="#supporters" class="text-sm font-medium text-gray-600 hover:text-brand-pink-600 transition">Supporters</a>
-        <a href="#committee" class="text-sm font-medium text-gray-600 hover:text-brand-pink-600 transition">Committee</a>
-        <a href="2025/index.html" class="text-sm font-semibold text-brand-pink-600 hover:text-brand-pink-700 bg-brand-pink-50 hover:bg-brand-pink-100 px-4 py-2 rounded-full transition">
-          2025 Archive
-        </a>
+      <div class="hidden md:flex items-center gap-8 text-sm text-gray-600">
+        <a href="#video" class="hover:text-brand-pink-600 transition">Video</a>
+        <a href="#gallery" class="hover:text-brand-pink-600 transition">Gallery</a>
+        <a href="#sponsorship" class="hover:text-brand-pink-600 transition">Sponsorship</a>
+        <a href="#supporters" class="hover:text-brand-pink-600 transition">Supporters</a>
+        <a href="#confirmed-sponsors" class="hover:text-brand-pink-600 transition">Sponsors</a>
+        <a href="#committee" class="hover:text-brand-pink-600 transition">Committee</a>
+        <a href="2025/index.html" class="font-medium text-brand-pink-600 hover:text-brand-pink-700 transition">2025 Archive</a>
       </div>
 
       <!-- Mobile Menu Button -->
@@ -128,222 +49,77 @@
     </nav>
 
     <!-- Mobile Dropdown Menu -->
-    <div id="mobile-menu" class="hidden md:hidden bg-[#FAF8F5] border-b border-pink-100 px-6 py-4 space-y-3">
-      <a href="#about" class="block text-base font-medium text-gray-600 hover:text-brand-pink-600 transition">About</a>
-      <a href="#video" class="block text-base font-medium text-gray-600 hover:text-brand-pink-600 transition">Video</a>
-      <a href="#gallery" class="block text-base font-medium text-gray-600 hover:text-brand-pink-600 transition">Gallery</a>
-      <a href="#sponsorship" class="block text-base font-medium text-gray-600 hover:text-brand-pink-600 transition">Sponsorship</a>
-      <a href="#supporters" class="block text-base font-medium text-gray-600 hover:text-brand-pink-600 transition">Supporters</a>
-      <a href="#committee" class="block text-base font-medium text-gray-600 hover:text-brand-pink-600 transition">Committee</a>
-      <a href="2025/index.html" class="block text-center text-sm font-semibold text-brand-pink-600 bg-brand-pink-50 py-2.5 rounded-xl">
-        Visit 2025 Archive
-      </a>
+    <div id="mobile-menu" class="hidden md:hidden bg-white border-b border-gray-100 px-6 py-4 space-y-3">
+      <a href="#video" class="block text-sm text-gray-600 hover:text-brand-pink-600 transition">Video</a>
+      <a href="#gallery" class="block text-sm text-gray-600 hover:text-brand-pink-600 transition">Gallery</a>
+      <a href="#sponsorship" class="block text-sm text-gray-600 hover:text-brand-pink-600 transition">Sponsorship</a>
+      <a href="#supporters" class="block text-sm text-gray-600 hover:text-brand-pink-600 transition">Supporters</a>
+      <a href="#confirmed-sponsors" class="block text-sm text-gray-600 hover:text-brand-pink-600 transition">Sponsors</a>
+      <a href="#committee" class="block text-sm text-gray-600 hover:text-brand-pink-600 transition">Committee</a>
+      <a href="2025/index.html" class="block text-sm font-medium text-brand-pink-600">2025 Archive</a>
     </div>
   </header>
 
   <!-- Hero Section -->
-  <section id="about" class="relative overflow-hidden pt-12 pb-20 md:py-28 px-6">
-    <!-- Rotating gallery image background -->
-    <div class="hero-bg" aria-hidden="true">
-      <img class="hero-bg__img" src="images/gallery/thumbs/DSC04526.jpg" alt="">
-      <img class="hero-bg__img" src="images/gallery/thumbs/DSC04779.jpg" alt="">
-      <img class="hero-bg__img" src="images/gallery/thumbs/DSC05154.jpg" alt="">
-      <img class="hero-bg__img" src="images/gallery/thumbs/DSC06914.jpg" alt="">
-      <img class="hero-bg__img" src="images/gallery/thumbs/DSC07107.jpg" alt="">
-    </div>
-    <!-- Legibility scrim -->
-    <div class="hero-scrim" aria-hidden="true"></div>
-    <!-- Subtle brand glow accent -->
-    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] rounded-full bg-brand-pink-500/10 blur-3xl pointer-events-none -z-10"></div>
-    
-    <div class="max-w-4xl mx-auto text-center">
-      <!-- Live Pulse Announcement Badge -->
-      <div class="inline-flex items-center gap-2 bg-brand-pink-50 border border-brand-pink-100 text-brand-pink-700 px-4 py-2 rounded-full text-sm font-medium mb-8 animate-float shadow-sm">
-        <span class="relative flex h-2.5 w-2.5">
-          <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand-pink-400 opacity-75"></span>
-          <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-brand-pink-500"></span>
-        </span>
-        Bengaluru • January 9th & 10th, 2027
-      </div>
+  <section id="about" class="px-6 pt-20 pb-16 text-center">
+    <div class="max-w-2xl mx-auto">
+      <p class="text-sm font-medium text-brand-pink-600">Bengaluru &middot; January 9&ndash;10, 2027</p>
 
-      <!-- Main Headline -->
-      <h1 class="text-4xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight text-gray-900 leading-tight">
-        Japan Habba 
-        <span class="text-brand-pink-600 relative inline-block">
-          2027
-          <span class="absolute bottom-1.5 left-0 w-full h-3 bg-brand-pink-100/60 -z-10 rounded"></span>
-        </span>
+      <h1 class="mt-3 text-4xl sm:text-5xl font-bold tracking-tight text-gray-900">
+        Japan Habba 2027
       </h1>
 
-      <p class="mt-6 text-lg sm:text-xl text-gray-600 max-w-2xl mx-auto leading-relaxed font-medium">
-        India's biggest celebration of Japanese culture returns for its landmark <strong class="text-brand-pink-600 font-bold">21st Edition</strong>. Experience a legacy event bridging deep-rooted traditions and modern pop culture.
+      <p class="mt-4 text-gray-600">
+        India's biggest celebration of Japanese culture, back for its 21st edition.
       </p>
 
-      <p class="mt-4 text-gray-500 max-w-2xl mx-auto text-sm leading-relaxed">
-        Building on our sold-out 2025 edition (15,000+ confirmed attendees, 110+ exhibitors, and 3M+ social reach), Japan Habba 2027 expands to the massive <strong class="text-gray-900 font-semibold">Palace Grounds, Chamara Vajra</strong>, expecting <strong class="text-gray-900 font-semibold">25,000+ attendees</strong> over a weekend of absolute cultural immersion.
-      </p>
-
-      <div class="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
-        <a href="#sponsorship" class="w-full sm:w-auto rounded-full bg-brand-pink-600 hover:bg-brand-pink-700 px-8 py-4 text-sm font-semibold text-white shadow-md hover:shadow-lg hover:-translate-y-0.5 transition duration-200">
+      <div class="mt-8 flex flex-col sm:flex-row items-center justify-center gap-3">
+        <a href="#sponsorship" class="w-full sm:w-auto rounded-md bg-brand-pink-600 hover:bg-brand-pink-700 px-6 py-3 text-sm font-semibold text-white transition">
           Partner as a Sponsor
         </a>
-        <a href="#video" class="w-full sm:w-auto rounded-full bg-white border border-gray-200 hover:border-brand-pink-200 px-8 py-4 text-sm font-semibold text-gray-700 hover:text-brand-pink-600 shadow-sm hover:shadow transition duration-200">
-          Watch Showcase Video
+        <a href="#video" class="w-full sm:w-auto rounded-md border border-gray-300 hover:border-gray-400 px-6 py-3 text-sm font-semibold text-gray-700 transition">
+          Watch Video
         </a>
       </div>
 
       <!-- Social Links -->
-      <div class="mt-10 flex flex-wrap items-center justify-center gap-3">
-        <span class="text-xs font-semibold text-gray-500 mr-1 hidden sm:inline">Follow &amp; Connect:</span>
-        <a href="https://www.instagram.com/japanhabba/" target="_blank" rel="noopener" class="w-10 h-10 rounded-full bg-white border border-pink-100 shadow-sm hover:shadow-md hover:border-brand-pink-300 hover:-translate-y-0.5 transition flex items-center justify-center text-brand-pink-600" title="Instagram" aria-label="Instagram">
+      <div class="mt-10 flex flex-wrap items-center justify-center gap-4 text-gray-400">
+        <a href="https://www.instagram.com/japanhabba/" target="_blank" rel="noopener" class="hover:text-brand-pink-600 transition" title="Instagram" aria-label="Instagram">
           <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.416 1.363.465 2.427.048 1.067.06 1.407.06 4.123v.08c0 2.643-.012 2.987-.06 4.043-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.416-2.427.465-1.067.048-1.407.06-4.123.06h-.08c-2.643 0-2.987-.012-4.043-.06-1.064-.049-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.416-1.363-.465-2.427-.047-1.024-.06-1.379-.06-3.808v-.63c0-2.43.013-2.784.06-3.808.049-1.064.218-1.791.465-2.427a4.902 4.902 0 011.153-1.772A4.902 4.902 0 015.45 2.525c.636-.247 1.363-.416 2.427-.465C8.901 2.013 9.256 2 11.685 2h.63zm-.081 1.802h-.468c-2.456 0-2.784.011-3.807.058-.975.045-1.504.207-1.857.344-.467.182-.8.398-1.15.748-.35.35-.566.683-.748 1.15-.137.353-.3.882-.344 1.857-.047 1.023-.058 1.351-.058 3.807v.468c0 2.456.011 2.784.058 3.807.045.975.207 1.504.344 1.857.182.466.399.8.748 1.15.35.35.683.566 1.15.748.353.137.882.3 1.857.344 1.054.048 1.37.058 4.041.058h.08c2.597 0 2.917-.01 3.96-.058.976-.045 1.505-.207 1.858-.344.466-.182.8-.398 1.15-.748.35-.35.566-.683.748-1.15.137-.353.3-.882.344-1.857.048-1.055.058-1.37.058-4.041v-.08c0-2.597-.01-2.917-.058-3.96-.045-.976-.207-1.505-.344-1.858a3.097 3.097 0 00-.748-1.15 3.098 3.098 0 00-1.15-.748c-.353-.137-.882-.3-1.857-.344-1.023-.047-1.351-.058-3.807-.058zM12 6.865a5.135 5.135 0 110 10.27 5.135 5.135 0 010-10.27zm0 1.802a3.333 3.333 0 100 6.666 3.333 3.333 0 000-6.666zm5.338-3.205a1.2 1.2 0 110 2.4 1.2 1.2 0 010-2.4z" clip-rule="evenodd" /></svg>
         </a>
-        <a href="https://x.com/japanhabba25" target="_blank" rel="noopener" class="w-10 h-10 rounded-full bg-white border border-pink-100 shadow-sm hover:shadow-md hover:border-brand-pink-300 hover:-translate-y-0.5 transition flex items-center justify-center text-gray-800" title="X (Twitter)" aria-label="X (Twitter)">
+        <a href="https://x.com/japanhabba25" target="_blank" rel="noopener" class="hover:text-brand-pink-600 transition" title="X (Twitter)" aria-label="X (Twitter)">
           <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
         </a>
-        <a href="https://facebook.com/JapanHabbaBangalore" target="_blank" rel="noopener" class="w-10 h-10 rounded-full bg-white border border-pink-100 shadow-sm hover:shadow-md hover:border-brand-pink-300 hover:-translate-y-0.5 transition flex items-center justify-center text-blue-600" title="Facebook" aria-label="Facebook">
+        <a href="https://facebook.com/JapanHabbaBangalore" target="_blank" rel="noopener" class="hover:text-brand-pink-600 transition" title="Facebook" aria-label="Facebook">
           <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" clip-rule="evenodd" /></svg>
         </a>
-        <a href="https://www.youtube.com/@JapanHabba" target="_blank" rel="noopener" class="w-10 h-10 rounded-full bg-white border border-pink-100 shadow-sm hover:shadow-md hover:border-brand-pink-300 hover:-translate-y-0.5 transition flex items-center justify-center text-red-600" title="YouTube" aria-label="YouTube">
+        <a href="https://www.youtube.com/@JapanHabba" target="_blank" rel="noopener" class="hover:text-brand-pink-600 transition" title="YouTube" aria-label="YouTube">
           <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M23.498 6.163a3.003 3.003 0 00-2.11-2.11C19.518 3.5 12 3.5 12 3.5s-7.518 0-9.388.553a3.003 3.003 0 00-2.11 2.11C0 8.033 0 12 0 12s0 3.967.502 5.837a3.003 3.003 0 002.11 2.11C4.482 20.5 12 20.5 12 20.5s7.518 0 9.388-.553a3.003 3.003 0 002.11-2.11C24 15.967 24 12 24 12s0-3.967-.502-5.837zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" clip-rule="evenodd" /></svg>
         </a>
-        <a href="https://discord.gg/hepDvTcHny" target="_blank" rel="noopener" class="w-10 h-10 rounded-full bg-white border border-pink-100 shadow-sm hover:shadow-md hover:border-brand-pink-300 hover:-translate-y-0.5 transition flex items-center justify-center text-indigo-600" title="Discord" aria-label="Discord">
+        <a href="https://discord.gg/hepDvTcHny" target="_blank" rel="noopener" class="hover:text-brand-pink-600 transition" title="Discord" aria-label="Discord">
           <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24"><path d="M20.317 4.369A19.79 19.79 0 0015.885 3c-.214.385-.463.902-.636 1.307a18.27 18.27 0 00-5.498 0A12.6 12.6 0 009.71 3 19.74 19.74 0 005.277 4.37C1.93 9.08.71 13.65.38 18.145a19.94 19.94 0 006.02 3.043c.486-.663.92-1.366 1.293-2.108a12.9 12.9 0 01-2.04-.978c.172-.126.34-.257.502-.392a14.2 14.2 0 0012.208 0c.164.139.332.27.502.392-.65.384-1.334.71-2.043.979.373.741.807 1.445 1.293 2.108a19.9 19.9 0 006.02-3.043c-.368-5.11-1.66-9.65-5.007-13.776zM8.302 15.476c-1.14 0-2.066-1.04-2.066-2.32 0-1.28.91-2.32 2.066-2.32 1.157 0 2.084 1.04 2.065 2.32 0 1.28-.91 2.32-2.065 2.32zm7.396 0c-1.14 0-2.065-1.04-2.065-2.32 0-1.28.91-2.32 2.065-2.32 1.157 0 2.084 1.04 2.065 2.32 0 1.28-.908 2.32-2.065 2.32z"/></svg>
         </a>
-        <a href="https://chat.whatsapp.com/LK1a5IY4JYOFFztgeli7HM" target="_blank" rel="noopener" class="w-10 h-10 rounded-full bg-white border border-pink-100 shadow-sm hover:shadow-md hover:border-brand-pink-300 hover:-translate-y-0.5 transition flex items-center justify-center text-green-600" title="WhatsApp" aria-label="WhatsApp">
+        <a href="https://chat.whatsapp.com/LK1a5IY4JYOFFztgeli7HM" target="_blank" rel="noopener" class="hover:text-brand-pink-600 transition" title="WhatsApp" aria-label="WhatsApp">
           <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.149-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.173.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.36-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.887-9.885 9.887m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
         </a>
       </div>
     </div>
   </section>
 
-  <!-- Video Showcase Section -->
-  <section id="video" class="py-20 px-6 bg-white border-y border-pink-50">
-    <div class="max-w-7xl mx-auto">
-      <div class="text-center max-w-2xl mx-auto mb-12">
-        <h2 class="text-3xl font-extrabold text-gray-900 tracking-tight">Experience the Magic</h2>
-        <p class="mt-3 text-lg text-gray-600">
-          Step into the electric atmosphere of Japan Habba. Catch a glimpse of what awaits you at our upcoming edition!
-        </p>
-      </div>
-
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-        <!-- Video Embed -->
-        <div class="lg:col-span-7">
-          <div class="relative w-full aspect-video rounded-3xl overflow-hidden shadow-2xl border-4 border-white ring-1 ring-brand-pink-100/50 bg-black">
-            <!-- Embedded YouTube Highlight Video of Japan Habba -->
-            <!-- Easily replaceable by the user with any other YouTube watch ID -->
-            <iframe class="absolute inset-0 w-full h-full" src="https://www.youtube.com/embed/MEmic029WUM" title="Japan Habba Highlight Reel Video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-          </div>
-        </div>
-
-        <!-- Event Highlight Info -->
-        <div class="lg:col-span-5 space-y-6">
-          <div class="bg-brand-pink-50/50 border border-brand-pink-100/40 rounded-3xl p-8">
-            <h3 class="text-xl font-bold text-gray-900 mb-4 flex items-center gap-2">
-              <span class="text-brand-pink-600">✨</span> Key Attractions for JH27
-            </h3>
-            
-            <ul class="space-y-4">
-              <li class="flex gap-3">
-                <span class="text-brand-pink-600 mt-1 font-bold">✓</span>
-                <div>
-                  <h4 class="font-bold text-gray-900 text-sm">Habba Live (Premium Concert)</h4>
-                  <p class="text-xs text-gray-500">India's first arena-style seated concert featuring 8+ international acts.</p>
-                </div>
-              </li>
-              <li class="flex gap-3">
-                <span class="text-brand-pink-600 mt-1 font-bold">✓</span>
-                <div>
-                  <h4 class="font-bold text-gray-900 text-sm">The Versus Festival (Gaming)</h4>
-                  <p class="text-xs text-gray-500">India's first international fighting game community major tournament. Compete or watch the hype matches live.</p>
-                </div>
-              </li>
-              <li class="flex gap-3">
-                <span class="text-brand-pink-600 mt-1 font-bold">✓</span>
-                <div>
-                  <h4 class="font-bold text-gray-900 text-sm">75th Anniversary Museum</h4>
-                  <p class="text-xs text-gray-500">A centerpiece venue-wide art installation commemorating the 75th Anniversary of India-Japan diplomatic relations.</p>
-                </div>
-              </li>
-              <li class="flex gap-3">
-                <span class="text-brand-pink-600 mt-1 font-bold">✓</span>
-                <div>
-                  <h4 class="font-bold text-gray-900 text-sm">Anime Pavilion & Specials</h4>
-                  <p class="text-xs text-gray-500">Japanese Voice Actor panels, panels by studios traveling from Japan, and sword dance performances by "Shidenryu".</p>
-                </div>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-  <!-- Theme Section -->
-  <section class="py-16 px-6 bg-pattern border-b border-pink-100/50">
-    <div class="max-w-7xl mx-auto">
-      <div class="text-center max-w-2xl mx-auto mb-12">
-        <span class="text-xs font-bold tracking-widest text-brand-pink-600 uppercase">JH27 Commemorative Theme</span>
-        <h2 class="text-3xl font-extrabold text-gray-900 tracking-tight mt-1">India&times;Japan Kousaten (Crossroads)</h2>
-        <p class="mt-2 text-sm text-gray-500">
-          Japan Habba 2027 is an official commemoration of the 75th anniversary of India-Japan diplomatic relations.
-        </p>
-      </div>
-      
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-        
-        <!-- Historical Connections -->
-        <div class="bg-white p-6 rounded-2xl border border-pink-100 shadow-sm hover:shadow-md transition">
-          <div class="w-10 h-10 bg-pink-50 rounded-xl flex items-center justify-center text-brand-pink-600 font-bold text-lg mb-4">📜</div>
-          <h3 class="font-bold text-gray-900 text-sm mb-2">Historical Crossroads</h3>
-          <ul class="text-xs text-gray-500 space-y-2 leading-relaxed">
-            <li>Honors the legacy of key figures such as <span class="text-gray-800 font-medium">Subhas Chandra Bose</span>, <span class="text-gray-800 font-medium">Rash Behari Bose</span> and <span class="text-gray-800 font-medium">Radhabinod Pal</span>, <span class="text-gray-800 font-medium">Rabindranth Tagore</span>, and others through special exhibits.</li>
-          </ul>
-        </div>
-        
-        <!-- Contemporary Collaborations -->
-        <div class="bg-white p-6 rounded-2xl border border-pink-100 shadow-sm hover:shadow-md transition">
-          <div class="w-10 h-10 bg-indigo-50 rounded-xl flex items-center justify-center text-brand-indigo-800 font-bold text-lg mb-4">🚇</div>
-          <h3 class="font-bold text-gray-900 text-sm mb-2">Contemporary Crossroads</h3>
-          <ul class="text-xs text-gray-500 space-y-2 leading-relaxed">
-            <li>We hope to showcase infrastructure funded and jointly sponsored by <span class="text-gray-800 font-medium">ODA</span> grants, with a special focus on Bangalore's urban metro projects.</li>
-          </ul>
-        </div>
-        
-        <!-- Anime & Manga Crossovers -->
-        <div class="bg-white p-6 rounded-2xl border border-pink-100 shadow-sm hover:shadow-md transition">
-          <div class="w-10 h-10 bg-amber-50 rounded-xl flex items-center justify-center text-brand-gold-600 font-bold text-lg mb-4">🖌️</div>
-          <h3 class="font-bold text-gray-900 text-sm mb-2">Anime & Manga Crossroads</h3>
-          <ul class="text-xs text-gray-500 space-y-2 leading-relaxed">
-            <li>• Spotlighting Japanese works featuring India as a key location.</li>
-            <li>• Celebrating the growth of creations by <span class="text-gray-800 font-medium">Indian artists</span>.</li>
-          </ul>
-        </div>
-
-        <!-- Video Game Crossovers -->
-        <div class="bg-white p-6 rounded-2xl border border-pink-100 shadow-sm hover:shadow-md transition">
-          <div class="w-10 h-10 bg-red-50 rounded-xl flex items-center justify-center text-red-500 font-bold text-lg mb-4">🎮</div>
-          <h3 class="font-bold text-gray-900 text-sm mb-2">Video Game Crossroads</h3>
-          <ul class="text-xs text-gray-500 space-y-2 leading-relaxed">
-            <li>• Celebrating <span class="text-gray-800 font-medium">classic fighting game characters</span> inspired by India.</li>
-            <li>• Featuring <span class="text-gray-800 font-medium">up-and-coming fighting game characters</span> of Indian origin.</li>
-          </ul>
-        </div>
-
+  <!-- Video Section -->
+  <section id="video" class="px-6 py-16 border-t border-gray-100">
+    <div class="max-w-3xl mx-auto">
+      <h2 class="text-xl font-semibold text-gray-900 text-center mb-6">Highlights</h2>
+      <div class="relative w-full aspect-video rounded-lg overflow-hidden border border-gray-200 bg-black">
+        <iframe class="absolute inset-0 w-full h-full" src="https://www.youtube.com/embed/MEmic029WUM" title="Japan Habba Highlight Reel Video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
       </div>
     </div>
   </section>
 
   <!-- Gallery Section -->
-  <section id="gallery" class="py-20 px-6 bg-white border-y border-pink-50">
-    <div class="max-w-7xl mx-auto">
-      <div class="text-center max-w-2xl mx-auto mb-12">
-        <span class="text-xs font-bold tracking-widest text-brand-pink-600 uppercase">Gallery</span>
-        <h2 class="text-3xl font-extrabold text-gray-900 tracking-tight mt-1">Japan Habba 2025</h2>
-        <p class="mt-2 text-sm text-gray-500">
-          Moments captured from the previous edition of Japan Habba.
-        </p>
-      </div>
+  <section id="gallery" class="px-6 py-16 border-t border-gray-100">
+    <div class="max-w-5xl mx-auto">
+      <h2 class="text-xl font-semibold text-gray-900 text-center mb-6">Gallery &mdash; Japan Habba 2025</h2>
 
       <div id="gallery-scroll" class="flex gap-4 overflow-x-auto pb-4 scroll-smooth" style="scrollbar-width: thin; scrollbar-color: #DB2777 #FCE7F3;">
         <!-- Cards injected + duplicated by script for seamless autoscroll -->
@@ -352,598 +128,228 @@
   </section>
 
   <!-- Sponsorship Section -->
-  <section id="sponsorship" class="py-20 px-6">
-    <div class="max-w-7xl mx-auto">
-      <div class="text-center max-w-3xl mx-auto mb-12">
-        <h2 class="text-3xl font-extrabold text-gray-900 tracking-tight">Sponsorship Packages</h2>
-        <p class="mt-3 text-lg text-gray-600">
-          Partner with Japan Habba 2027 to reach a passionate, targeted audience. Explore standard tiers, exclusive premium title alignments, and individual contribution tiers.
-        </p>
-      </div>
+  <section id="sponsorship" class="px-6 py-16 border-t border-gray-100">
+    <div class="max-w-xl mx-auto text-center">
+      <h2 class="text-xl font-semibold text-gray-900">Sponsorship</h2>
+      <p class="mt-2 text-gray-600 text-sm">
+        Interested in partnering with Japan Habba 2027? Fill out the form and our team will reach out with details.
+      </p>
 
-      <!-- Tabs Navigation -->
-      <div class="flex flex-wrap justify-center border-b border-pink-100 mb-12 max-w-2xl mx-auto gap-2 text-xs md:text-sm">
-        <button id="tab-corporate-btn" class="px-5 py-3 font-bold border-b-2 border-brand-pink-600 text-brand-pink-600 focus:outline-none transition">
-          Corporate Tiers
-        </button>
-        <button id="tab-premium-btn" class="px-5 py-3 font-bold border-b-2 border-transparent text-gray-500 hover:text-brand-pink-600 focus:outline-none transition">
-          Premium Opportunities
-        </button>
-        <button id="tab-individual-btn" class="px-5 py-3 font-bold border-b-2 border-transparent text-gray-500 hover:text-brand-pink-600 focus:outline-none transition">
-          Individual Contributions
-        </button>
-      </div>
+      <a href="https://forms.gle/a8B1CTyzRt7bXRp88" target="_blank" class="mt-6 inline-block rounded-md bg-brand-pink-600 hover:bg-brand-pink-700 px-8 py-3.5 text-sm font-semibold text-white transition">
+        Fill Sponsorship Form
+      </a>
 
-      <!-- Tab Contents -->
-      <div class="mb-16">
-        
-        <!-- Tab 1: Corporate Standard Tiers -->
-        <div id="tab-corporate" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          
-          <!-- 1 Lakh -->
-          <div class="bg-white rounded-3xl p-6 border border-pink-100/80 hover-lift shadow-sm flex flex-col justify-between">
-            <div>
-              <div class="flex items-center justify-between mb-4">
-                <span class="text-[10px] font-bold text-gray-400 tracking-wider uppercase">Standard Corporate</span>
-                <span class="text-xs bg-gray-100 text-gray-600 px-2 py-0.5 rounded font-semibold">1.0L</span>
-              </div>
-              <h3 class="text-2xl font-extrabold text-gray-900 mb-1">₹1,00,000</h3>
-              <p class="text-xs text-brand-pink-600 font-semibold mb-6 flex items-center gap-1">
-                <span>📍</span> Brand Visibility (No Booth)
-              </p>
-              <ul class="text-xs text-gray-600 space-y-3 mb-6">
-                <li class="flex items-center gap-2">✓ <span class="font-medium text-gray-900">10 Wristbands</span></li>
-                <li class="flex items-center gap-2">✓ <span>Sponsor Board Logo (Size S)</span></li>
-                <li class="flex items-center gap-2">✓ <span>Logo listed on official Website</span></li>
-                <li class="flex items-center gap-2">✓ <span>Sponsor Name on Decorative Lantern</span></li>
-                <li class="flex items-center gap-2">✓ <span>30s Video Advert Spot</span></li>
-              </ul>
-            </div>
-            <div class="border-t border-gray-100 pt-4 mt-auto">
-              <span class="text-[10px] text-gray-400 block">* All prices exclude GST (18%)</span>
-            </div>
-          </div>
+      <p class="mt-4 text-sm">
+        <a href="kojin/" class="text-gray-500 hover:text-brand-pink-600 transition">Looking to contribute individually instead?</a>
+      </p>
 
-          <!-- 1.5 Lakh -->
-          <div class="bg-white rounded-3xl p-6 border border-brand-pink-100/50 hover-lift shadow-sm flex flex-col justify-between">
-            <div>
-              <div class="flex items-center justify-between mb-4">
-                <span class="text-[10px] font-bold text-brand-pink-600 tracking-wider uppercase">Standard Corporate</span>
-                <span class="text-xs bg-brand-pink-50 text-brand-pink-600 px-2 py-0.5 rounded font-semibold">1.5L</span>
-              </div>
-              <h3 class="text-2xl font-extrabold text-gray-900 mb-1">₹1,50,000</h3>
-              <p class="text-xs text-brand-pink-600 font-semibold mb-6 flex items-center gap-1">
-                <span>🎪</span> 3x3m Shell Scheme Booth
-              </p>
-              <ul class="text-xs text-gray-600 space-y-3 mb-6">
-                <li class="flex items-center gap-2">✓ <span class="font-medium text-gray-900">5 Exhibitor Badges</span></li>
-                <li class="flex items-center gap-2">✓ <span>Sponsor Board Logo (Size M)</span></li>
-                <li class="flex items-center gap-2">✓ <span>Logo listed on official Website</span></li>
-                <li class="flex items-center gap-2">✓ <span>Sponsor Name on Decorative Lantern</span></li>
-                <li class="flex items-center gap-2">✓ <span>60s Video Advert Spot</span></li>
-                <li class="text-gray-400 text-[11px] list-none italic mt-2">Includes 2 tables, 2 chairs & 5A power outlet. Sold first-come first-served.</li>
-              </ul>
-            </div>
-            <div class="border-t border-gray-100 pt-4 mt-auto">
-              <span class="text-[10px] text-gray-400 block">* All prices exclude GST (18%)</span>
-            </div>
-          </div>
-
-          <!-- 2.5 Lakh -->
-          <div class="bg-white rounded-3xl p-6 border border-pink-100/80 hover-lift shadow-sm flex flex-col justify-between">
-            <div>
-              <div class="flex items-center justify-between mb-4">
-                <span class="text-[10px] font-bold text-gray-400 tracking-wider uppercase">Standard Corporate</span>
-                <span class="text-xs bg-gray-100 text-gray-600 px-2 py-0.5 rounded font-semibold">2.5L</span>
-              </div>
-              <h3 class="text-2xl font-extrabold text-gray-900 mb-1">₹2,50,000</h3>
-              <p class="text-xs text-brand-pink-600 font-semibold mb-6 flex items-center gap-1">
-                <span>🎪</span> 3x6m Shell Scheme Booth
-              </p>
-              <ul class="text-xs text-gray-600 space-y-3 mb-6">
-                <li class="flex items-center gap-2">✓ <span class="font-medium text-gray-900">8 Exhibitor Badges</span></li>
-                <li class="flex items-center gap-2">✓ <span>Sponsor Board Logo (Size M)</span></li>
-                <li class="flex items-center gap-2">✓ <span>Logo listed on official Website</span></li>
-                <li class="flex items-center gap-2">✓ <span>Sponsor Name on Decorative Lantern</span></li>
-                <li class="flex items-center gap-2">✓ <span>60s Video Advert Spot</span></li>
-                <li class="text-gray-400 text-[11px] list-none italic mt-2">Double exhibition space. Includes basic furniture & power.</li>
-              </ul>
-            </div>
-            <div class="border-t border-gray-100 pt-4 mt-auto">
-              <span class="text-[10px] text-gray-400 block">* All prices exclude GST (18%)</span>
-            </div>
-          </div>
-
-          <!-- 3.0 Lakh -->
-          <div class="bg-white rounded-3xl p-6 border border-pink-100/80 hover-lift shadow-sm flex flex-col justify-between">
-            <div>
-              <div class="flex items-center justify-between mb-4">
-                <span class="text-[10px] font-bold text-gray-400 tracking-wider uppercase">Standard Corporate</span>
-                <span class="text-xs bg-gray-100 text-gray-600 px-2 py-0.5 rounded font-semibold">3.0L</span>
-              </div>
-              <h3 class="text-2xl font-extrabold text-gray-900 mb-1">₹3,00,000</h3>
-              <p class="text-xs text-brand-indigo-800 font-semibold mb-6 flex items-center gap-1">
-                <span>📍</span> High Brand Visibility (No Booth)
-              </p>
-              <ul class="text-xs text-gray-600 space-y-3 mb-6">
-                <li class="flex items-center gap-2">✓ <span class="font-medium text-gray-900">30 Wristbands + 2 VIP Access Badges</span></li>
-                <li class="flex items-center gap-2">✓ <span>Sponsor Board Logo (Size M)</span></li>
-                <li class="flex items-center gap-2">✓ <span>Logo listed on official Website</span></li>
-                <li class="flex items-center gap-2">✓ <span>Sponsor Name on Decorative Lantern</span></li>
-                <li class="flex items-center gap-2">✓ <span>90s Video Advert Spot</span></li>
-              </ul>
-            </div>
-            <div class="border-t border-gray-100 pt-4 mt-auto">
-              <span class="text-[10px] text-gray-400 block">* All prices exclude GST (18%)</span>
-            </div>
-          </div>
-
-          <!-- 6.0 Lakh -->
-          <div class="bg-white rounded-3xl p-6 border border-pink-100/80 hover-lift shadow-sm flex flex-col justify-between">
-            <div>
-              <div class="flex items-center justify-between mb-4">
-                <span class="text-[10px] font-bold text-gray-400 tracking-wider uppercase">Standard Corporate</span>
-                <span class="text-xs bg-gray-100 text-gray-600 px-2 py-0.5 rounded font-semibold">6.0L</span>
-              </div>
-              <h3 class="text-2xl font-extrabold text-gray-900 mb-1">₹6,00,000</h3>
-              <p class="text-xs text-brand-pink-600 font-semibold mb-6 flex items-center gap-1">
-                <span>🎪</span> 6x6m Bare Space Booth
-              </p>
-              <ul class="text-xs text-gray-600 space-y-3 mb-6">
-                <li class="flex items-center gap-2">✓ <span class="font-medium text-gray-900">10 Badges + 2 VIP Access Badges</span></li>
-                <li class="flex items-center gap-2">✓ <span>Sponsor Board Logo (Size L)</span></li>
-                <li class="flex items-center gap-2">✓ <span>Logo listed on official Website</span></li>
-                <li class="flex items-center gap-2">✓ <span>Sponsor Name on Decorative Lantern</span></li>
-                <li class="flex items-center gap-2">✓ <span>90s Video Advert Spot</span></li>
-                <li class="text-gray-400 text-[11px] list-none italic mt-2">Spacious raw space in exhibition hall for custom designs.</li>
-              </ul>
-            </div>
-            <div class="border-t border-gray-100 pt-4 mt-auto">
-              <span class="text-[10px] text-gray-400 block">* All prices exclude GST (18%)</span>
-            </div>
-          </div>
-
-          <!-- 10.0 Lakh -->
-          <div class="bg-white rounded-3xl p-6 border border-pink-100/80 hover-lift shadow-sm flex flex-col justify-between">
-            <div>
-              <div class="flex items-center justify-between mb-4">
-                <span class="text-[10px] font-bold text-gray-400 tracking-wider uppercase">Standard Corporate</span>
-                <span class="text-xs bg-gray-100 text-gray-600 px-2 py-0.5 rounded font-semibold">10.0L</span>
-              </div>
-              <h3 class="text-2xl font-extrabold text-gray-900 mb-1">₹10,00,000</h3>
-              <p class="text-xs text-brand-pink-600 font-semibold mb-6 flex items-center gap-1">
-                <span>🎪</span> 6x9m Bare Space Booth
-              </p>
-              <ul class="text-xs text-gray-600 space-y-3 mb-6">
-                <li class="flex items-center gap-2">✓ <span class="font-medium text-gray-900">12 Badges + 2 VIP Access Badges</span></li>
-                <li class="flex items-center gap-2">✓ <span>Sponsor Board Logo (Size L)</span></li>
-                <li class="flex items-center gap-2">✓ <span>Logo listed on official Website</span></li>
-                <li class="flex items-center gap-2">✓ <span>Sponsor Name on Decorative Lantern</span></li>
-                <li class="flex items-center gap-2">✓ <span>90s Video Advert Spot</span></li>
-                <li class="text-gray-400 text-[11px] list-none italic mt-2">Maximum standard scale space for prominent brand showcases.</li>
-              </ul>
-            </div>
-            <div class="border-t border-gray-100 pt-4 mt-auto">
-              <span class="text-[10px] text-gray-400 block">* All prices exclude GST (18%)</span>
-            </div>
-          </div>
-
+      <div class="mt-12 border-t border-gray-100 pt-8 text-left text-sm text-gray-600 space-y-6">
+        <div>
+          <p class="text-xs font-semibold uppercase tracking-wide text-gray-400 mb-2">English Enquiries</p>
+          <ul class="space-y-1">
+            <li>Tanishk &mdash; <a href="tel:+918971258254" class="hover:text-brand-pink-600 transition">+91 89712 58254</a></li>
+            <li>Praneeth &mdash; <a href="tel:+919591587584" class="hover:text-brand-pink-600 transition">+91 95915 87584</a></li>
+            <li>Nivi Pal (Chair) &mdash; <a href="tel:+918584931669" class="hover:text-brand-pink-600 transition">+91 85849 31669</a></li>
+          </ul>
         </div>
-
-        <!-- Tab 2: Premium Opportunities -->
-        <div id="tab-premium" class="hidden grid grid-cols-1 lg:grid-cols-3 gap-8">
-          
-          <!-- Habba Live Title -->
-          <div class="bg-[#1E1B4B] text-white rounded-3xl p-8 border-2 border-brand-gold-400 hover-lift relative overflow-hidden flex flex-col justify-between">
-            <div class="absolute top-0 right-0 bg-brand-gold-500 text-brand-indigo-950 text-[9px] font-bold tracking-widest px-3 py-1 uppercase rounded-bl-xl">1 Available</div>
-            <div>
-              <span class="text-[10px] font-bold text-brand-gold-400 tracking-wider uppercase">Exclusive Premium</span>
-              <h3 class="text-3xl font-extrabold text-white mt-1 mb-2">₹30,00,000</h3>
-              <h4 class="text-lg font-bold text-pink-300 mb-6 flex items-center gap-1">「Habba Live」 Title Sponsor</h4>
-              
-              <ul class="text-xs text-indigo-100 space-y-3.5 mb-8">
-                <li class="flex items-start gap-2">
-                  <span class="text-brand-gold-400">⚡</span>
-                  <span><strong class="text-white">Branded Light Sticks:</strong> Custom light sticks distributed to concert audience with your logo.</span>
-                </li>
-                <li class="flex items-start gap-2">
-                  <span class="text-brand-gold-400">⚡</span>
-                  <span><strong class="text-white">9m × 9m Bare Space</strong> in primary premium zone.</span>
-                </li>
-                <li class="flex items-start gap-2">
-                  <span class="text-brand-gold-400">⚡</span>
-                  <span><strong class="text-white">15 Badges + 5 VIP Badges</strong> with full venue access.</span>
-                </li>
-                <li class="flex items-start gap-2">
-                  <span class="text-brand-gold-400">⚡</span>
-                  <span>Logo size XL on board, website & name on lanterns.</span>
-                </li>
-                <li class="flex items-start gap-2">
-                  <span class="text-brand-gold-400">⚡</span>
-                  <span>90s video ad spots played on screens.</span>
-                </li>
-              </ul>
-            </div>
-            <div class="border-t border-indigo-950/80 pt-4 mt-auto">
-              <span class="text-[10px] text-indigo-300 block">* Price excludes GST (18%)</span>
-            </div>
-          </div>
-
-          <!-- Versus Festival Title -->
-          <div class="bg-[#1E1B4B] text-white rounded-3xl p-8 border-2 border-brand-gold-400 hover-lift relative overflow-hidden flex flex-col justify-between">
-            <div class="absolute top-0 right-0 bg-brand-gold-500 text-brand-indigo-950 text-[9px] font-bold tracking-widest px-3 py-1 uppercase rounded-bl-xl">1 Available</div>
-            <div>
-              <span class="text-[10px] font-bold text-brand-gold-400 tracking-wider uppercase">Exclusive Premium</span>
-              <h3 class="text-3xl font-extrabold text-white mt-1 mb-2">₹30,00,000</h3>
-              <h4 class="text-lg font-bold text-pink-300 mb-6 flex items-center gap-1">「Versus Festival」 Title Sponsor</h4>
-              
-              <ul class="text-xs text-indigo-100 space-y-3.5 mb-8">
-                <li class="flex items-start gap-2">
-                  <span class="text-brand-gold-400">⚡</span>
-                  <span><strong class="text-white">Arcade Machine Branding:</strong> Your PR video/branding customized directly on the arcade setups.</span>
-                </li>
-                <li class="flex items-start gap-2">
-                  <span class="text-brand-gold-400">⚡</span>
-                  <span><strong class="text-white">9m × 9m Bare Space</strong> inside the tournament zone.</span>
-                </li>
-                <li class="flex items-start gap-2">
-                  <span class="text-brand-gold-400">⚡</span>
-                  <span><strong class="text-white">15 Badges + 5 VIP Badges</strong> with full venue access.</span>
-                </li>
-                <li class="flex items-start gap-2">
-                  <span class="text-brand-gold-400">⚡</span>
-                  <span>Logo size XL on board, website & name on lanterns.</span>
-                </li>
-                <li class="flex items-start gap-2">
-                  <span class="text-brand-gold-400">⚡</span>
-                  <span>90s video ad spots played on screen.</span>
-                </li>
-              </ul>
-            </div>
-            <div class="border-t border-indigo-950/80 pt-4 mt-auto">
-              <span class="text-[10px] text-indigo-300 block">* Price excludes GST (18%)</span>
-            </div>
-          </div>
-
-          <!-- Overall Japan Habba Title -->
-          <div class="bg-gradient-to-br from-[#2D1B4E] to-[#1E1B4B] text-white rounded-3xl p-8 border-4 border-brand-gold-400 hover-lift relative overflow-hidden flex flex-col justify-between shadow-xl">
-            <div class="absolute top-0 right-0 bg-brand-gold-500 text-brand-indigo-950 text-[9px] font-bold tracking-widest px-4 py-1.5 uppercase rounded-bl-xl">Ultimate Rank</div>
-            <div>
-              <span class="text-[10px] font-bold text-brand-gold-400 tracking-wider uppercase">Main Title Partner</span>
-              <h3 class="text-3xl font-extrabold text-white mt-1 mb-2">₹40,00,000</h3>
-              <h4 class="text-lg font-bold text-pink-400 mb-6 flex items-center gap-1">「Japan Habba 2027」 Title Sponsor</h4>
-              
-              <ul class="text-xs text-indigo-100 space-y-3.5 mb-8">
-                <li class="flex items-start gap-2">
-                  <span class="text-brand-gold-400">⭐</span>
-                  <span><strong class="text-white">Event Name Association:</strong> Co-branding on all main welcome gates, online PR, and marketing channels.</span>
-                </li>
-                <li class="flex items-start gap-2">
-                  <span class="text-brand-gold-400">⭐</span>
-                  <span><strong class="text-white">10m × 10m Bare Space</strong> in the premium center zone.</span>
-                </li>
-                <li class="flex items-start gap-2">
-                  <span class="text-brand-gold-400">⭐</span>
-                  <span><strong class="text-white">20 Badges + 5 VIP Badges</strong> with full venue access.</span>
-                </li>
-                <li class="flex items-start gap-2">
-                  <span class="text-brand-gold-400">⭐</span>
-                  <span>Logo size XL on board, website & name on lanterns.</span>
-                </li>
-                <li class="flex items-start gap-2">
-                  <span class="text-brand-gold-400">⭐</span>
-                  <span>90s video ad spots played on screens.</span>
-                </li>
-              </ul>
-            </div>
-            <div class="border-t border-indigo-950/80 pt-4 mt-auto">
-              <span class="text-[10px] text-indigo-300 block">* Price excludes GST (18%)</span>
-            </div>
-          </div>
-
+        <div>
+          <p class="text-xs font-semibold uppercase tracking-wide text-gray-400 mb-2">Japanese Enquiries</p>
+          <ul class="space-y-1">
+            <li>Pratyay &mdash; <a href="tel:+919836292467" class="hover:text-brand-pink-600 transition">+91 98362 92467</a></li>
+            <li>Nivi Pal (Chair) &mdash; <a href="tel:+918584931669" class="hover:text-brand-pink-600 transition">+91 85849 31669</a></li>
+          </ul>
         </div>
-
-        <!-- Tab 3: Individual Contributions -->
-        <div id="tab-individual" class="hidden max-w-4xl mx-auto space-y-6">
-          
-          <div class="bg-brand-pink-50/30 p-6 rounded-2xl border border-brand-pink-100 mb-8 text-center">
-            <h3 class="font-bold text-gray-900 mb-2 flex items-center justify-center gap-2">
-              🇯🇵 Sumo-Style Inscription & Traditional Lanterns
-            </h3>
-            <p class="text-xs text-gray-600 max-w-xl mx-auto leading-relaxed">
-              Show your personal support for Japan Habba. Individual contributors have their names written on a dedicated sponsorship board designed in the style of a traditional <strong>Sumo Ranking List (Banzuke)</strong>, get name-inscribed lanterns, and receive fast lane tickets.
-            </p>
-          </div>
-
-          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            
-            <!-- 10k Tier -->
-            <div class="bg-white rounded-3xl p-6 border border-pink-100 hover-lift shadow-sm flex flex-col justify-between text-center">
-              <div>
-                <h3 class="text-xl font-bold text-gray-900 mb-4">₹10,000</h3>
-                <ul class="text-xs text-gray-600 space-y-3 mb-6">
-                  <li>• Name Board: <strong class="text-gray-900 font-semibold">Size S</strong></li>
-                  <li>• Lantern: <strong class="text-red-500 font-medium">—</strong></li>
-                  <li>• Access: <strong class="text-gray-900 font-semibold">2 Fast Lane Tickets</strong></li>
-                </ul>
-              </div>
-            </div>
-
-            <!-- 30k Tier -->
-            <div class="bg-white rounded-3xl p-6 border border-pink-100 hover-lift shadow-sm flex flex-col justify-between text-center">
-              <div>
-                <h3 class="text-xl font-bold text-gray-900 mb-4">₹30,000</h3>
-                <ul class="text-xs text-gray-600 space-y-3 mb-6">
-                  <li>• Name Board: <strong class="text-gray-900 font-semibold">Size M</strong></li>
-                  <li>• Lantern: <strong class="text-red-500 font-medium">—</strong></li>
-                  <li>• Access: <strong class="text-gray-900 font-semibold">6 Fast Lane Tickets</strong></li>
-                </ul>
-              </div>
-            </div>
-
-            <!-- 50k Tier -->
-            <div class="bg-white rounded-3xl p-6 border border-pink-100 hover-lift shadow-sm flex flex-col justify-between text-center">
-              <div>
-                <h3 class="text-xl font-bold text-gray-900 mb-4">₹50,000</h3>
-                <ul class="text-xs text-gray-600 space-y-3 mb-6">
-                  <li>• Name Board: <strong class="text-gray-900 font-semibold">Size L</strong></li>
-                  <li>• Lantern: <strong class="text-red-500 font-medium">—</strong></li>
-                  <li>• Access: <strong class="text-gray-900 font-semibold">10 Fast Lane Tickets</strong></li>
-                </ul>
-              </div>
-            </div>
-
-            <!-- 100k Tier -->
-            <div class="bg-white rounded-3xl p-6 border-2 border-brand-pink-400 hover-lift shadow-sm flex flex-col justify-between text-center relative overflow-hidden">
-              <div class="absolute top-0 right-0 bg-brand-pink-500 text-white text-[8px] font-bold tracking-widest px-2 py-0.5 uppercase rounded-bl-lg">Lantern Inscription</div>
-              <div>
-                <h3 class="text-xl font-bold text-gray-900 mb-4">₹1,00,000</h3>
-                <ul class="text-xs text-gray-600 space-y-3 mb-6">
-                  <li>• Name Board: <strong class="text-gray-900 font-semibold">Size XL</strong></li>
-                  <li>• Lantern: <strong class="text-brand-pink-600 font-bold">Inscribed Decorative Lantern</strong></li>
-                  <li>• Access: <strong class="text-gray-900 font-semibold">20 Fast Lane Tickets</strong></li>
-                </ul>
-              </div>
-            </div>
-
-          </div>
-
-          <div class="text-center pt-2">
-            <a href="kojin/" class="inline-flex items-center gap-2 bg-brand-pink-600 hover:bg-brand-pink-700 text-white font-semibold px-6 py-3 rounded-full text-sm shadow-md hover:shadow-lg transition">
-              Register as an Individual Patron
-              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
-            </a>
-          </div>
-        </div>
-
-      </div>
-
-      <!-- Action Box for Sponsor Interest -->
-      <div id="sponsorship-form" class="bg-gradient-to-r from-brand-pink-600 to-brand-pink-800 rounded-3xl p-8 md:p-12 text-white text-center shadow-xl">
-        <h3 class="text-2xl md:text-3xl font-extrabold mb-3">Partner with Japan Habba 2027</h3>
-        <p class="text-sm md:text-base text-pink-100 max-w-xl mx-auto mb-8">
-          Ready to showcase your brand at Chamara Vajra? Submit an interest form or contact the sponsorship committee directly.
-        </p>
-        
-        <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
-          <a href="https://forms.gle/a8B1CTyzRt7bXRp88" target="_blank" class="w-full sm:w-auto bg-white hover:bg-brand-pink-50 text-brand-pink-700 font-bold px-8 py-3.5 rounded-full shadow-md transition duration-200 text-sm">
-            Fill Sponsorship Form
-          </a>
-          <a href="mailto:sponsorships@japanhabba.org?subject=Japan%20Habba%202027%20Sponsorship%20Inquiry" class="w-full sm:w-auto bg-brand-pink-700 hover:bg-brand-pink-900 text-white border border-brand-pink-500 font-semibold px-8 py-3.5 rounded-full transition duration-200 text-sm">
-            Email sponsorships@japanhabba.org
-          </a>
-        </div>
-
-        <!-- Contact Inquiries Card -->
-        <div class="mt-12 border-t border-brand-pink-500/30 pt-8 text-left max-w-3xl mx-auto">
-          <h4 class="text-xs font-bold tracking-wider text-pink-100 uppercase mb-4 text-center">Sponsorship Enquiries Contacts</h4>
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-sm">
-            <div class="bg-brand-pink-800/40 p-4 rounded-xl border border-brand-pink-500/20">
-              <span class="font-semibold block text-brand-gold-400 mb-1 text-xs">🗣️ English Language Enquiries</span>
-              <ul class="space-y-1 text-xs text-pink-100">
-                <li>• Tanishk: <a href="tel:+918971258254" class="hover:underline">+91 89712 58254</a></li>
-                <li>• Praneeth: <a href="tel:+919591587584" class="hover:underline">+91 95915 87584</a></li>
-                <li>• Nivi Pal: <a href="tel:+918584931669" class="hover:underline">+91 8584931669</a> <span class="bg-brand-pink-600 text-[9px] px-1.5 py-0.5 rounded ml-1 font-normal">Chair</span></li>
-              </ul>
-            </div>
-            <div class="bg-brand-pink-800/40 p-4 rounded-xl border border-brand-pink-500/20">
-              <span class="font-semibold block text-brand-gold-400 mb-1 text-xs">🇯🇵 Japanese Language Enquiries</span>
-              <ul class="space-y-1 text-xs text-pink-100">
-                <li>• Pratyay: <a href="tel:+919836292467" class="hover:underline">+91 98362 92467</a></li>
-                <li>• Nivi Pal: <a href="tel:+918584931669" class="hover:underline">+91 8584931669</a> <span class="bg-brand-pink-600 text-[9px] px-1.5 py-0.5 rounded ml-1 font-normal">Chair</span></li>
-              </ul>
-            </div>
-          </div>
-        </div>
+        <p><a href="mailto:sponsorships@japanhabba.org" class="hover:text-brand-pink-600 transition">sponsorships@japanhabba.org</a></p>
       </div>
     </div>
   </section>
 
   <!-- Supporters Section -->
-  <section id="supporters" class="py-20 px-6 bg-white border-y border-pink-50">
-    <div class="max-w-7xl mx-auto">
-      <div class="text-center max-w-2xl mx-auto mb-16">
-        <h2 class="text-3xl font-extrabold text-gray-900 tracking-tight">Our Esteemed Supporters</h2>
-        <p class="mt-3 text-lg text-gray-600">
-          Japan Habba is organized under the patronage of leading diplomatic, cultural, and community organizations.
-        </p>
-      </div>
+  <section id="supporters" class="px-6 py-16 border-t border-gray-100">
+    <div class="max-w-5xl mx-auto">
+      <h2 class="text-xl font-semibold text-gray-900 text-center mb-10">Supporters</h2>
 
       <!-- Grid of Diplomatic & Main Supporters -->
       <div class="grid grid-cols-2 md:grid-cols-5 gap-6 items-center justify-items-center">
-        
-        <!-- Consulate -->
-        <a href="https://www.bengaluru.in.emb-japan.go.jp/itprtop_en/index.html" target="_blank" class="bg-white border border-gray-100 hover:border-brand-pink-200 p-6 rounded-2xl transition duration-300 w-full flex items-center justify-center h-28 group" title="Consulate-General of Japan in Bengaluru">
-          <img src="images/supporters/consulate.webp" alt="Consulate-General of Japan in Bengaluru Logo" class="max-h-16 max-w-full object-contain grayscale group-hover:grayscale-0 transition duration-300">
-        </a>
-        
-        <!-- Japan Foundation
-        <a href="https://nd.jpf.go.jp/" target="_blank" class="bg-white border border-gray-100 hover:border-brand-pink-200 p-6 rounded-2xl transition duration-300 w-full flex items-center justify-center h-28 group" title="The Japan Foundation">
-          <img src="images/supporters/jf.webp" alt="The Japan Foundation Logo" class="max-h-16 max-w-full object-contain grayscale group-hover:grayscale-0 transition duration-300">
-        </a> -->
 
-        <!-- JETRO
-        <a href="https://www.jetro.go.jp/en/" target="_blank" class="bg-white border border-gray-100 hover:border-brand-pink-200 p-6 rounded-2xl transition duration-300 w-full flex items-center justify-center h-28 group" title="JETRO Bengaluru">
-          <img src="images/supporters/jetro.webp" alt="JETRO Logo" class="max-h-16 max-w-full object-contain grayscale group-hover:grayscale-0 transition duration-300">
-        </a> -->
+        <!-- Consulate -->
+        <a href="https://www.bengaluru.in.emb-japan.go.jp/itprtop_en/index.html" target="_blank" class="p-6 w-full flex items-center justify-center h-24 group" title="Consulate-General of Japan in Bengaluru">
+          <img src="images/supporters/consulate.webp" alt="Consulate-General of Japan in Bengaluru Logo" class="max-h-14 max-w-full object-contain grayscale group-hover:grayscale-0 transition duration-300">
+        </a>
 
         <!-- JCCI -->
-        <a href="https://jccib.com/" target="_blank" class="bg-white border border-gray-100 hover:border-brand-pink-200 p-6 rounded-2xl transition duration-300 w-full flex items-center justify-center h-28 group" title="Japan Chamber of Commerce and Industry Bengaluru">
-          <img src="images/supporters/jcci.webp" alt="JCCI Logo" class="max-h-16 max-w-full object-contain grayscale group-hover:grayscale-0 transition duration-300">
+        <a href="https://jccib.com/" target="_blank" class="p-6 w-full flex items-center justify-center h-24 group" title="Japan Chamber of Commerce and Industry Bengaluru">
+          <img src="images/supporters/jcci.webp" alt="JCCI Logo" class="max-h-14 max-w-full object-contain grayscale group-hover:grayscale-0 transition duration-300">
         </a>
 
         <!-- Bangalore Japanese Association -->
-        <a href="https://www.bangalore-nihonjinkai.com/" target="_blank" class="bg-white border border-gray-100 hover:border-brand-pink-200 p-6 rounded-2xl transition duration-300 w-full flex items-center justify-center h-28 group" title="Bangalore Japanese Association">
-          <img src="images/supporters/bja.webp" alt="Bangalore Japanese Association Logo" class="max-h-16 max-w-full object-contain grayscale group-hover:grayscale-0 transition duration-300">
+        <a href="https://www.bangalore-nihonjinkai.com/" target="_blank" class="p-6 w-full flex items-center justify-center h-24 group" title="Bangalore Japanese Association">
+          <img src="images/supporters/bja.webp" alt="Bangalore Japanese Association Logo" class="max-h-14 max-w-full object-contain grayscale group-hover:grayscale-0 transition duration-300">
         </a>
-
-        <!-- Bangalore Nihonjinkai
-        <a href="https://bnkindia.in/" target="_blank" class="bg-white border border-gray-100 hover:border-brand-pink-200 p-6 rounded-2xl transition duration-300 w-full flex items-center justify-center h-28 group" title="Bangalore Nihonjinkai">
-          <img src="images/supporters/bnk.webp" alt="Bangalore Nihonjinkai Logo" class="max-h-16 max-w-full object-contain grayscale group-hover:grayscale-0 transition duration-300">
-        </a> -->
 
         <!-- Bengaluru Anime Club -->
-        <a href="https://www.instagram.com/bengaluruanimeclub" target="_blank" class="bg-white border border-gray-100 hover:border-brand-pink-200 p-6 rounded-2xl transition duration-300 w-full flex items-center justify-center h-28 group" title="Bengaluru Anime Club">
-          <img src="images/supporters/bac.webp" alt="Bengaluru Anime Club Logo" class="max-h-16 max-w-full object-contain grayscale group-hover:grayscale-0 transition duration-300">
+        <a href="https://www.instagram.com/bengaluruanimeclub" target="_blank" class="p-6 w-full flex items-center justify-center h-24 group" title="Bengaluru Anime Club">
+          <img src="images/supporters/bac.webp" alt="Bengaluru Anime Club Logo" class="max-h-14 max-w-full object-contain grayscale group-hover:grayscale-0 transition duration-300">
         </a>
-
-        <!-- Jinsei Dojo
-        <a href="https://www.instagram.com/jinseidojo" target="_blank" class="bg-white border border-gray-100 hover:border-brand-pink-200 p-6 rounded-2xl transition duration-300 w-full flex items-center justify-center h-28 group" title="Jinsei Dojo">
-          <img src="images/supporters/jd.webp" alt="Jinsei Dojo Logo" class="max-h-16 max-w-full object-contain grayscale group-hover:grayscale-0 transition duration-300">
-        </a> -->
 
         <!-- SSBI -->
-        <a href="https://www.instagram.com/ssbindia" target="_blank" class="bg-white border border-gray-100 hover:border-brand-pink-200 p-6 rounded-2xl transition duration-300 w-full flex items-center justify-center h-28 group" title="SSBI">
-          <img src="images/supporters/ssbi.webp" alt="SSBI Logo" class="max-h-16 max-w-full object-contain grayscale group-hover:grayscale-0 transition duration-300">
+        <a href="https://www.instagram.com/ssbindia" target="_blank" class="p-6 w-full flex items-center justify-center h-24 group" title="SSBI">
+          <img src="images/supporters/ssbi.webp" alt="SSBI Logo" class="max-h-14 max-w-full object-contain grayscale group-hover:grayscale-0 transition duration-300">
         </a>
 
-        <!-- Pogo Bangalore
-        <a href="https://www.instagram.com/pogoblr" target="_blank" class="bg-gray-50 border border-gray-100 hover:border-brand-pink-200 p-6 rounded-2xl transition duration-300 w-full flex items-center justify-center h-28 group" title="Pogo Bangalore">
-          <img src="images/supporters/pogoblr.webp" alt="Pogo Bangalore Logo" class="max-h-16 max-w-full object-contain grayscale group-hover:grayscale-0 transition duration-300">
-        </a> -->
+      </div>
+    </div>
+  </section>
+
+  <!-- Confirmed Sponsors & Exhibitors Section -->
+  <section id="confirmed-sponsors" class="px-6 py-16 border-t border-gray-100">
+    <div class="max-w-4xl mx-auto">
+      <h2 class="text-xl font-semibold text-gray-900 text-center mb-10">Confirmed Sponsors &amp; Exhibitors</h2>
+
+      <div class="space-y-10 text-center">
+
+        <!-- Premium Sponsors -->
+        <div>
+          <p class="text-xs font-semibold uppercase tracking-wide text-brand-pink-600 mb-3">Premium Sponsors</p>
+          <p class="text-lg font-medium text-gray-900">Epson India Pvt Ltd</p>
+        </div>
+
+        <!-- Sponsors -->
+        <div>
+          <p class="text-xs font-semibold uppercase tracking-wide text-gray-400 mb-3">Sponsors</p>
+          <div class="flex flex-wrap justify-center gap-x-8 gap-y-2 text-sm text-gray-700">
+            <span>Toyota Tsusho Insurance Broker India Pvt Ltd</span>
+            <span>Sakamoto Hospitality Private Limited</span>
+            <span>Toyota Tsusho India Private Limited</span>
+            <span>Denso Kirloskar Industries Pvt Ltd</span>
+          </div>
+        </div>
+
+        <!-- Exhibitors -->
+        <div>
+          <p class="text-xs font-semibold uppercase tracking-wide text-gray-400 mb-3">Exhibitors</p>
+          <div class="flex flex-wrap justify-center gap-x-8 gap-y-2 text-sm text-gray-500">
+            <span title="Tara Books">Tara Books</span>
+            <span title="Snchavan Ventures LLP">Ikoi Tokyo</span>
+            <span title="Hamada Global Trading Pvt Ltd">Chiran Tea</span>
+            <span title="Magokoro Hospitality LLP">Azukii</span>
+            <span title="Hyagreeva Hotels &amp; Resorts Pvt Ltd">Matsuri</span>
+            <span title="Sunpark Global Food India">Kazan</span>
+            <span>Omiyagee</span>
+          </div>
+        </div>
 
       </div>
     </div>
   </section>
 
   <!-- Organizing Committee Section -->
-  <section id="committee" class="py-20 px-6">
-    <div class="max-w-7xl mx-auto">
-      <div class="text-center max-w-2xl mx-auto mb-16">
-        <h2 class="text-3xl font-extrabold text-gray-900 tracking-tight">Non-Profit Organizing Committee</h2>
-        <p class="mt-3 text-md text-gray-600">
-          We are a team of responsible, passionate (and slightly bonkers) people who showcase, promote, and pursue authentic and in-depth exploration of all aspects of Japan through thousands of hours of voluntary effort.
-        </p>
-      </div>
+  <section id="committee" class="px-6 py-16 border-t border-gray-100">
+    <div class="max-w-5xl mx-auto">
+      <h2 class="text-xl font-semibold text-gray-900 text-center mb-10">Organizing Committee</h2>
 
       <!-- Grid of Committee Members -->
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-8">
 
         <!-- Nivi Pal -->
-        <div class="bg-white rounded-3xl p-6 shadow-sm border border-pink-100 hover:shadow-md transition duration-300 flex flex-col items-center text-center">
-          <img src="images/staff/nivi.webp" alt="Nivi Pal" class="w-24 h-24 rounded-full object-cover border-2 border-brand-pink-500 mb-4 bg-gray-50">
-          <h3 class="font-bold text-lg text-gray-900">Nivi Pal</h3>
-          <p class="text-brand-pink-600 text-sm font-semibold mb-1">Chairperson</p>
-          <p class="text-gray-500 text-xs mb-3">Sponsorship &amp; Public Relations</p>
-          <a href="mailto:nivi@japanhabba.org" class="text-xs text-gray-400 hover:text-brand-pink-600 transition flex items-center gap-1 mb-4">
-            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+        <div class="flex flex-col items-center text-center">
+          <img src="images/staff/nivi.webp" alt="Nivi Pal" class="w-20 h-20 rounded-full object-cover mb-3 bg-gray-50">
+          <h3 class="font-semibold text-gray-900">Nivi Pal</h3>
+          <p class="text-brand-pink-600 text-sm">Chairperson</p>
+          <p class="text-gray-400 text-xs mb-3">Sponsorship &amp; Public Relations</p>
+          <a href="mailto:nivi@japanhabba.org" class="text-xs text-gray-400 hover:text-brand-pink-600 transition mb-3">
             nivi@japanhabba.org
           </a>
-          <button 
+          <button
             data-name="Nivi Pal"
             data-role="Chairperson | Sponsorship &amp; Public Relations"
             data-img="images/staff/nivi.webp"
             data-bio="Involved with Japan Habba as a core member since 2018 (originally as an event organized at my University), I serve as its Chairperson since 2023. As a fan of Japanese anime and video games since childhood &ndash; that evolved into a love for all things Japan, Japan Habba has been my creative outlet for my passion of all things Japan.<br><br>After a brief stint producing <b>Anime India</b> from ground up using my extensive community experience, I am returning to work on Japan Habba 2027 as my next big project.<br><br>Chihayafuru and CLAMP fan. Recent Bandori fan, by virtue of being a AveMyGO!!! enjoyer. Fan of Japanese RPGs such as <i>Pokémon</i>, <i>Shin Megami Tensei</i> and <i>The World Ends With You</i>."
-            class="bio-trigger text-xs font-semibold text-brand-pink-600 hover:text-brand-pink-700 bg-brand-pink-50 hover:bg-brand-pink-100 px-3 py-1.5 rounded-full transition"
+            class="bio-trigger text-xs font-medium text-brand-pink-600 hover:text-brand-pink-700 transition"
           >
             View Bio
           </button>
         </div>
 
         <!-- Meghna V. Ravoor -->
-        <div class="bg-white rounded-3xl p-6 shadow-sm border border-pink-100 hover:shadow-md transition duration-300 flex flex-col items-center text-center">
-          <img src="images/staff/meghna.webp" alt="Meghna V. Ravoor" class="w-24 h-24 rounded-full object-cover border-2 border-brand-pink-500 mb-4 bg-gray-50">
-          <h3 class="font-bold text-lg text-gray-900">Meghna V. Ravoor</h3>
-          <p class="text-brand-pink-600 text-sm font-semibold mb-1">Deputy Chairperson</p>
-          <p class="text-gray-500 text-xs mb-3">Venue & Onground</p>
-          <a href="mailto:meghna@japanhabba.org" class="text-xs text-gray-400 hover:text-brand-pink-600 transition flex items-center gap-1 mb-4">
-            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+        <div class="flex flex-col items-center text-center">
+          <img src="images/staff/meghna.webp" alt="Meghna V. Ravoor" class="w-20 h-20 rounded-full object-cover mb-3 bg-gray-50">
+          <h3 class="font-semibold text-gray-900">Meghna V. Ravoor</h3>
+          <p class="text-brand-pink-600 text-sm">Deputy Chairperson</p>
+          <p class="text-gray-400 text-xs mb-3">Venue & Onground</p>
+          <a href="mailto:meghna@japanhabba.org" class="text-xs text-gray-400 hover:text-brand-pink-600 transition mb-3">
             meghna@japanhabba.org
           </a>
-          <button 
+          <button
             data-name="Meghna V. Ravoor"
             data-role="Deputy Chairperson | Venue & Onground"
             data-img="images/staff/meghna.webp"
             data-bio="An ardent lover of Japan and Japanese culture, I have dedicated the better part of the last decade to learning Japanese, imbibing the culture and working with Japanese people professionally. I work at the <b>Consulate General of Japan</b> in Bengaluru and on my downtime, I volunteer to organise various events themed around Japan to provide a platform for fellow Japanophiles and Japanese expats in the city to interact and grow as a community.<br><br>I have been associated with Japan Habba for the past 7 years. With a background in architecture, designing spaces is my passion. All my interests come together at Japan Habba, where I contribute as the Venue Design coordinator."
-            class="bio-trigger text-xs font-semibold text-brand-pink-600 hover:text-brand-pink-700 bg-brand-pink-50 hover:bg-brand-pink-100 px-3 py-1.5 rounded-full transition"
+            class="bio-trigger text-xs font-medium text-brand-pink-600 hover:text-brand-pink-700 transition"
           >
             View Bio
           </button>
         </div>
 
         <!-- Hriday Kiran Shetty -->
-        <div class="bg-white rounded-3xl p-6 shadow-sm border border-pink-100 hover:shadow-md transition duration-300 flex flex-col items-center text-center">
-          <img src="images/staff/dittu.webp" alt="Hriday Kiran Shetty" class="w-24 h-24 rounded-full object-cover border-2 border-brand-pink-500 mb-4 bg-gray-50">
-          <h3 class="font-bold text-lg text-gray-900">Hriday Kiran Shetty</h3>
-          <p class="text-brand-pink-600 text-sm font-semibold mb-1">Core Committee</p>
-          <p class="text-gray-500 text-xs mb-3">Stages &amp; Programming</p>
-          <a href="mailto:hridhay@japanhabba.org" class="text-xs text-gray-400 hover:text-brand-pink-600 transition flex items-center gap-1 mb-4">
-            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+        <div class="flex flex-col items-center text-center">
+          <img src="images/staff/dittu.webp" alt="Hriday Kiran Shetty" class="w-20 h-20 rounded-full object-cover mb-3 bg-gray-50">
+          <h3 class="font-semibold text-gray-900">Hriday Kiran Shetty</h3>
+          <p class="text-brand-pink-600 text-sm">Core Committee</p>
+          <p class="text-gray-400 text-xs mb-3">Stages &amp; Programming</p>
+          <a href="mailto:hridhay@japanhabba.org" class="text-xs text-gray-400 hover:text-brand-pink-600 transition mb-3">
             hridhay@japanhabba.org
           </a>
-          <button 
+          <button
             data-name="Hriday Kiran Shetty"
             data-role="Core Committee | Stages &amp; Programming"
             data-img="images/staff/dittu.webp"
             data-bio="I've been contributing to JH as a part of the Anime Quiz team since 2020.<br><br>This year, I will be handling the stage as a part of the core committee.<br><br><i>全てはスタァライトのために (All for Starlight)</i>"
-            class="bio-trigger text-xs font-semibold text-brand-pink-600 hover:text-brand-pink-700 bg-brand-pink-50 hover:bg-brand-pink-100 px-3 py-1.5 rounded-full transition"
+            class="bio-trigger text-xs font-medium text-brand-pink-600 hover:text-brand-pink-700 transition"
           >
             View Bio
           </button>
         </div>
 
         <!-- Sudharshana VP -->
-        <div class="bg-white rounded-3xl p-6 shadow-sm border border-pink-100 hover:shadow-md transition duration-300 flex flex-col items-center text-center">
-          <img src="images/staff/sudha.webp" alt="Sudharshana VP" class="w-24 h-24 rounded-full object-cover border-2 border-brand-pink-500 mb-4 bg-gray-50">
-          <h3 class="font-bold text-lg text-gray-900">Sudharshana VP</h3>
-          <p class="text-brand-pink-600 text-sm font-semibold mb-1">Core Committee</p>
-          <p class="text-gray-500 text-xs mb-3">Stages &amp; Programming</p>
-          <a href="mailto:sudharshana@japanhabba.org" class="text-xs text-gray-400 hover:text-brand-pink-600 transition flex items-center gap-1 mb-4">
-            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+        <div class="flex flex-col items-center text-center">
+          <img src="images/staff/sudha.webp" alt="Sudharshana VP" class="w-20 h-20 rounded-full object-cover mb-3 bg-gray-50">
+          <h3 class="font-semibold text-gray-900">Sudharshana VP</h3>
+          <p class="text-brand-pink-600 text-sm">Core Committee</p>
+          <p class="text-gray-400 text-xs mb-3">Stages &amp; Programming</p>
+          <a href="mailto:sudharshana@japanhabba.org" class="text-xs text-gray-400 hover:text-brand-pink-600 transition mb-3">
             sudharshana@japanhabba.org
           </a>
-          <button 
+          <button
             data-name="Sudharshana VP"
             data-role="Core Committee | Stages &amp; Programming"
             data-img="images/staff/sudha.webp"
             data-bio="I work as a <b>software engineer</b> for my day job. A fan of anime and a Japanophile, I was in charge of Cosplay events at the last Japan Habba. This year, I return as a Core Committee member in charge of stage programs."
-            class="bio-trigger text-xs font-semibold text-brand-pink-600 hover:text-brand-pink-700 bg-brand-pink-50 hover:bg-brand-pink-100 px-3 py-1.5 rounded-full transition"
+            class="bio-trigger text-xs font-medium text-brand-pink-600 hover:text-brand-pink-700 transition"
           >
             View Bio
           </button>
         </div>
 
         <!-- Saori Sarkar -->
-        <div class="bg-white rounded-3xl p-6 shadow-sm border border-pink-100 hover:shadow-md transition duration-300 flex flex-col items-center text-center">
-          <img src="images/staff/saori.webp" alt="Saori Sarkar" class="w-24 h-24 rounded-full object-cover border-2 border-brand-pink-500 mb-4 bg-gray-50">
-          <h3 class="font-bold text-lg text-gray-900">Saori Sarkar</h3>
-          <p class="text-brand-pink-600 text-sm font-semibold mb-1">Committee</p>
-          <p class="text-gray-500 text-xs mb-3">Japan Liasion</p>
-          <a href="mailto:saori@japanhabba.org" class="text-xs text-gray-400 hover:text-brand-pink-600 transition flex items-center gap-1 mb-4">
-            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+        <div class="flex flex-col items-center text-center">
+          <img src="images/staff/saori.webp" alt="Saori Sarkar" class="w-20 h-20 rounded-full object-cover mb-3 bg-gray-50">
+          <h3 class="font-semibold text-gray-900">Saori Sarkar</h3>
+          <p class="text-brand-pink-600 text-sm">Committee</p>
+          <p class="text-gray-400 text-xs mb-3">Japan Liasion</p>
+          <a href="mailto:saori@japanhabba.org" class="text-xs text-gray-400 hover:text-brand-pink-600 transition mb-3">
             saori@japanhabba.org
           </a>
-          <button 
+          <button
             data-name="Saori Sarkar"
             data-role="Committee | Japan Liasion"
             data-img="images/staff/saori.webp"
             data-bio="I have been a Core Committee member of Japan Habba since its 2023 renaissance era. As a longtime resident of India, and one of the founding members and active admins of interest group <b>Minna Shuugou! Cubbon Park</b>, I manage liasion between the Japan Habba Core Committee and local governmental and non-governmental organizations. I am also in charge of traditional Japanese cultural experiences at Japan Habba."
-            class="bio-trigger text-xs font-semibold text-brand-pink-600 hover:text-brand-pink-700 bg-brand-pink-50 hover:bg-brand-pink-100 px-3 py-1.5 rounded-full transition"
+            class="bio-trigger text-xs font-medium text-brand-pink-600 hover:text-brand-pink-700 transition"
           >
             View Bio
           </button>
         </div>
-
 
       </div>
     </div>
@@ -951,8 +357,8 @@
 
   <!-- Interactive Biography Modal -->
   <div id="bio-modal" class="fixed inset-0 z-50 flex items-center justify-center p-6 bg-black/60 hidden transition-opacity duration-300">
-    <div class="bg-white w-full max-w-lg rounded-3xl overflow-hidden shadow-2xl relative">
-      
+    <div class="bg-white w-full max-w-lg rounded-2xl overflow-hidden shadow-xl relative">
+
       <!-- Close Button -->
       <button onclick="closeBioModal()" class="absolute top-4 right-4 text-gray-400 hover:text-gray-600 transition" aria-label="Close Modal">
         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -962,21 +368,15 @@
 
       <div class="p-8">
         <div class="flex items-center gap-4 mb-6">
-          <img id="modal-img" src="" alt="" class="w-20 h-20 rounded-full object-cover border-2 border-brand-pink-500">
+          <img id="modal-img" src="" alt="" class="w-16 h-16 rounded-full object-cover">
           <div>
-            <h3 id="modal-name" class="text-xl font-bold text-gray-900"></h3>
-            <p id="modal-role" class="text-xs font-semibold text-brand-pink-600"></p>
+            <h3 id="modal-name" class="text-lg font-semibold text-gray-900"></h3>
+            <p id="modal-role" class="text-xs font-medium text-brand-pink-600"></p>
           </div>
         </div>
-        
+
         <div class="max-h-[60vh] overflow-y-auto pr-2 text-sm text-gray-600 leading-relaxed space-y-4" id="modal-bio">
           <!-- Full bio text injected here dynamically -->
-        </div>
-        
-        <div class="mt-8 text-right">
-          <button onclick="closeBioModal()" class="bg-gray-100 hover:bg-gray-200 text-gray-700 text-xs font-semibold px-5 py-2.5 rounded-full transition">
-            Close
-          </button>
         </div>
       </div>
     </div>
@@ -990,92 +390,72 @@
     <button class="gallery-prev absolute left-3 sm:left-6 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-white/10 hover:bg-white/20 text-white flex items-center justify-center transition" aria-label="Previous">
       <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
     </button>
-    <img id="gallery-lightbox-img" src="" alt="" class="max-w-full max-h-[90vh] rounded-2xl shadow-2xl object-contain">
+    <img id="gallery-lightbox-img" src="" alt="" class="max-w-full max-h-[90vh] rounded-lg object-contain">
     <button class="gallery-next absolute right-3 sm:right-6 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-white/10 hover:bg-white/20 text-white flex items-center justify-center transition" aria-label="Next">
       <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
     </button>
     <div id="gallery-lightbox-count" class="absolute bottom-5 left-1/2 -translate-x-1/2 text-white/70 text-xs"></div>
   </div>
 
-  <!-- Connect / Social Media Section & Footer -->
+  <!-- Footer -->
   <footer id="connect" class="bg-gray-900 text-white mt-auto">
-    <div class="mx-auto max-w-7xl px-6 pt-16 pb-8">
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-12 border-b border-gray-800 pb-12">
-        
+    <div class="mx-auto max-w-5xl px-6 pt-12 pb-8">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-10 border-b border-gray-800 pb-10">
+
         <!-- About Column -->
-        <div class="space-y-4">
-          <img class="h-12 w-auto" src="images/jh-pink.png" alt="Japan Habba Logo">
-          <p class="text-xs text-gray-400 leading-relaxed">
-            Japan Habba is Bangalore's hallmark cultural festival, bringing the best of Japanese traditional arts, contemporary pop culture, and culinary arts together on a single stage. Organized since 2005.
-          </p>
+        <div>
+          <img class="h-9 w-auto" src="images/jh-pink.png" alt="Japan Habba Logo">
         </div>
 
         <!-- Quick Links -->
-        <div class="space-y-4">
-          <h4 class="text-sm font-bold tracking-wider text-gray-300 uppercase">Quick Navigation</h4>
-          <div class="grid grid-cols-2 gap-2 text-xs text-gray-400">
-            <a href="#about" class="hover:text-white transition">About Event</a>
-            <a href="#video" class="hover:text-white transition">Highlights Video</a>
+        <div>
+          <h4 class="text-xs font-semibold tracking-wide text-gray-400 uppercase mb-3">Navigation</h4>
+          <div class="grid grid-cols-2 gap-2 text-sm text-gray-400">
+            <a href="#video" class="hover:text-white transition">Video</a>
             <a href="#gallery" class="hover:text-white transition">Gallery</a>
-            <a href="#sponsorship" class="hover:text-white transition">Sponsorships</a>
-            <a href="#supporters" class="hover:text-white transition">Our Supporters</a>
+            <a href="#sponsorship" class="hover:text-white transition">Sponsorship</a>
+            <a href="#supporters" class="hover:text-white transition">Supporters</a>
+            <a href="#confirmed-sponsors" class="hover:text-white transition">Sponsors</a>
             <a href="#committee" class="hover:text-white transition">Committee</a>
             <a href="2025/index.html" class="hover:text-white transition">2025 Archive</a>
           </div>
         </div>
 
-        <!-- Social Links / Contact -->
-        <div class="space-y-4">
-          <h4 class="text-sm font-bold tracking-wider text-gray-300 uppercase">Connect With Us</h4>
-          <p class="text-xs text-gray-400">Stay up to date with updates and program declarations on our socials.</p>
-          
-          <!-- Social Icons Grid -->
-          <div class="flex gap-4">
-            
-            <!-- Instagram -->
-            <a href="https://www.instagram.com/japanhabba/" target="_blank" class="w-8 h-8 rounded-full bg-gray-800 hover:bg-brand-pink-600 transition flex items-center justify-center text-gray-300 hover:text-white" title="Instagram">
+        <!-- Social Links -->
+        <div>
+          <h4 class="text-xs font-semibold tracking-wide text-gray-400 uppercase mb-3">Connect</h4>
+          <div class="flex gap-4 text-gray-400">
+            <a href="https://www.instagram.com/japanhabba/" target="_blank" class="hover:text-white transition" title="Instagram">
               <span class="sr-only">Instagram</span>
               <svg class="h-4 w-4" fill="currentColor" viewBox="0 0 24 24">
                 <path fill-rule="evenodd" d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.416 1.363.465 2.427.048 1.067.06 1.407.06 4.123v.08c0 2.643-.012 2.987-.06 4.043-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.416-2.427.465-1.067.048-1.407.06-4.123.06h-.08c-2.643 0-2.987-.012-4.043-.06-1.064-.049-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.416-1.363-.465-2.427-.047-1.024-.06-1.379-.06-3.808v-.63c0-2.43.013-2.784.06-3.808.049-1.064.218-1.791.465-2.427a4.902 4.902 0 011.153-1.772A4.902 4.902 0 015.45 2.525c.636-.247 1.363-.416 2.427-.465C8.901 2.013 9.256 2 11.685 2h.63zm-.081 1.802h-.468c-2.456 0-2.784.011-3.807.058-.975.045-1.504.207-1.857.344-.467.182-.8.398-1.15.748-.35.35-.566.683-.748 1.15-.137.353-.3.882-.344 1.857-.047 1.023-.058 1.351-.058 3.807v.468c0 2.456.011 2.784.058 3.807.045.975.207 1.504.344 1.857.182.466.399.8.748 1.15.35.35.683.566 1.15.748.353.137.882.3 1.857.344 1.054.048 1.37.058 4.041.058h.08c2.597 0 2.917-.01 3.96-.058.976-.045 1.505-.207 1.858-.344.466-.182.8-.398 1.15-.748.35-.35.566-.683.748-1.15.137-.353.3-.882.344-1.857.048-1.055.058-1.37.058-4.041v-.08c0-2.597-.01-2.917-.058-3.96-.045-.976-.207-1.505-.344-1.858a3.097 3.097 0 00-.748-1.15 3.098 3.098 0 00-1.15-.748c-.353-.137-.882-.3-1.857-.344-1.023-.047-1.351-.058-3.807-.058zM12 6.865a5.135 5.135 0 110 10.27 5.135 5.135 0 010-10.27zm0 1.802a3.333 3.333 0 100 6.666 3.333 3.333 0 000-6.666zm5.338-3.205a1.2 1.2 0 110 2.4 1.2 1.2 0 010-2.4z" clip-rule="evenodd" />
               </svg>
             </a>
-
-            <!-- Facebook -->
-            <a href="https://www.facebook.com/JapanHabbaBangalore" target="_blank" class="w-8 h-8 rounded-full bg-gray-800 hover:bg-brand-pink-600 transition flex items-center justify-center text-gray-300 hover:text-white" title="Facebook">
+            <a href="https://www.facebook.com/JapanHabbaBangalore" target="_blank" class="hover:text-white transition" title="Facebook">
               <span class="sr-only">Facebook</span>
               <svg class="h-4 w-4" fill="currentColor" viewBox="0 0 24 24">
                 <path fill-rule="evenodd" d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" clip-rule="evenodd" />
               </svg>
             </a>
-
-            <!-- Twitter / X -->
-            <a href="https://x.com/japanhabba25" target="_blank" class="w-8 h-8 rounded-full bg-gray-800 hover:bg-brand-pink-600 transition flex items-center justify-center text-gray-300 hover:text-white" title="Twitter / X">
+            <a href="https://x.com/japanhabba25" target="_blank" class="hover:text-white transition" title="Twitter / X">
               <span class="sr-only">Twitter / X</span>
               <svg class="h-4 w-4" fill="currentColor" viewBox="0 0 24 24">
                 <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
               </svg>
             </a>
-
-            <!-- YouTube -->
-            <a href="https://www.youtube.com/@JapanHabba" target="_blank" class="w-8 h-8 rounded-full bg-gray-800 hover:bg-brand-pink-600 transition flex items-center justify-center text-gray-300 hover:text-white" title="YouTube">
+            <a href="https://www.youtube.com/@JapanHabba" target="_blank" class="hover:text-white transition" title="YouTube">
               <span class="sr-only">YouTube</span>
               <svg class="h-4 w-4" fill="currentColor" viewBox="0 0 24 24">
                 <path fill-rule="evenodd" d="M23.498 6.163a3.003 3.003 0 00-2.11-2.11C19.518 3.5 12 3.5 12 3.5s-7.518 0-9.388.553a3.003 3.003 0 00-2.11 2.11C0 8.033 0 12 0 12s0 3.967.502 5.837a3.003 3.003 0 002.11 2.11C4.482 20.5 12 20.5 12 20.5s7.518 0 9.388-.553a3.003 3.003 0 002.11-2.11C24 15.967 24 12 24 12s0-3.967-.502-5.837zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" clip-rule="evenodd" />
               </svg>
             </a>
-
           </div>
         </div>
 
       </div>
 
-      <div class="flex flex-col sm:flex-row items-center justify-between mt-12 text-xs text-gray-500 gap-4">
+      <div class="flex flex-col sm:flex-row items-center justify-between mt-8 text-xs text-gray-500 gap-4">
         <p>&copy; 2027 Japan Habba Society. All rights reserved.</p>
-        <div class="flex gap-6">
-          <a href="#about" class="hover:underline">About</a>
-          <a href="#sponsorship" class="hover:underline">Sponsors</a>
-          <a href="#committee" class="hover:underline">Organizing Committee</a>
-        </div>
       </div>
     </div>
   </footer>
@@ -1123,13 +503,13 @@
         const role = btn.getAttribute('data-role');
         const img = btn.getAttribute('data-img');
         const bio = btn.getAttribute('data-bio');
-        
+
         modalName.innerText = name;
         modalRole.innerText = role;
         modalImg.src = img;
         modalImg.alt = name;
         modalBio.innerHTML = bio;
-        
+
         modal.classList.remove('hidden');
         document.body.style.overflow = 'hidden'; // Lock background scroll
       });
@@ -1154,39 +534,6 @@
       }
     });
 
-    // Tabs switching logic for sponsorship
-    const tabCorpBtn = document.getElementById('tab-corporate-btn');
-    const tabPremBtn = document.getElementById('tab-premium-btn');
-    const tabIndBtn = document.getElementById('tab-individual-btn');
-
-    const tabCorpContent = document.getElementById('tab-corporate');
-    const tabPremContent = document.getElementById('tab-premium');
-    const tabIndContent = document.getElementById('tab-individual');
-
-    function selectTab(selectedBtn, selectedContent) {
-      [tabCorpContent, tabPremContent, tabIndContent].forEach(c => {
-        if (c) c.classList.add('hidden');
-      });
-      [tabCorpBtn, tabPremBtn, tabIndBtn].forEach(b => {
-        if (b) {
-          b.classList.remove('border-brand-pink-600', 'text-brand-pink-600');
-          b.classList.add('border-transparent', 'text-gray-500');
-        }
-      });
-
-      if (selectedContent) selectedContent.classList.remove('hidden');
-      if (selectedBtn) {
-        selectedBtn.classList.remove('border-transparent', 'text-gray-500');
-        selectedBtn.classList.add('border-brand-pink-600', 'text-brand-pink-600');
-      }
-    }
-
-    if (tabCorpBtn && tabCorpContent) {
-      tabCorpBtn.addEventListener('click', () => selectTab(tabCorpBtn, tabCorpContent));
-      tabPremBtn.addEventListener('click', () => selectTab(tabPremBtn, tabPremContent));
-      tabIndBtn.addEventListener('click', () => selectTab(tabIndBtn, tabIndContent));
-    }
-
     // Gallery auto-scroll with seamless wrap-around + lightbox
     (function () {
       const files = [
@@ -1200,7 +547,7 @@
 
       const cardHTML = (file) => `
         <div class="w-64 sm:w-72 md:w-80 flex-shrink-0">
-          <button type="button" data-full="images/gallery/${file}" class="gallery-item block w-full rounded-2xl overflow-hidden border border-pink-100 shadow-sm hover:shadow-md transition group cursor-pointer">
+          <button type="button" data-full="images/gallery/${file}" class="gallery-item block w-full rounded-lg overflow-hidden border border-gray-200 transition group cursor-pointer">
             <img src="images/gallery/thumbs/${file}" alt="Japan Habba Gallery" loading="lazy" class="w-full aspect-[4/3] object-cover group-hover:scale-105 transition duration-500">
           </button>
         </div>`;
