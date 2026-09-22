@@ -9,7 +9,7 @@
   <link rel="canonical" href="https://japanhabba.org/" />
 
   <!-- Tailwind CSS -->
-  <link rel="stylesheet" href="./output.css?v=21">
+  <link rel="stylesheet" href="./output.css?v=22">
 
   <!-- Inter Font -->
   <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
@@ -17,17 +17,6 @@
   <style>
     * { font-family: 'Inter', sans-serif; }
 
-    @keyframes marquee-scroll {
-      from { transform: translateX(0); }
-      to { transform: translateX(-50%); }
-    }
-    .marquee-track {
-      animation: marquee-scroll 40s linear infinite;
-    }
-    .marquee-viewport:hover .marquee-track,
-    .marquee-viewport:active .marquee-track {
-      animation-play-state: paused;
-    }
     .marquee-viewport {
       -ms-overflow-style: none;
       scrollbar-width: none;
@@ -347,8 +336,8 @@
         <!-- Artist Alley -->
         <div>
           <p class="text-xs font-semibold uppercase tracking-wide text-gray-400 mb-5 text-center">Artist Alley Exhibitors</p>
-          <div class="marquee-viewport overflow-x-auto [-webkit-overflow-scrolling:touch] [touch-action:pan-x] [mask-image:linear-gradient(to_right,transparent,black_5%,black_95%,transparent)]">
-            <div class="marquee-track flex items-center gap-6 w-max">
+          <div id="artist-alley-scroll" class="marquee-viewport overflow-x-auto [-webkit-overflow-scrolling:touch] [touch-action:pan-x] [mask-image:linear-gradient(to_right,transparent,black_5%,black_95%,transparent)]">
+            <div class="flex items-center gap-6 w-max">
             <a href="https://www.instagram.com/kalyani.symphonies/" target="_blank" title="Akiro" aria-label="Akiro" class="shrink-0 flex flex-col items-center gap-1 w-16 sm:w-20">
               <img src="images/artist-alley/akiro.webp" alt="Akiro" class="w-16 h-16 sm:w-20 sm:h-20 rounded-full object-cover ring-1 ring-gray-100 hover:ring-brand-pink-300 transition">
               <span class="block text-[10px] leading-tight text-gray-500 text-center truncate w-full">Akiro</span>
@@ -946,6 +935,33 @@
         if (!paused && !lightboxOpen) {
           scroller.scrollLeft += SPEED;
           // When we've scrolled past the first (original) set, jump back seamlessly
+          const half = scroller.scrollWidth / 2;
+          if (scroller.scrollLeft >= half) {
+            scroller.scrollLeft -= half;
+          }
+        }
+        requestAnimationFrame(tick);
+      }
+      requestAnimationFrame(tick);
+    })();
+
+    // Artist Alley auto-scroll (same scrollLeft-based technique as the gallery,
+    // so it plays nicely with native touch/thumb scrolling on all browsers)
+    (function () {
+      const scroller = document.getElementById('artist-alley-scroll');
+      if (!scroller) return;
+
+      let paused = false;
+      scroller.addEventListener('mouseenter', () => paused = true);
+      scroller.addEventListener('mouseleave', () => paused = false);
+      scroller.addEventListener('touchstart', () => paused = true, { passive: true });
+      scroller.addEventListener('touchend', () => paused = false);
+      scroller.addEventListener('touchcancel', () => paused = false);
+
+      const SPEED = 1.8; // px per frame, roughly matches the old 40s-per-loop pace
+      function tick() {
+        if (!paused) {
+          scroller.scrollLeft += SPEED;
           const half = scroller.scrollWidth / 2;
           if (scroller.scrollLeft >= half) {
             scroller.scrollLeft -= half;
