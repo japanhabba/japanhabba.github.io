@@ -9,7 +9,7 @@
   <link rel="canonical" href="https://japanhabba.org/" />
 
   <!-- Tailwind CSS -->
-  <link rel="stylesheet" href="./output.css?v=20">
+  <link rel="stylesheet" href="./output.css?v=21">
 
   <!-- Inter Font -->
   <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
@@ -140,7 +140,7 @@
     <div class="max-w-5xl mx-auto">
       <h2 class="text-xl font-semibold text-gray-900 text-center mb-6">Gallery &mdash; Japan Habba 2025</h2>
 
-      <div id="gallery-scroll" class="flex gap-4 overflow-x-auto pb-4 scroll-smooth" style="scrollbar-width: thin; scrollbar-color: #DB2777 #FCE7F3;">
+      <div id="gallery-scroll" class="flex gap-4 overflow-x-auto pb-4 scroll-smooth [-webkit-overflow-scrolling:touch] [touch-action:pan-x]" style="scrollbar-width: thin; scrollbar-color: #DB2777 #FCE7F3;">
         <!-- Cards injected + duplicated by script for seamless autoscroll -->
       </div>
     </div>
@@ -937,6 +937,9 @@
       let paused = false;
       scroller.addEventListener('mouseenter', () => paused = true);
       scroller.addEventListener('mouseleave', () => paused = false);
+      scroller.addEventListener('touchstart', () => paused = true, { passive: true });
+      scroller.addEventListener('touchend', () => paused = false);
+      scroller.addEventListener('touchcancel', () => paused = false);
 
       const SPEED = 10; // px per frame
       function tick() {
