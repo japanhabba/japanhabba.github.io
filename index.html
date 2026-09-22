@@ -9,7 +9,7 @@
   <link rel="canonical" href="https://japanhabba.org/" />
 
   <!-- Tailwind CSS -->
-  <link rel="stylesheet" href="./output.css?v=19">
+  <link rel="stylesheet" href="./output.css?v=20">
 
   <!-- Inter Font -->
   <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
@@ -24,8 +24,16 @@
     .marquee-track {
       animation: marquee-scroll 40s linear infinite;
     }
-    .marquee-viewport:hover .marquee-track {
+    .marquee-viewport:hover .marquee-track,
+    .marquee-viewport:active .marquee-track {
       animation-play-state: paused;
+    }
+    .marquee-viewport {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+    .marquee-viewport::-webkit-scrollbar {
+      display: none;
     }
   </style>
 </head>
@@ -339,7 +347,7 @@
         <!-- Artist Alley -->
         <div>
           <p class="text-xs font-semibold uppercase tracking-wide text-gray-400 mb-5 text-center">Artist Alley Exhibitors</p>
-          <div class="marquee-viewport overflow-x-hidden [mask-image:linear-gradient(to_right,transparent,black_5%,black_95%,transparent)]">
+          <div class="marquee-viewport overflow-x-auto [-webkit-overflow-scrolling:touch] [touch-action:pan-x] [mask-image:linear-gradient(to_right,transparent,black_5%,black_95%,transparent)]">
             <div class="marquee-track flex items-center gap-6 w-max">
             <a href="https://www.instagram.com/kalyani.symphonies/" target="_blank" title="Akiro" aria-label="Akiro" class="shrink-0 flex flex-col items-center gap-1 w-16 sm:w-20">
               <img src="images/artist-alley/akiro.webp" alt="Akiro" class="w-16 h-16 sm:w-20 sm:h-20 rounded-full object-cover ring-1 ring-gray-100 hover:ring-brand-pink-300 transition">
@@ -457,9 +465,9 @@
               <img src="images/artist-alley/roligami.webp" alt="Roligami" class="w-16 h-16 sm:w-20 sm:h-20 rounded-full object-cover ring-1 ring-gray-100 hover:ring-brand-pink-300 transition">
               <span class="block text-[10px] leading-tight text-gray-500 text-center truncate w-full">Roligami</span>
             </a>
-            <a href="https://www.instagram.com/rozurin_arts?igsh=MWFkOHg3OW1maDJrYw==" target="_blank" title="Rozurin x Shiraya" aria-label="Rozurin x Shiraya" class="shrink-0 flex flex-col items-center gap-1 w-16 sm:w-20">
-              <img src="images/artist-alley/rozurin-x-shiraya.webp" alt="Rozurin x Shiraya" class="w-16 h-16 sm:w-20 sm:h-20 rounded-full object-cover ring-1 ring-gray-100 hover:ring-brand-pink-300 transition">
-              <span class="block text-[10px] leading-tight text-gray-500 text-center truncate w-full">Rozurin x Shiraya</span>
+            <a href="https://www.instagram.com/rozurin_arts?igsh=MWFkOHg3OW1maDJrYw==" target="_blank" title="Rozurin" aria-label="Rozurin" class="shrink-0 flex flex-col items-center gap-1 w-16 sm:w-20">
+              <img src="images/artist-alley/rozurin.webp" alt="Rozurin" class="w-16 h-16 sm:w-20 sm:h-20 rounded-full object-cover ring-1 ring-gray-100 hover:ring-brand-pink-300 transition">
+              <span class="block text-[10px] leading-tight text-gray-500 text-center truncate w-full">Rozurin</span>
             </a>
             <a href="https://www.instagram.com/sams_sakurapetals/" target="_blank" title="Sam&#x27;s Sakurapetals" aria-label="Sam&#x27;s Sakurapetals" class="shrink-0 flex flex-col items-center gap-1 w-16 sm:w-20">
               <img src="images/artist-alley/sam-s-sakurapetals.webp" alt="Sam&#x27;s Sakurapetals" class="w-16 h-16 sm:w-20 sm:h-20 rounded-full object-cover ring-1 ring-gray-100 hover:ring-brand-pink-300 transition">
@@ -621,9 +629,9 @@
               <img src="images/artist-alley/roligami.webp" alt="Roligami" class="w-16 h-16 sm:w-20 sm:h-20 rounded-full object-cover ring-1 ring-gray-100 hover:ring-brand-pink-300 transition">
               <span class="block text-[10px] leading-tight text-gray-500 text-center truncate w-full">Roligami</span>
             </a>
-            <a href="https://www.instagram.com/rozurin_arts?igsh=MWFkOHg3OW1maDJrYw==" target="_blank" title="Rozurin x Shiraya" aria-label="Rozurin x Shiraya" class="shrink-0 flex flex-col items-center gap-1 w-16 sm:w-20">
-              <img src="images/artist-alley/rozurin-x-shiraya.webp" alt="Rozurin x Shiraya" class="w-16 h-16 sm:w-20 sm:h-20 rounded-full object-cover ring-1 ring-gray-100 hover:ring-brand-pink-300 transition">
-              <span class="block text-[10px] leading-tight text-gray-500 text-center truncate w-full">Rozurin x Shiraya</span>
+            <a href="https://www.instagram.com/rozurin_arts?igsh=MWFkOHg3OW1maDJrYw==" target="_blank" title="Rozurin" aria-label="Rozurin" class="shrink-0 flex flex-col items-center gap-1 w-16 sm:w-20">
+              <img src="images/artist-alley/rozurin.webp" alt="Rozurin" class="w-16 h-16 sm:w-20 sm:h-20 rounded-full object-cover ring-1 ring-gray-100 hover:ring-brand-pink-300 transition">
+              <span class="block text-[10px] leading-tight text-gray-500 text-center truncate w-full">Rozurin</span>
             </a>
             <a href="https://www.instagram.com/sams_sakurapetals/" target="_blank" title="Sam&#x27;s Sakurapetals" aria-label="Sam&#x27;s Sakurapetals" class="shrink-0 flex flex-col items-center gap-1 w-16 sm:w-20">
               <img src="images/artist-alley/sam-s-sakurapetals.webp" alt="Sam&#x27;s Sakurapetals" class="w-16 h-16 sm:w-20 sm:h-20 rounded-full object-cover ring-1 ring-gray-100 hover:ring-brand-pink-300 transition">

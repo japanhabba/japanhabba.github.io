@@ -1478,10 +1478,6 @@ video {
   overflow-y: auto;
 }
 
-.overflow-x-hidden {
-  overflow-x: hidden;
-}
-
 .overflow-x-scroll {
   overflow-x: scroll;
 }
@@ -2544,6 +2540,10 @@ video {
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
+.\[-webkit-overflow-scrolling\:touch\] {
+  -webkit-overflow-scrolling: touch;
+}
+
 .\[container-type\:inline-size\] {
   container-type: inline-size;
 }
@@ -2551,6 +2551,10 @@ video {
 .\[mask-image\:linear-gradient\(to_right\2c transparent\2c black_5\%\2c black_95\%\2c transparent\)\] {
   -webkit-mask-image: linear-gradient(to right,transparent,black 5%,black 95%,transparent);
           mask-image: linear-gradient(to right,transparent,black 5%,black 95%,transparent);
+}
+
+.\[touch-action\:pan-x\] {
+  touch-action: pan-x;
 }
 
 .selection\:bg-brand-pink-200 *::-moz-selection {
