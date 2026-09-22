@@ -958,7 +958,7 @@
       scroller.addEventListener('touchend', () => paused = false);
       scroller.addEventListener('touchcancel', () => paused = false);
 
-      const SPEED = 1; // px per frame
+      const SPEED = 0.8; // px per frame
       function tick() {
         if (!paused) {
           scroller.scrollLeft += SPEED;
