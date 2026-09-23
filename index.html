@@ -24,7 +24,25 @@
     .marquee-viewport::-webkit-scrollbar {
       display: none;
     }
+
+    /* Entries marked data-local-only are hidden on the live site and only shown when previewing locally */
+    [data-local-only] { display: none !important; }
+    html.is-local [data-local-only] { display: flex !important; }
+
+    /* Artist Alley names: wrap to at most two lines instead of truncating to one */
+    .aa-name {
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      min-height: 2.5em;
+    }
   </style>
+  <script>
+    if (location.protocol === 'file:' || ['localhost', '127.0.0.1', '[::1]', ''].includes(location.hostname)) {
+      document.documentElement.classList.add('is-local');
+    }
+  </script>
 </head>
 <body class="bg-white min-h-screen flex flex-col text-gray-800 antialiased">
 
@@ -218,6 +236,9 @@
             <a href="https://www.epson.co.in/" target="_blank" class="p-4 w-full flex items-center justify-center h-20 group" title="Epson India Pvt Ltd">
               <img src="images/sponsors/2027/epson.webp" alt="Epson India Logo" class="max-h-10 max-w-full object-contain">
             </a>
+            <a href="https://about.in.mercari.com/" target="_blank" class="p-4 w-full flex items-center justify-center h-20 group" title="Mercari" data-local-only>
+              <img src="images/sponsors/2027/mercari.svg" alt="Mercari Logo" class="max-h-8 max-w-full object-contain">
+            </a>
             <a href="https://maindish.in/" target="_blank" class="p-4 w-full flex items-center justify-center h-20 group" title="Main Dish">
               <img src="images/sponsors/2027/maindish.webp" alt="Main Dish Logo" class="max-h-16 max-w-full object-contain">
             </a>
@@ -279,6 +300,9 @@
             <a href="https://www.instagram.com/mr_clrkknt/" target="_blank" class="p-4 w-full flex items-center justify-center h-20 group" title="MR CLRKKNT">
               <img src="images/sponsors/2027/mrclrkknt.webp" alt="MR CLRKKNT Logo" class="max-h-14 max-w-full object-contain">
             </a>
+            <a href="https://www.indonissin.in/" target="_blank" class="p-4 w-full flex items-center justify-center h-20 group" title="Nissin" data-local-only>
+              <img src="images/sponsors/2027/nissin.webp" alt="Nissin Cup Noodles Logo" class="max-h-14 max-w-full object-contain">
+            </a>
             <a href="https://aronuniversal.com/" target="_blank" class="p-4 w-full flex items-center justify-center h-20 group" title="NoraGlo (Aron Universal Ltd)">
               <img src="images/sponsors/2027/aron-universal.webp" alt="NoraGlo Logo" class="max-h-9 max-w-full object-contain">
             </a>
@@ -287,6 +311,9 @@
             </a>
             <a href="https://www.pentel.co.in/" target="_blank" class="p-4 w-full flex items-center justify-center h-20 group" title="Pentel Stationery India Pvt Ltd">
               <img src="images/sponsors/2027/pentel.webp" alt="Pentel Logo" class="max-h-8 max-w-full object-contain">
+            </a>
+            <a href="https://www.powera.com/" target="_blank" class="p-4 w-full flex items-center justify-center h-20 group" title="PowerA" data-local-only>
+              <img src="images/sponsors/2027/powera.svg" alt="PowerA Logo" class="max-h-8 max-w-full object-contain">
             </a>
             <a href="https://shichisoru.com/" target="_blank" class="p-4 w-full flex items-center justify-center h-20 group" title="Shichisōru">
               <img src="images/sponsors/2027/shichisoru.webp" alt="Shichisōru Logo" class="max-h-8 max-w-full object-contain">
@@ -342,6 +369,9 @@
             <a href="https://www.pofu.in/" target="_blank" class="p-4 w-full flex items-center justify-center h-20 group" title="Pofu">
               <img src="images/sponsors/2027/pofu.webp" alt="Pofu Logo" class="max-h-16 max-w-full object-contain">
             </a>
+            <a href="https://www.yettu.in/" target="_blank" class="p-4 w-full flex items-center justify-center h-20 group" title="Yettu" data-local-only>
+              <img src="images/sponsors/2027/yettu.webp" alt="Yettu Logo" class="max-h-9 max-w-full object-contain">
+            </a>
           </div>
         </div>
 
@@ -368,374 +398,374 @@
         <div>
           <p class="text-xs font-semibold uppercase tracking-wide text-gray-400 mb-5 text-center">Artist Alley Exhibitors</p>
           <div id="artist-alley-scroll" class="marquee-viewport overflow-x-auto [-webkit-overflow-scrolling:touch] [touch-action:pan-x] [mask-image:linear-gradient(to_right,transparent,black_5%,black_95%,transparent)]">
-            <div class="flex items-center gap-6 w-max">
+            <div class="flex items-start gap-6 w-max">
             <a href="https://www.instagram.com/kalyani.symphonies/" target="_blank" title="Akiro" aria-label="Akiro" class="shrink-0 flex flex-col items-center gap-1 w-16 sm:w-20">
               <img src="images/artist-alley/akiro.webp" alt="Akiro" class="w-16 h-16 sm:w-20 sm:h-20 rounded-full object-cover ring-1 ring-gray-100 hover:ring-brand-pink-300 transition">
-              <span class="block text-[10px] leading-tight text-gray-500 text-center truncate w-full">Akiro</span>
+              <span class="aa-name text-[10px] leading-tight text-gray-500 text-center w-full">Akiro</span>
             </a>
             <a href="https://www.instagram.com/brocc0liya/" target="_blank" title="Anmitsu" aria-label="Anmitsu" class="shrink-0 flex flex-col items-center gap-1 w-16 sm:w-20">
               <img src="images/artist-alley/anmitsu.webp" alt="Anmitsu" class="w-16 h-16 sm:w-20 sm:h-20 rounded-full object-cover ring-1 ring-gray-100 hover:ring-brand-pink-300 transition">
-              <span class="block text-[10px] leading-tight text-gray-500 text-center truncate w-full">Anmitsu</span>
+              <span class="aa-name text-[10px] leading-tight text-gray-500 text-center w-full">Anmitsu</span>
             </a>
             <a href="https://www.instagram.com/ann.artarchive?igsh=YjVtcm0yZ2F5eWRw" target="_blank" title="ANN ART ARCHIVE" aria-label="ANN ART ARCHIVE" class="shrink-0 flex flex-col items-center gap-1 w-16 sm:w-20">
               <img src="images/artist-alley/ann-art-archive.webp" alt="ANN ART ARCHIVE" class="w-16 h-16 sm:w-20 sm:h-20 rounded-full object-cover ring-1 ring-gray-100 hover:ring-brand-pink-300 transition">
-              <span class="block text-[10px] leading-tight text-gray-500 text-center truncate w-full">ANN ART ARCHIVE</span>
+              <span class="aa-name text-[10px] leading-tight text-gray-500 text-center w-full">ANN ART ARCHIVE</span>
             </a>
             <a href="https://www.instagram.com/ansakeys/" target="_blank" title="Ansakeys" aria-label="Ansakeys" class="shrink-0 flex flex-col items-center gap-1 w-16 sm:w-20">
               <img src="images/artist-alley/ansakeys.webp" alt="Ansakeys" class="w-16 h-16 sm:w-20 sm:h-20 rounded-full object-cover ring-1 ring-gray-100 hover:ring-brand-pink-300 transition">
-              <span class="block text-[10px] leading-tight text-gray-500 text-center truncate w-full">Ansakeys</span>
+              <span class="aa-name text-[10px] leading-tight text-gray-500 text-center w-full">Ansakeys</span>
             </a>
             <a href="https://www.instagram.com/artofsai" target="_blank" title="Art of Sai" aria-label="Art of Sai" class="shrink-0 flex flex-col items-center gap-1 w-16 sm:w-20">
               <img src="images/artist-alley/art-of-sai.webp" alt="Art of Sai" class="w-16 h-16 sm:w-20 sm:h-20 rounded-full object-cover ring-1 ring-gray-100 hover:ring-brand-pink-300 transition">
-              <span class="block text-[10px] leading-tight text-gray-500 text-center truncate w-full">Art of Sai</span>
+              <span class="aa-name text-[10px] leading-tight text-gray-500 text-center w-full">Art of Sai</span>
             </a>
             <a href="https://www.instagram.com/artbybala213/" target="_blank" title="ARTBYBALA213" aria-label="ARTBYBALA213" class="shrink-0 flex flex-col items-center gap-1 w-16 sm:w-20">
               <img src="images/artist-alley/artbybala213.webp" alt="ARTBYBALA213" class="w-16 h-16 sm:w-20 sm:h-20 rounded-full object-cover ring-1 ring-gray-100 hover:ring-brand-pink-300 transition">
-              <span class="block text-[10px] leading-tight text-gray-500 text-center truncate w-full">ARTBYBALA213</span>
+              <span class="aa-name text-[10px] leading-tight text-gray-500 text-center w-full">ARTBYBALA213</span>
             </a>
             <a href="https://www.instagram.com/axis.williams" target="_blank" title="Axis Williams" aria-label="Axis Williams" class="shrink-0 flex flex-col items-center gap-1 w-16 sm:w-20">
               <img src="images/artist-alley/axis-williams.webp" alt="Axis Williams" class="w-16 h-16 sm:w-20 sm:h-20 rounded-full object-cover ring-1 ring-gray-100 hover:ring-brand-pink-300 transition">
-              <span class="block text-[10px] leading-tight text-gray-500 text-center truncate w-full">Axis Williams</span>
+              <span class="aa-name text-[10px] leading-tight text-gray-500 text-center w-full">Axis Williams</span>
             </a>
             <a href="https://www.instagram.com/kunthamdotin/" target="_blank" title="Baka Boutique" aria-label="Baka Boutique" class="shrink-0 flex flex-col items-center gap-1 w-16 sm:w-20">
               <img src="images/artist-alley/baka-boutique.webp" alt="Baka Boutique" class="w-16 h-16 sm:w-20 sm:h-20 rounded-full object-cover ring-1 ring-gray-100 hover:ring-brand-pink-300 transition">
-              <span class="block text-[10px] leading-tight text-gray-500 text-center truncate w-full">Baka Boutique</span>
+              <span class="aa-name text-[10px] leading-tight text-gray-500 text-center w-full">Baka Boutique</span>
             </a>
             <a href="https://santoshmahale.com/" target="_blank" title="Birdseye Tokyo" aria-label="Birdseye Tokyo" class="shrink-0 flex flex-col items-center gap-1 w-16 sm:w-20">
               <img src="images/artist-alley/birdseye-tokyo.webp" alt="Birdseye Tokyo" class="w-16 h-16 sm:w-20 sm:h-20 rounded-full object-cover ring-1 ring-gray-100 hover:ring-brand-pink-300 transition">
-              <span class="block text-[10px] leading-tight text-gray-500 text-center truncate w-full">Birdseye Tokyo</span>
+              <span class="aa-name text-[10px] leading-tight text-gray-500 text-center w-full">Birdseye Tokyo</span>
             </a>
             <a href="https://www.instagram.com/chaos_in_my_bag" target="_blank" title="Chaos In My Bag" aria-label="Chaos In My Bag" class="shrink-0 flex flex-col items-center gap-1 w-16 sm:w-20">
               <img src="images/artist-alley/chaos-in-my-bag.webp" alt="Chaos In My Bag" class="w-16 h-16 sm:w-20 sm:h-20 rounded-full object-cover ring-1 ring-gray-100 hover:ring-brand-pink-300 transition">
-              <span class="block text-[10px] leading-tight text-gray-500 text-center truncate w-full">Chaos In My Bag</span>
+              <span class="aa-name text-[10px] leading-tight text-gray-500 text-center w-full">Chaos In My Bag</span>
             </a>
             <a href="https://www.instagram.com/crochet.by.aishwarya/" target="_blank" title="Chibi Crochet" aria-label="Chibi Crochet" class="shrink-0 flex flex-col items-center gap-1 w-16 sm:w-20">
               <img src="images/artist-alley/chibi-crochet.webp" alt="Chibi Crochet" class="w-16 h-16 sm:w-20 sm:h-20 rounded-full object-cover ring-1 ring-gray-100 hover:ring-brand-pink-300 transition">
-              <span class="block text-[10px] leading-tight text-gray-500 text-center truncate w-full">Chibi Crochet</span>
+              <span class="aa-name text-[10px] leading-tight text-gray-500 text-center w-full">Chibi Crochet</span>
             </a>
             <a href="https://www.instagram.com/cozylambstudio?igsh=MTBpampoNHFwZzZnMQ==" target="_blank" title="COZYLAMBSTUDIO" aria-label="COZYLAMBSTUDIO" class="shrink-0 flex flex-col items-center gap-1 w-16 sm:w-20">
               <img src="images/artist-alley/cozylambstudio.webp" alt="COZYLAMBSTUDIO" class="w-16 h-16 sm:w-20 sm:h-20 rounded-full object-cover ring-1 ring-gray-100 hover:ring-brand-pink-300 transition">
-              <span class="block text-[10px] leading-tight text-gray-500 text-center truncate w-full">COZYLAMBSTUDIO</span>
+              <span class="aa-name text-[10px] leading-tight text-gray-500 text-center w-full">COZYLAMBSTUDIO</span>
             </a>
             <a href="https://www.instagram.com/cyevee" target="_blank" title="CYEVEE" aria-label="CYEVEE" class="shrink-0 flex flex-col items-center gap-1 w-16 sm:w-20">
               <img src="images/artist-alley/cyevee.webp" alt="CYEVEE" class="w-16 h-16 sm:w-20 sm:h-20 rounded-full object-cover ring-1 ring-gray-100 hover:ring-brand-pink-300 transition">
-              <span class="block text-[10px] leading-tight text-gray-500 text-center truncate w-full">CYEVEE</span>
+              <span class="aa-name text-[10px] leading-tight text-gray-500 text-center w-full">CYEVEE</span>
             </a>
             <a href="https://www.instagram.com/dizondraws/" target="_blank" title="DizonDraws" aria-label="DizonDraws" class="shrink-0 flex flex-col items-center gap-1 w-16 sm:w-20">
               <img src="images/artist-alley/dizondraws.webp" alt="DizonDraws" class="w-16 h-16 sm:w-20 sm:h-20 rounded-full object-cover ring-1 ring-gray-100 hover:ring-brand-pink-300 transition">
-              <span class="block text-[10px] leading-tight text-gray-500 text-center truncate w-full">DizonDraws</span>
+              <span class="aa-name text-[10px] leading-tight text-gray-500 text-center w-full">DizonDraws</span>
             </a>
             <a href="https://www.instagram.com/enpitsu_hito/" target="_blank" title="Enpitsu Hito" aria-label="Enpitsu Hito" class="shrink-0 flex flex-col items-center gap-1 w-16 sm:w-20">
               <img src="images/artist-alley/enpitsu-hito.webp" alt="Enpitsu Hito" class="w-16 h-16 sm:w-20 sm:h-20 rounded-full object-cover ring-1 ring-gray-100 hover:ring-brand-pink-300 transition">
-              <span class="block text-[10px] leading-tight text-gray-500 text-center truncate w-full">Enpitsu Hito</span>
+              <span class="aa-name text-[10px] leading-tight text-gray-500 text-center w-full">Enpitsu Hito</span>
             </a>
             <a href="https://www.instagram.com/faezart21/" target="_blank" title="Er Kang Emporium" aria-label="Er Kang Emporium" class="shrink-0 flex flex-col items-center gap-1 w-16 sm:w-20">
               <img src="images/artist-alley/er-kang-emporium.webp" alt="Er Kang Emporium" class="w-16 h-16 sm:w-20 sm:h-20 rounded-full object-cover ring-1 ring-gray-100 hover:ring-brand-pink-300 transition">
-              <span class="block text-[10px] leading-tight text-gray-500 text-center truncate w-full">Er Kang Emporium</span>
+              <span class="aa-name text-[10px] leading-tight text-gray-500 text-center w-full">Er Kang Emporium</span>
             </a>
             <a href="https://jaxcomm.carrd.co/" target="_blank" title="Gombe Aata" aria-label="Gombe Aata" class="shrink-0 flex flex-col items-center gap-1 w-16 sm:w-20">
               <img src="images/artist-alley/gombe-aata.webp" alt="Gombe Aata" class="w-16 h-16 sm:w-20 sm:h-20 rounded-full object-cover ring-1 ring-gray-100 hover:ring-brand-pink-300 transition">
-              <span class="block text-[10px] leading-tight text-gray-500 text-center truncate w-full">Gombe Aata</span>
+              <span class="aa-name text-[10px] leading-tight text-gray-500 text-center w-full">Gombe Aata</span>
             </a>
             <a href="https://www.instagram.com/hina.chan.26/" target="_blank" title="Hina.Chan" aria-label="Hina.Chan" class="shrink-0 flex flex-col items-center gap-1 w-16 sm:w-20">
               <img src="images/artist-alley/hina-chan.webp" alt="Hina.Chan" class="w-16 h-16 sm:w-20 sm:h-20 rounded-full object-cover ring-1 ring-gray-100 hover:ring-brand-pink-300 transition">
-              <span class="block text-[10px] leading-tight text-gray-500 text-center truncate w-full">Hina.Chan</span>
+              <span class="aa-name text-[10px] leading-tight text-gray-500 text-center w-full">Hina.Chan</span>
             </a>
             <a href="https://www.instagram.com/ikiho_/" target="_blank" title="IKIHO" aria-label="IKIHO" class="shrink-0 flex flex-col items-center gap-1 w-16 sm:w-20">
               <img src="images/artist-alley/ikiho.webp" alt="IKIHO" class="w-16 h-16 sm:w-20 sm:h-20 rounded-full object-cover ring-1 ring-gray-100 hover:ring-brand-pink-300 transition">
-              <span class="block text-[10px] leading-tight text-gray-500 text-center truncate w-full">IKIHO</span>
+              <span class="aa-name text-[10px] leading-tight text-gray-500 text-center w-full">IKIHO</span>
             </a>
             <a href="https://www.instagram.com/intricats_art/" target="_blank" title="intricats" aria-label="intricats" class="shrink-0 flex flex-col items-center gap-1 w-16 sm:w-20">
               <img src="images/artist-alley/intricats.webp" alt="intricats" class="w-16 h-16 sm:w-20 sm:h-20 rounded-full object-cover ring-1 ring-gray-100 hover:ring-brand-pink-300 transition">
-              <span class="block text-[10px] leading-tight text-gray-500 text-center truncate w-full">intricats</span>
+              <span class="aa-name text-[10px] leading-tight text-gray-500 text-center w-full">intricats</span>
             </a>
             <a href="https://www.instagram.com/jayashree212/" target="_blank" title="Jayashree V" aria-label="Jayashree V" class="shrink-0 flex flex-col items-center gap-1 w-16 sm:w-20">
               <img src="images/artist-alley/jayashree-v.webp" alt="Jayashree V" class="w-16 h-16 sm:w-20 sm:h-20 rounded-full object-cover ring-1 ring-gray-100 hover:ring-brand-pink-300 transition">
-              <span class="block text-[10px] leading-tight text-gray-500 text-center truncate w-full">Jayashree V</span>
+              <span class="aa-name text-[10px] leading-tight text-gray-500 text-center w-full">Jayashree V</span>
             </a>
             <a href="https://www.instagram.com/jellykins.store?igsh=MXd5NndhcjF1OWRrbQ==" target="_blank" title="jellykins" aria-label="jellykins" class="shrink-0 flex flex-col items-center gap-1 w-16 sm:w-20">
               <img src="images/artist-alley/jellykins.webp" alt="jellykins" class="w-16 h-16 sm:w-20 sm:h-20 rounded-full object-cover ring-1 ring-gray-100 hover:ring-brand-pink-300 transition">
-              <span class="block text-[10px] leading-tight text-gray-500 text-center truncate w-full">jellykins</span>
+              <span class="aa-name text-[10px] leading-tight text-gray-500 text-center w-full">jellykins</span>
             </a>
             <a href="https://www.instagram.com/kuroforest.art/" target="_blank" title="kuro forest" aria-label="kuro forest" class="shrink-0 flex flex-col items-center gap-1 w-16 sm:w-20">
               <img src="images/artist-alley/kuro-forest.webp" alt="kuro forest" class="w-16 h-16 sm:w-20 sm:h-20 rounded-full object-cover ring-1 ring-gray-100 hover:ring-brand-pink-300 transition">
-              <span class="block text-[10px] leading-tight text-gray-500 text-center truncate w-full">kuro forest</span>
+              <span class="aa-name text-[10px] leading-tight text-gray-500 text-center w-full">kuro forest</span>
             </a>
             <a href="https://www.instagram.com/lemony_artshake/" target="_blank" title="Lemony Artshake (Elumi)" aria-label="Lemony Artshake (Elumi)" class="shrink-0 flex flex-col items-center gap-1 w-16 sm:w-20">
               <img src="images/artist-alley/lemony-artshake.webp" alt="Lemony Artshake (Elumi)" class="w-16 h-16 sm:w-20 sm:h-20 rounded-full object-cover ring-1 ring-gray-100 hover:ring-brand-pink-300 transition">
-              <span class="block text-[10px] leading-tight text-gray-500 text-center truncate w-full">Lemony Artshake (Elumi)</span>
+              <span class="aa-name text-[10px] leading-tight text-gray-500 text-center w-full">Lemony Artshake (Elumi)</span>
             </a>
             <a href="https://www.instagram.com/_lord707_?igsh=MXdlMnBqNndndTM2MA%3D%3D&amp;utm_source=qr" target="_blank" title="Lord707" aria-label="Lord707" class="shrink-0 flex flex-col items-center gap-1 w-16 sm:w-20">
               <img src="images/artist-alley/lord707.webp" alt="Lord707" class="w-16 h-16 sm:w-20 sm:h-20 rounded-full object-cover ring-1 ring-gray-100 hover:ring-brand-pink-300 transition">
-              <span class="block text-[10px] leading-tight text-gray-500 text-center truncate w-full">Lord707</span>
+              <span class="aa-name text-[10px] leading-tight text-gray-500 text-center w-full">Lord707</span>
             </a>
             <a href="https://www.instagram.com/miniemizu/" target="_blank" title="Miniemizu" aria-label="Miniemizu" class="shrink-0 flex flex-col items-center gap-1 w-16 sm:w-20">
               <img src="images/artist-alley/miniemizu.webp" alt="Miniemizu" class="w-16 h-16 sm:w-20 sm:h-20 rounded-full object-cover ring-1 ring-gray-100 hover:ring-brand-pink-300 transition">
-              <span class="block text-[10px] leading-tight text-gray-500 text-center truncate w-full">Miniemizu</span>
+              <span class="aa-name text-[10px] leading-tight text-gray-500 text-center w-full">Miniemizu</span>
             </a>
             <a href="https://www.instagram.com/navs.art/" target="_blank" title="Navs Art" aria-label="Navs Art" class="shrink-0 flex flex-col items-center gap-1 w-16 sm:w-20">
               <img src="images/artist-alley/navs-art.webp" alt="Navs Art" class="w-16 h-16 sm:w-20 sm:h-20 rounded-full object-cover ring-1 ring-gray-100 hover:ring-brand-pink-300 transition">
-              <span class="block text-[10px] leading-tight text-gray-500 text-center truncate w-full">Navs Art</span>
+              <span class="aa-name text-[10px] leading-tight text-gray-500 text-center w-full">Navs Art</span>
             </a>
             <a href="https://www.instagram.com/oddpanel/" target="_blank" title="oddpanel" aria-label="oddpanel" class="shrink-0 flex flex-col items-center gap-1 w-16 sm:w-20">
               <img src="images/artist-alley/oddpanel.webp" alt="oddpanel" class="w-16 h-16 sm:w-20 sm:h-20 rounded-full object-cover ring-1 ring-gray-100 hover:ring-brand-pink-300 transition">
-              <span class="block text-[10px] leading-tight text-gray-500 text-center truncate w-full">oddpanel</span>
+              <span class="aa-name text-[10px] leading-tight text-gray-500 text-center w-full">oddpanel</span>
             </a>
             <a href="https://www.instagram.com/authoratish/" target="_blank" title="Orion Atelier" aria-label="Orion Atelier" class="shrink-0 flex flex-col items-center gap-1 w-16 sm:w-20">
               <img src="images/artist-alley/orion-atelier.webp" alt="Orion Atelier" class="w-16 h-16 sm:w-20 sm:h-20 rounded-full object-cover ring-1 ring-gray-100 hover:ring-brand-pink-300 transition">
-              <span class="block text-[10px] leading-tight text-gray-500 text-center truncate w-full">Orion Atelier</span>
+              <span class="aa-name text-[10px] leading-tight text-gray-500 text-center w-full">Orion Atelier</span>
             </a>
             <a href="https://www.instagram.com/patricia_the_blob/" target="_blank" title="Patricia the Blob" aria-label="Patricia the Blob" class="shrink-0 flex flex-col items-center gap-1 w-16 sm:w-20">
               <img src="images/artist-alley/patricia-the-blob.webp" alt="Patricia the Blob" class="w-16 h-16 sm:w-20 sm:h-20 rounded-full object-cover ring-1 ring-gray-100 hover:ring-brand-pink-300 transition">
-              <span class="block text-[10px] leading-tight text-gray-500 text-center truncate w-full">Patricia the Blob</span>
+              <span class="aa-name text-[10px] leading-tight text-gray-500 text-center w-full">Patricia the Blob</span>
             </a>
             <a href="https://www.instagram.com/phroggiee.e?igsh=MXU2ZWFlY3dxZ240Mg==" target="_blank" title="phroggiee.e" aria-label="phroggiee.e" class="shrink-0 flex flex-col items-center gap-1 w-16 sm:w-20">
               <img src="images/artist-alley/phroggiee-e.webp" alt="phroggiee.e" class="w-16 h-16 sm:w-20 sm:h-20 rounded-full object-cover ring-1 ring-gray-100 hover:ring-brand-pink-300 transition">
-              <span class="block text-[10px] leading-tight text-gray-500 text-center truncate w-full">phroggiee.e</span>
+              <span class="aa-name text-[10px] leading-tight text-gray-500 text-center w-full">phroggiee.e</span>
             </a>
             <a href="https://www.instagram.com/roligami/" target="_blank" title="Roligami" aria-label="Roligami" class="shrink-0 flex flex-col items-center gap-1 w-16 sm:w-20">
               <img src="images/artist-alley/roligami.webp" alt="Roligami" class="w-16 h-16 sm:w-20 sm:h-20 rounded-full object-cover ring-1 ring-gray-100 hover:ring-brand-pink-300 transition">
-              <span class="block text-[10px] leading-tight text-gray-500 text-center truncate w-full">Roligami</span>
+              <span class="aa-name text-[10px] leading-tight text-gray-500 text-center w-full">Roligami</span>
             </a>
             <a href="https://www.instagram.com/rozurin_arts?igsh=MWFkOHg3OW1maDJrYw==" target="_blank" title="Rozurin" aria-label="Rozurin" class="shrink-0 flex flex-col items-center gap-1 w-16 sm:w-20">
               <img src="images/artist-alley/rozurin.webp" alt="Rozurin" class="w-16 h-16 sm:w-20 sm:h-20 rounded-full object-cover ring-1 ring-gray-100 hover:ring-brand-pink-300 transition">
-              <span class="block text-[10px] leading-tight text-gray-500 text-center truncate w-full">Rozurin</span>
+              <span class="aa-name text-[10px] leading-tight text-gray-500 text-center w-full">Rozurin</span>
             </a>
             <a href="https://www.instagram.com/sahana_vj/" target="_blank" title="Sahana VJ" aria-label="Sahana VJ" class="shrink-0 flex flex-col items-center gap-1 w-16 sm:w-20">
               <img src="images/artist-alley/all-things-cute.webp" alt="Sahana VJ" class="w-16 h-16 sm:w-20 sm:h-20 rounded-full object-cover ring-1 ring-gray-100 hover:ring-brand-pink-300 transition">
-              <span class="block text-[10px] leading-tight text-gray-500 text-center truncate w-full">Sahana VJ</span>
+              <span class="aa-name text-[10px] leading-tight text-gray-500 text-center w-full">Sahana VJ</span>
             </a>
             <a href="https://www.instagram.com/sams_sakurapetals/" target="_blank" title="Sam&#x27;s Sakurapetals" aria-label="Sam&#x27;s Sakurapetals" class="shrink-0 flex flex-col items-center gap-1 w-16 sm:w-20">
               <img src="images/artist-alley/sam-s-sakurapetals.webp" alt="Sam&#x27;s Sakurapetals" class="w-16 h-16 sm:w-20 sm:h-20 rounded-full object-cover ring-1 ring-gray-100 hover:ring-brand-pink-300 transition">
-              <span class="block text-[10px] leading-tight text-gray-500 text-center truncate w-full">Sam&#x27;s Sakurapetals</span>
+              <span class="aa-name text-[10px] leading-tight text-gray-500 text-center w-full">Sam&#x27;s Sakurapetals</span>
             </a>
             <a href="https://www.instagram.com/satan_navi/" target="_blank" title="Satan_Navi" aria-label="Satan_Navi" class="shrink-0 flex flex-col items-center gap-1 w-16 sm:w-20">
               <img src="images/artist-alley/satan-navi.webp" alt="Satan_Navi" class="w-16 h-16 sm:w-20 sm:h-20 rounded-full object-cover ring-1 ring-gray-100 hover:ring-brand-pink-300 transition">
-              <span class="block text-[10px] leading-tight text-gray-500 text-center truncate w-full">Satan_Navi</span>
+              <span class="aa-name text-[10px] leading-tight text-gray-500 text-center w-full">Satan_Navi</span>
             </a>
             <a href="https://www.instagram.com/sep_poppo" target="_blank" title="Sep (Ichi)" aria-label="Sep (Ichi)" class="shrink-0 flex flex-col items-center gap-1 w-16 sm:w-20">
               <img src="images/artist-alley/sep-ichi.webp" alt="Sep (Ichi)" class="w-16 h-16 sm:w-20 sm:h-20 rounded-full object-cover ring-1 ring-gray-100 hover:ring-brand-pink-300 transition">
-              <span class="block text-[10px] leading-tight text-gray-500 text-center truncate w-full">Sep (Ichi)</span>
+              <span class="aa-name text-[10px] leading-tight text-gray-500 text-center w-full">Sep (Ichi)</span>
             </a>
             <a href="https://www.instagram.com/sketchwithash/" target="_blank" title="Sketch with Ash" aria-label="Sketch with Ash" class="shrink-0 flex flex-col items-center gap-1 w-16 sm:w-20">
               <img src="images/artist-alley/sketch-with-ash.webp" alt="Sketch with Ash" class="w-16 h-16 sm:w-20 sm:h-20 rounded-full object-cover ring-1 ring-gray-100 hover:ring-brand-pink-300 transition">
-              <span class="block text-[10px] leading-tight text-gray-500 text-center truncate w-full">Sketch with Ash</span>
+              <span class="aa-name text-[10px] leading-tight text-gray-500 text-center w-full">Sketch with Ash</span>
             </a>
             <a href="https://www.instagram.com/slush.box" target="_blank" title="SLUSHBOX" aria-label="SLUSHBOX" class="shrink-0 flex flex-col items-center gap-1 w-16 sm:w-20">
               <img src="images/artist-alley/slushbox.webp" alt="SLUSHBOX" class="w-16 h-16 sm:w-20 sm:h-20 rounded-full object-cover ring-1 ring-gray-100 hover:ring-brand-pink-300 transition">
-              <span class="block text-[10px] leading-tight text-gray-500 text-center truncate w-full">SLUSHBOX</span>
+              <span class="aa-name text-[10px] leading-tight text-gray-500 text-center w-full">SLUSHBOX</span>
             </a>
             <a href="https://www.instagram.com/studioinkers/" target="_blank" title="Studio Inkers!" aria-label="Studio Inkers!" class="shrink-0 flex flex-col items-center gap-1 w-16 sm:w-20">
               <img src="images/artist-alley/studio-inkers.webp" alt="Studio Inkers!" class="w-16 h-16 sm:w-20 sm:h-20 rounded-full object-cover ring-1 ring-gray-100 hover:ring-brand-pink-300 transition">
-              <span class="block text-[10px] leading-tight text-gray-500 text-center truncate w-full">Studio Inkers!</span>
+              <span class="aa-name text-[10px] leading-tight text-gray-500 text-center w-full">Studio Inkers!</span>
             </a>
             <a href="https://www.instagram.com/studiokapi_0369?igsh=MTB0Zzc3Y3VkaDZ1aw==" target="_blank" title="Studiokapi0369" aria-label="Studiokapi0369" class="shrink-0 flex flex-col items-center gap-1 w-16 sm:w-20">
               <img src="images/artist-alley/studiokapi0369.webp" alt="Studiokapi0369" class="w-16 h-16 sm:w-20 sm:h-20 rounded-full object-cover ring-1 ring-gray-100 hover:ring-brand-pink-300 transition">
-              <span class="block text-[10px] leading-tight text-gray-500 text-center truncate w-full">Studiokapi0369</span>
+              <span class="aa-name text-[10px] leading-tight text-gray-500 text-center w-full">Studiokapi0369</span>
             </a>
             <a href="https://www.instagram.com/sugi.sketches?igsh=MTVrc2QyYTRlOHJtaw==" target="_blank" title="Sugi&#x27;s Sketches" aria-label="Sugi&#x27;s Sketches" class="shrink-0 flex flex-col items-center gap-1 w-16 sm:w-20">
               <img src="images/artist-alley/sugi-s-sketches.webp" alt="Sugi&#x27;s Sketches" class="w-16 h-16 sm:w-20 sm:h-20 rounded-full object-cover ring-1 ring-gray-100 hover:ring-brand-pink-300 transition">
-              <span class="block text-[10px] leading-tight text-gray-500 text-center truncate w-full">Sugi&#x27;s Sketches</span>
+              <span class="aa-name text-[10px] leading-tight text-gray-500 text-center w-full">Sugi&#x27;s Sketches</span>
             </a>
             <a href="https://www.instagram.com/degenmona" target="_blank" title="Sumi-e" aria-label="Sumi-e" class="shrink-0 flex flex-col items-center gap-1 w-16 sm:w-20">
               <img src="images/artist-alley/sumi-e.webp" alt="Sumi-e" class="w-16 h-16 sm:w-20 sm:h-20 rounded-full object-cover ring-1 ring-gray-100 hover:ring-brand-pink-300 transition">
-              <span class="block text-[10px] leading-tight text-gray-500 text-center truncate w-full">Sumi-e</span>
+              <span class="aa-name text-[10px] leading-tight text-gray-500 text-center w-full">Sumi-e</span>
             </a>
             <a href="https://www.instagram.com/the_arachne_moonstore?igsh=MW91YTJkdmQ2NG4yeg==" target="_blank" title="TAM Crochet" aria-label="TAM Crochet" class="shrink-0 flex flex-col items-center gap-1 w-16 sm:w-20">
               <img src="images/artist-alley/tam-crochet.webp" alt="TAM Crochet" class="w-16 h-16 sm:w-20 sm:h-20 rounded-full object-cover ring-1 ring-gray-100 hover:ring-brand-pink-300 transition">
-              <span class="block text-[10px] leading-tight text-gray-500 text-center truncate w-full">TAM Crochet</span>
+              <span class="aa-name text-[10px] leading-tight text-gray-500 text-center w-full">TAM Crochet</span>
             </a>
             <a href="https://www.instagram.com/trona_draws?igsh=MW0yc2F2aGo3Z3BodA==" target="_blank" title="Trona" aria-label="Trona" class="shrink-0 flex flex-col items-center gap-1 w-16 sm:w-20">
               <img src="images/artist-alley/patrona.webp" alt="Trona" class="w-16 h-16 sm:w-20 sm:h-20 rounded-full object-cover ring-1 ring-gray-100 hover:ring-brand-pink-300 transition">
-              <span class="block text-[10px] leading-tight text-gray-500 text-center truncate w-full">Trona</span>
+              <span class="aa-name text-[10px] leading-tight text-gray-500 text-center w-full">Trona</span>
             </a>
             <a href="https://www.instagram.com/zodingdi" target="_blank" title="zodingdi" aria-label="zodingdi" class="shrink-0 flex flex-col items-center gap-1 w-16 sm:w-20">
               <img src="images/artist-alley/zodingdi.webp" alt="zodingdi" class="w-16 h-16 sm:w-20 sm:h-20 rounded-full object-cover ring-1 ring-gray-100 hover:ring-brand-pink-300 transition">
-              <span class="block text-[10px] leading-tight text-gray-500 text-center truncate w-full">zodingdi</span>
+              <span class="aa-name text-[10px] leading-tight text-gray-500 text-center w-full">zodingdi</span>
             </a>
             <a href="https://www.instagram.com/kalyani.symphonies/" target="_blank" title="Akiro" aria-label="Akiro" class="shrink-0 flex flex-col items-center gap-1 w-16 sm:w-20">
               <img src="images/artist-alley/akiro.webp" alt="Akiro" class="w-16 h-16 sm:w-20 sm:h-20 rounded-full object-cover ring-1 ring-gray-100 hover:ring-brand-pink-300 transition">
-              <span class="block text-[10px] leading-tight text-gray-500 text-center truncate w-full">Akiro</span>
+              <span class="aa-name text-[10px] leading-tight text-gray-500 text-center w-full">Akiro</span>
             </a>
             <a href="https://www.instagram.com/brocc0liya/" target="_blank" title="Anmitsu" aria-label="Anmitsu" class="shrink-0 flex flex-col items-center gap-1 w-16 sm:w-20">
               <img src="images/artist-alley/anmitsu.webp" alt="Anmitsu" class="w-16 h-16 sm:w-20 sm:h-20 rounded-full object-cover ring-1 ring-gray-100 hover:ring-brand-pink-300 transition">
-              <span class="block text-[10px] leading-tight text-gray-500 text-center truncate w-full">Anmitsu</span>
+              <span class="aa-name text-[10px] leading-tight text-gray-500 text-center w-full">Anmitsu</span>
             </a>
             <a href="https://www.instagram.com/ann.artarchive?igsh=YjVtcm0yZ2F5eWRw" target="_blank" title="ANN ART ARCHIVE" aria-label="ANN ART ARCHIVE" class="shrink-0 flex flex-col items-center gap-1 w-16 sm:w-20">
               <img src="images/artist-alley/ann-art-archive.webp" alt="ANN ART ARCHIVE" class="w-16 h-16 sm:w-20 sm:h-20 rounded-full object-cover ring-1 ring-gray-100 hover:ring-brand-pink-300 transition">
-              <span class="block text-[10px] leading-tight text-gray-500 text-center truncate w-full">ANN ART ARCHIVE</span>
+              <span class="aa-name text-[10px] leading-tight text-gray-500 text-center w-full">ANN ART ARCHIVE</span>
             </a>
             <a href="https://www.instagram.com/ansakeys/" target="_blank" title="Ansakeys" aria-label="Ansakeys" class="shrink-0 flex flex-col items-center gap-1 w-16 sm:w-20">
               <img src="images/artist-alley/ansakeys.webp" alt="Ansakeys" class="w-16 h-16 sm:w-20 sm:h-20 rounded-full object-cover ring-1 ring-gray-100 hover:ring-brand-pink-300 transition">
-              <span class="block text-[10px] leading-tight text-gray-500 text-center truncate w-full">Ansakeys</span>
+              <span class="aa-name text-[10px] leading-tight text-gray-500 text-center w-full">Ansakeys</span>
             </a>
             <a href="https://www.instagram.com/artofsai" target="_blank" title="Art of Sai" aria-label="Art of Sai" class="shrink-0 flex flex-col items-center gap-1 w-16 sm:w-20">
               <img src="images/artist-alley/art-of-sai.webp" alt="Art of Sai" class="w-16 h-16 sm:w-20 sm:h-20 rounded-full object-cover ring-1 ring-gray-100 hover:ring-brand-pink-300 transition">
-              <span class="block text-[10px] leading-tight text-gray-500 text-center truncate w-full">Art of Sai</span>
+              <span class="aa-name text-[10px] leading-tight text-gray-500 text-center w-full">Art of Sai</span>
             </a>
             <a href="https://www.instagram.com/artbybala213/" target="_blank" title="ARTBYBALA213" aria-label="ARTBYBALA213" class="shrink-0 flex flex-col items-center gap-1 w-16 sm:w-20">
               <img src="images/artist-alley/artbybala213.webp" alt="ARTBYBALA213" class="w-16 h-16 sm:w-20 sm:h-20 rounded-full object-cover ring-1 ring-gray-100 hover:ring-brand-pink-300 transition">
-              <span class="block text-[10px] leading-tight text-gray-500 text-center truncate w-full">ARTBYBALA213</span>
+              <span class="aa-name text-[10px] leading-tight text-gray-500 text-center w-full">ARTBYBALA213</span>
             </a>
             <a href="https://www.instagram.com/axis.williams" target="_blank" title="Axis Williams" aria-label="Axis Williams" class="shrink-0 flex flex-col items-center gap-1 w-16 sm:w-20">
               <img src="images/artist-alley/axis-williams.webp" alt="Axis Williams" class="w-16 h-16 sm:w-20 sm:h-20 rounded-full object-cover ring-1 ring-gray-100 hover:ring-brand-pink-300 transition">
-              <span class="block text-[10px] leading-tight text-gray-500 text-center truncate w-full">Axis Williams</span>
+              <span class="aa-name text-[10px] leading-tight text-gray-500 text-center w-full">Axis Williams</span>
             </a>
             <a href="https://www.instagram.com/kunthamdotin/" target="_blank" title="Baka Boutique" aria-label="Baka Boutique" class="shrink-0 flex flex-col items-center gap-1 w-16 sm:w-20">
               <img src="images/artist-alley/baka-boutique.webp" alt="Baka Boutique" class="w-16 h-16 sm:w-20 sm:h-20 rounded-full object-cover ring-1 ring-gray-100 hover:ring-brand-pink-300 transition">
-              <span class="block text-[10px] leading-tight text-gray-500 text-center truncate w-full">Baka Boutique</span>
+              <span class="aa-name text-[10px] leading-tight text-gray-500 text-center w-full">Baka Boutique</span>
             </a>
             <a href="https://santoshmahale.com/" target="_blank" title="Birdseye Tokyo" aria-label="Birdseye Tokyo" class="shrink-0 flex flex-col items-center gap-1 w-16 sm:w-20">
               <img src="images/artist-alley/birdseye-tokyo.webp" alt="Birdseye Tokyo" class="w-16 h-16 sm:w-20 sm:h-20 rounded-full object-cover ring-1 ring-gray-100 hover:ring-brand-pink-300 transition">
-              <span class="block text-[10px] leading-tight text-gray-500 text-center truncate w-full">Birdseye Tokyo</span>
+              <span class="aa-name text-[10px] leading-tight text-gray-500 text-center w-full">Birdseye Tokyo</span>
             </a>
             <a href="https://www.instagram.com/chaos_in_my_bag" target="_blank" title="Chaos In My Bag" aria-label="Chaos In My Bag" class="shrink-0 flex flex-col items-center gap-1 w-16 sm:w-20">
               <img src="images/artist-alley/chaos-in-my-bag.webp" alt="Chaos In My Bag" class="w-16 h-16 sm:w-20 sm:h-20 rounded-full object-cover ring-1 ring-gray-100 hover:ring-brand-pink-300 transition">
-              <span class="block text-[10px] leading-tight text-gray-500 text-center truncate w-full">Chaos In My Bag</span>
+              <span class="aa-name text-[10px] leading-tight text-gray-500 text-center w-full">Chaos In My Bag</span>
             </a>
             <a href="https://www.instagram.com/crochet.by.aishwarya/" target="_blank" title="Chibi Crochet" aria-label="Chibi Crochet" class="shrink-0 flex flex-col items-center gap-1 w-16 sm:w-20">
               <img src="images/artist-alley/chibi-crochet.webp" alt="Chibi Crochet" class="w-16 h-16 sm:w-20 sm:h-20 rounded-full object-cover ring-1 ring-gray-100 hover:ring-brand-pink-300 transition">
-              <span class="block text-[10px] leading-tight text-gray-500 text-center truncate w-full">Chibi Crochet</span>
+              <span class="aa-name text-[10px] leading-tight text-gray-500 text-center w-full">Chibi Crochet</span>
             </a>
             <a href="https://www.instagram.com/cozylambstudio?igsh=MTBpampoNHFwZzZnMQ==" target="_blank" title="COZYLAMBSTUDIO" aria-label="COZYLAMBSTUDIO" class="shrink-0 flex flex-col items-center gap-1 w-16 sm:w-20">
               <img src="images/artist-alley/cozylambstudio.webp" alt="COZYLAMBSTUDIO" class="w-16 h-16 sm:w-20 sm:h-20 rounded-full object-cover ring-1 ring-gray-100 hover:ring-brand-pink-300 transition">
-              <span class="block text-[10px] leading-tight text-gray-500 text-center truncate w-full">COZYLAMBSTUDIO</span>
+              <span class="aa-name text-[10px] leading-tight text-gray-500 text-center w-full">COZYLAMBSTUDIO</span>
             </a>
             <a href="https://www.instagram.com/cyevee" target="_blank" title="CYEVEE" aria-label="CYEVEE" class="shrink-0 flex flex-col items-center gap-1 w-16 sm:w-20">
               <img src="images/artist-alley/cyevee.webp" alt="CYEVEE" class="w-16 h-16 sm:w-20 sm:h-20 rounded-full object-cover ring-1 ring-gray-100 hover:ring-brand-pink-300 transition">
-              <span class="block text-[10px] leading-tight text-gray-500 text-center truncate w-full">CYEVEE</span>
+              <span class="aa-name text-[10px] leading-tight text-gray-500 text-center w-full">CYEVEE</span>
             </a>
             <a href="https://www.instagram.com/dizondraws/" target="_blank" title="DizonDraws" aria-label="DizonDraws" class="shrink-0 flex flex-col items-center gap-1 w-16 sm:w-20">
               <img src="images/artist-alley/dizondraws.webp" alt="DizonDraws" class="w-16 h-16 sm:w-20 sm:h-20 rounded-full object-cover ring-1 ring-gray-100 hover:ring-brand-pink-300 transition">
-              <span class="block text-[10px] leading-tight text-gray-500 text-center truncate w-full">DizonDraws</span>
+              <span class="aa-name text-[10px] leading-tight text-gray-500 text-center w-full">DizonDraws</span>
             </a>
             <a href="https://www.instagram.com/enpitsu_hito/" target="_blank" title="Enpitsu Hito" aria-label="Enpitsu Hito" class="shrink-0 flex flex-col items-center gap-1 w-16 sm:w-20">
               <img src="images/artist-alley/enpitsu-hito.webp" alt="Enpitsu Hito" class="w-16 h-16 sm:w-20 sm:h-20 rounded-full object-cover ring-1 ring-gray-100 hover:ring-brand-pink-300 transition">
-              <span class="block text-[10px] leading-tight text-gray-500 text-center truncate w-full">Enpitsu Hito</span>
+              <span class="aa-name text-[10px] leading-tight text-gray-500 text-center w-full">Enpitsu Hito</span>
             </a>
             <a href="https://www.instagram.com/faezart21/" target="_blank" title="Er Kang Emporium" aria-label="Er Kang Emporium" class="shrink-0 flex flex-col items-center gap-1 w-16 sm:w-20">
               <img src="images/artist-alley/er-kang-emporium.webp" alt="Er Kang Emporium" class="w-16 h-16 sm:w-20 sm:h-20 rounded-full object-cover ring-1 ring-gray-100 hover:ring-brand-pink-300 transition">
-              <span class="block text-[10px] leading-tight text-gray-500 text-center truncate w-full">Er Kang Emporium</span>
+              <span class="aa-name text-[10px] leading-tight text-gray-500 text-center w-full">Er Kang Emporium</span>
             </a>
             <a href="https://jaxcomm.carrd.co/" target="_blank" title="Gombe Aata" aria-label="Gombe Aata" class="shrink-0 flex flex-col items-center gap-1 w-16 sm:w-20">
               <img src="images/artist-alley/gombe-aata.webp" alt="Gombe Aata" class="w-16 h-16 sm:w-20 sm:h-20 rounded-full object-cover ring-1 ring-gray-100 hover:ring-brand-pink-300 transition">
-              <span class="block text-[10px] leading-tight text-gray-500 text-center truncate w-full">Gombe Aata</span>
+              <span class="aa-name text-[10px] leading-tight text-gray-500 text-center w-full">Gombe Aata</span>
             </a>
             <a href="https://www.instagram.com/hina.chan.26/" target="_blank" title="Hina.Chan" aria-label="Hina.Chan" class="shrink-0 flex flex-col items-center gap-1 w-16 sm:w-20">
               <img src="images/artist-alley/hina-chan.webp" alt="Hina.Chan" class="w-16 h-16 sm:w-20 sm:h-20 rounded-full object-cover ring-1 ring-gray-100 hover:ring-brand-pink-300 transition">
-              <span class="block text-[10px] leading-tight text-gray-500 text-center truncate w-full">Hina.Chan</span>
+              <span class="aa-name text-[10px] leading-tight text-gray-500 text-center w-full">Hina.Chan</span>
             </a>
             <a href="https://www.instagram.com/ikiho_/" target="_blank" title="IKIHO" aria-label="IKIHO" class="shrink-0 flex flex-col items-center gap-1 w-16 sm:w-20">
               <img src="images/artist-alley/ikiho.webp" alt="IKIHO" class="w-16 h-16 sm:w-20 sm:h-20 rounded-full object-cover ring-1 ring-gray-100 hover:ring-brand-pink-300 transition">
-              <span class="block text-[10px] leading-tight text-gray-500 text-center truncate w-full">IKIHO</span>
+              <span class="aa-name text-[10px] leading-tight text-gray-500 text-center w-full">IKIHO</span>
             </a>
             <a href="https://www.instagram.com/intricats_art/" target="_blank" title="intricats" aria-label="intricats" class="shrink-0 flex flex-col items-center gap-1 w-16 sm:w-20">
               <img src="images/artist-alley/intricats.webp" alt="intricats" class="w-16 h-16 sm:w-20 sm:h-20 rounded-full object-cover ring-1 ring-gray-100 hover:ring-brand-pink-300 transition">
-              <span class="block text-[10px] leading-tight text-gray-500 text-center truncate w-full">intricats</span>
+              <span class="aa-name text-[10px] leading-tight text-gray-500 text-center w-full">intricats</span>
             </a>
             <a href="https://www.instagram.com/jayashree212/" target="_blank" title="Jayashree V" aria-label="Jayashree V" class="shrink-0 flex flex-col items-center gap-1 w-16 sm:w-20">
               <img src="images/artist-alley/jayashree-v.webp" alt="Jayashree V" class="w-16 h-16 sm:w-20 sm:h-20 rounded-full object-cover ring-1 ring-gray-100 hover:ring-brand-pink-300 transition">
-              <span class="block text-[10px] leading-tight text-gray-500 text-center truncate w-full">Jayashree V</span>
+              <span class="aa-name text-[10px] leading-tight text-gray-500 text-center w-full">Jayashree V</span>
             </a>
             <a href="https://www.instagram.com/jellykins.store?igsh=MXd5NndhcjF1OWRrbQ==" target="_blank" title="jellykins" aria-label="jellykins" class="shrink-0 flex flex-col items-center gap-1 w-16 sm:w-20">
               <img src="images/artist-alley/jellykins.webp" alt="jellykins" class="w-16 h-16 sm:w-20 sm:h-20 rounded-full object-cover ring-1 ring-gray-100 hover:ring-brand-pink-300 transition">
-              <span class="block text-[10px] leading-tight text-gray-500 text-center truncate w-full">jellykins</span>
+              <span class="aa-name text-[10px] leading-tight text-gray-500 text-center w-full">jellykins</span>
             </a>
             <a href="https://www.instagram.com/kuroforest.art/" target="_blank" title="kuro forest" aria-label="kuro forest" class="shrink-0 flex flex-col items-center gap-1 w-16 sm:w-20">
               <img src="images/artist-alley/kuro-forest.webp" alt="kuro forest" class="w-16 h-16 sm:w-20 sm:h-20 rounded-full object-cover ring-1 ring-gray-100 hover:ring-brand-pink-300 transition">
-              <span class="block text-[10px] leading-tight text-gray-500 text-center truncate w-full">kuro forest</span>
+              <span class="aa-name text-[10px] leading-tight text-gray-500 text-center w-full">kuro forest</span>
             </a>
             <a href="https://www.instagram.com/lemony_artshake/" target="_blank" title="Lemony Artshake (Elumi)" aria-label="Lemony Artshake (Elumi)" class="shrink-0 flex flex-col items-center gap-1 w-16 sm:w-20">
               <img src="images/artist-alley/lemony-artshake.webp" alt="Lemony Artshake (Elumi)" class="w-16 h-16 sm:w-20 sm:h-20 rounded-full object-cover ring-1 ring-gray-100 hover:ring-brand-pink-300 transition">
-              <span class="block text-[10px] leading-tight text-gray-500 text-center truncate w-full">Lemony Artshake (Elumi)</span>
+              <span class="aa-name text-[10px] leading-tight text-gray-500 text-center w-full">Lemony Artshake (Elumi)</span>
             </a>
             <a href="https://www.instagram.com/_lord707_?igsh=MXdlMnBqNndndTM2MA%3D%3D&amp;utm_source=qr" target="_blank" title="Lord707" aria-label="Lord707" class="shrink-0 flex flex-col items-center gap-1 w-16 sm:w-20">
               <img src="images/artist-alley/lord707.webp" alt="Lord707" class="w-16 h-16 sm:w-20 sm:h-20 rounded-full object-cover ring-1 ring-gray-100 hover:ring-brand-pink-300 transition">
-              <span class="block text-[10px] leading-tight text-gray-500 text-center truncate w-full">Lord707</span>
+              <span class="aa-name text-[10px] leading-tight text-gray-500 text-center w-full">Lord707</span>
             </a>
             <a href="https://www.instagram.com/miniemizu/" target="_blank" title="Miniemizu" aria-label="Miniemizu" class="shrink-0 flex flex-col items-center gap-1 w-16 sm:w-20">
               <img src="images/artist-alley/miniemizu.webp" alt="Miniemizu" class="w-16 h-16 sm:w-20 sm:h-20 rounded-full object-cover ring-1 ring-gray-100 hover:ring-brand-pink-300 transition">
-              <span class="block text-[10px] leading-tight text-gray-500 text-center truncate w-full">Miniemizu</span>
+              <span class="aa-name text-[10px] leading-tight text-gray-500 text-center w-full">Miniemizu</span>
             </a>
             <a href="https://www.instagram.com/navs.art/" target="_blank" title="Navs Art" aria-label="Navs Art" class="shrink-0 flex flex-col items-center gap-1 w-16 sm:w-20">
               <img src="images/artist-alley/navs-art.webp" alt="Navs Art" class="w-16 h-16 sm:w-20 sm:h-20 rounded-full object-cover ring-1 ring-gray-100 hover:ring-brand-pink-300 transition">
-              <span class="block text-[10px] leading-tight text-gray-500 text-center truncate w-full">Navs Art</span>
+              <span class="aa-name text-[10px] leading-tight text-gray-500 text-center w-full">Navs Art</span>
             </a>
             <a href="https://www.instagram.com/oddpanel/" target="_blank" title="oddpanel" aria-label="oddpanel" class="shrink-0 flex flex-col items-center gap-1 w-16 sm:w-20">
               <img src="images/artist-alley/oddpanel.webp" alt="oddpanel" class="w-16 h-16 sm:w-20 sm:h-20 rounded-full object-cover ring-1 ring-gray-100 hover:ring-brand-pink-300 transition">
-              <span class="block text-[10px] leading-tight text-gray-500 text-center truncate w-full">oddpanel</span>
+              <span class="aa-name text-[10px] leading-tight text-gray-500 text-center w-full">oddpanel</span>
             </a>
             <a href="https://www.instagram.com/authoratish/" target="_blank" title="Orion Atelier" aria-label="Orion Atelier" class="shrink-0 flex flex-col items-center gap-1 w-16 sm:w-20">
               <img src="images/artist-alley/orion-atelier.webp" alt="Orion Atelier" class="w-16 h-16 sm:w-20 sm:h-20 rounded-full object-cover ring-1 ring-gray-100 hover:ring-brand-pink-300 transition">
-              <span class="block text-[10px] leading-tight text-gray-500 text-center truncate w-full">Orion Atelier</span>
+              <span class="aa-name text-[10px] leading-tight text-gray-500 text-center w-full">Orion Atelier</span>
             </a>
             <a href="https://www.instagram.com/patricia_the_blob/" target="_blank" title="Patricia the Blob" aria-label="Patricia the Blob" class="shrink-0 flex flex-col items-center gap-1 w-16 sm:w-20">
               <img src="images/artist-alley/patricia-the-blob.webp" alt="Patricia the Blob" class="w-16 h-16 sm:w-20 sm:h-20 rounded-full object-cover ring-1 ring-gray-100 hover:ring-brand-pink-300 transition">
-              <span class="block text-[10px] leading-tight text-gray-500 text-center truncate w-full">Patricia the Blob</span>
+              <span class="aa-name text-[10px] leading-tight text-gray-500 text-center w-full">Patricia the Blob</span>
             </a>
             <a href="https://www.instagram.com/phroggiee.e?igsh=MXU2ZWFlY3dxZ240Mg==" target="_blank" title="phroggiee.e" aria-label="phroggiee.e" class="shrink-0 flex flex-col items-center gap-1 w-16 sm:w-20">
               <img src="images/artist-alley/phroggiee-e.webp" alt="phroggiee.e" class="w-16 h-16 sm:w-20 sm:h-20 rounded-full object-cover ring-1 ring-gray-100 hover:ring-brand-pink-300 transition">
-              <span class="block text-[10px] leading-tight text-gray-500 text-center truncate w-full">phroggiee.e</span>
+              <span class="aa-name text-[10px] leading-tight text-gray-500 text-center w-full">phroggiee.e</span>
             </a>
             <a href="https://www.instagram.com/roligami/" target="_blank" title="Roligami" aria-label="Roligami" class="shrink-0 flex flex-col items-center gap-1 w-16 sm:w-20">
               <img src="images/artist-alley/roligami.webp" alt="Roligami" class="w-16 h-16 sm:w-20 sm:h-20 rounded-full object-cover ring-1 ring-gray-100 hover:ring-brand-pink-300 transition">
-              <span class="block text-[10px] leading-tight text-gray-500 text-center truncate w-full">Roligami</span>
+              <span class="aa-name text-[10px] leading-tight text-gray-500 text-center w-full">Roligami</span>
             </a>
             <a href="https://www.instagram.com/rozurin_arts?igsh=MWFkOHg3OW1maDJrYw==" target="_blank" title="Rozurin" aria-label="Rozurin" class="shrink-0 flex flex-col items-center gap-1 w-16 sm:w-20">
               <img src="images/artist-alley/rozurin.webp" alt="Rozurin" class="w-16 h-16 sm:w-20 sm:h-20 rounded-full object-cover ring-1 ring-gray-100 hover:ring-brand-pink-300 transition">
-              <span class="block text-[10px] leading-tight text-gray-500 text-center truncate w-full">Rozurin</span>
+              <span class="aa-name text-[10px] leading-tight text-gray-500 text-center w-full">Rozurin</span>
             </a>
             <a href="https://www.instagram.com/sahana_vj/" target="_blank" title="Sahana VJ" aria-label="Sahana VJ" class="shrink-0 flex flex-col items-center gap-1 w-16 sm:w-20">
               <img src="images/artist-alley/all-things-cute.webp" alt="Sahana VJ" class="w-16 h-16 sm:w-20 sm:h-20 rounded-full object-cover ring-1 ring-gray-100 hover:ring-brand-pink-300 transition">
-              <span class="block text-[10px] leading-tight text-gray-500 text-center truncate w-full">Sahana VJ</span>
+              <span class="aa-name text-[10px] leading-tight text-gray-500 text-center w-full">Sahana VJ</span>
             </a>
             <a href="https://www.instagram.com/sams_sakurapetals/" target="_blank" title="Sam&#x27;s Sakurapetals" aria-label="Sam&#x27;s Sakurapetals" class="shrink-0 flex flex-col items-center gap-1 w-16 sm:w-20">
               <img src="images/artist-alley/sam-s-sakurapetals.webp" alt="Sam&#x27;s Sakurapetals" class="w-16 h-16 sm:w-20 sm:h-20 rounded-full object-cover ring-1 ring-gray-100 hover:ring-brand-pink-300 transition">
-              <span class="block text-[10px] leading-tight text-gray-500 text-center truncate w-full">Sam&#x27;s Sakurapetals</span>
+              <span class="aa-name text-[10px] leading-tight text-gray-500 text-center w-full">Sam&#x27;s Sakurapetals</span>
             </a>
             <a href="https://www.instagram.com/satan_navi/" target="_blank" title="Satan_Navi" aria-label="Satan_Navi" class="shrink-0 flex flex-col items-center gap-1 w-16 sm:w-20">
               <img src="images/artist-alley/satan-navi.webp" alt="Satan_Navi" class="w-16 h-16 sm:w-20 sm:h-20 rounded-full object-cover ring-1 ring-gray-100 hover:ring-brand-pink-300 transition">
-              <span class="block text-[10px] leading-tight text-gray-500 text-center truncate w-full">Satan_Navi</span>
+              <span class="aa-name text-[10px] leading-tight text-gray-500 text-center w-full">Satan_Navi</span>
             </a>
             <a href="https://www.instagram.com/sep_poppo" target="_blank" title="Sep (Ichi)" aria-label="Sep (Ichi)" class="shrink-0 flex flex-col items-center gap-1 w-16 sm:w-20">
               <img src="images/artist-alley/sep-ichi.webp" alt="Sep (Ichi)" class="w-16 h-16 sm:w-20 sm:h-20 rounded-full object-cover ring-1 ring-gray-100 hover:ring-brand-pink-300 transition">
-              <span class="block text-[10px] leading-tight text-gray-500 text-center truncate w-full">Sep (Ichi)</span>
+              <span class="aa-name text-[10px] leading-tight text-gray-500 text-center w-full">Sep (Ichi)</span>
             </a>
             <a href="https://www.instagram.com/sketchwithash/" target="_blank" title="Sketch with Ash" aria-label="Sketch with Ash" class="shrink-0 flex flex-col items-center gap-1 w-16 sm:w-20">
               <img src="images/artist-alley/sketch-with-ash.webp" alt="Sketch with Ash" class="w-16 h-16 sm:w-20 sm:h-20 rounded-full object-cover ring-1 ring-gray-100 hover:ring-brand-pink-300 transition">
-              <span class="block text-[10px] leading-tight text-gray-500 text-center truncate w-full">Sketch with Ash</span>
+              <span class="aa-name text-[10px] leading-tight text-gray-500 text-center w-full">Sketch with Ash</span>
             </a>
             <a href="https://www.instagram.com/slush.box" target="_blank" title="SLUSHBOX" aria-label="SLUSHBOX" class="shrink-0 flex flex-col items-center gap-1 w-16 sm:w-20">
               <img src="images/artist-alley/slushbox.webp" alt="SLUSHBOX" class="w-16 h-16 sm:w-20 sm:h-20 rounded-full object-cover ring-1 ring-gray-100 hover:ring-brand-pink-300 transition">
-              <span class="block text-[10px] leading-tight text-gray-500 text-center truncate w-full">SLUSHBOX</span>
+              <span class="aa-name text-[10px] leading-tight text-gray-500 text-center w-full">SLUSHBOX</span>
             </a>
             <a href="https://www.instagram.com/studioinkers/" target="_blank" title="Studio Inkers!" aria-label="Studio Inkers!" class="shrink-0 flex flex-col items-center gap-1 w-16 sm:w-20">
               <img src="images/artist-alley/studio-inkers.webp" alt="Studio Inkers!" class="w-16 h-16 sm:w-20 sm:h-20 rounded-full object-cover ring-1 ring-gray-100 hover:ring-brand-pink-300 transition">
-              <span class="block text-[10px] leading-tight text-gray-500 text-center truncate w-full">Studio Inkers!</span>
+              <span class="aa-name text-[10px] leading-tight text-gray-500 text-center w-full">Studio Inkers!</span>
             </a>
             <a href="https://www.instagram.com/studiokapi_0369?igsh=MTB0Zzc3Y3VkaDZ1aw==" target="_blank" title="Studiokapi0369" aria-label="Studiokapi0369" class="shrink-0 flex flex-col items-center gap-1 w-16 sm:w-20">
               <img src="images/artist-alley/studiokapi0369.webp" alt="Studiokapi0369" class="w-16 h-16 sm:w-20 sm:h-20 rounded-full object-cover ring-1 ring-gray-100 hover:ring-brand-pink-300 transition">
-              <span class="block text-[10px] leading-tight text-gray-500 text-center truncate w-full">Studiokapi0369</span>
+              <span class="aa-name text-[10px] leading-tight text-gray-500 text-center w-full">Studiokapi0369</span>
             </a>
             <a href="https://www.instagram.com/sugi.sketches?igsh=MTVrc2QyYTRlOHJtaw==" target="_blank" title="Sugi&#x27;s Sketches" aria-label="Sugi&#x27;s Sketches" class="shrink-0 flex flex-col items-center gap-1 w-16 sm:w-20">
               <img src="images/artist-alley/sugi-s-sketches.webp" alt="Sugi&#x27;s Sketches" class="w-16 h-16 sm:w-20 sm:h-20 rounded-full object-cover ring-1 ring-gray-100 hover:ring-brand-pink-300 transition">
-              <span class="block text-[10px] leading-tight text-gray-500 text-center truncate w-full">Sugi&#x27;s Sketches</span>
+              <span class="aa-name text-[10px] leading-tight text-gray-500 text-center w-full">Sugi&#x27;s Sketches</span>
             </a>
             <a href="https://www.instagram.com/degenmona" target="_blank" title="Sumi-e" aria-label="Sumi-e" class="shrink-0 flex flex-col items-center gap-1 w-16 sm:w-20">
               <img src="images/artist-alley/sumi-e.webp" alt="Sumi-e" class="w-16 h-16 sm:w-20 sm:h-20 rounded-full object-cover ring-1 ring-gray-100 hover:ring-brand-pink-300 transition">
-              <span class="block text-[10px] leading-tight text-gray-500 text-center truncate w-full">Sumi-e</span>
+              <span class="aa-name text-[10px] leading-tight text-gray-500 text-center w-full">Sumi-e</span>
             </a>
             <a href="https://www.instagram.com/the_arachne_moonstore?igsh=MW91YTJkdmQ2NG4yeg==" target="_blank" title="TAM Crochet" aria-label="TAM Crochet" class="shrink-0 flex flex-col items-center gap-1 w-16 sm:w-20">
               <img src="images/artist-alley/tam-crochet.webp" alt="TAM Crochet" class="w-16 h-16 sm:w-20 sm:h-20 rounded-full object-cover ring-1 ring-gray-100 hover:ring-brand-pink-300 transition">
-              <span class="block text-[10px] leading-tight text-gray-500 text-center truncate w-full">TAM Crochet</span>
+              <span class="aa-name text-[10px] leading-tight text-gray-500 text-center w-full">TAM Crochet</span>
             </a>
             <a href="https://www.instagram.com/trona_draws?igsh=MW0yc2F2aGo3Z3BodA==" target="_blank" title="Trona" aria-label="Trona" class="shrink-0 flex flex-col items-center gap-1 w-16 sm:w-20">
               <img src="images/artist-alley/patrona.webp" alt="Trona" class="w-16 h-16 sm:w-20 sm:h-20 rounded-full object-cover ring-1 ring-gray-100 hover:ring-brand-pink-300 transition">
-              <span class="block text-[10px] leading-tight text-gray-500 text-center truncate w-full">Trona</span>
+              <span class="aa-name text-[10px] leading-tight text-gray-500 text-center w-full">Trona</span>
             </a>
             <a href="https://www.instagram.com/zodingdi" target="_blank" title="zodingdi" aria-label="zodingdi" class="shrink-0 flex flex-col items-center gap-1 w-16 sm:w-20">
               <img src="images/artist-alley/zodingdi.webp" alt="zodingdi" class="w-16 h-16 sm:w-20 sm:h-20 rounded-full object-cover ring-1 ring-gray-100 hover:ring-brand-pink-300 transition">
-              <span class="block text-[10px] leading-tight text-gray-500 text-center truncate w-full">zodingdi</span>
+              <span class="aa-name text-[10px] leading-tight text-gray-500 text-center w-full">zodingdi</span>
             </a>
             </div>
           </div>
@@ -1041,6 +1071,27 @@
         requestAnimationFrame(tick);
       }
       requestAnimationFrame(tick);
+    })();
+
+    // Shrink Artist Alley names that are a single word too long for the tile (e.g. COZYLAMBSTUDIO)
+    (function () {
+      const names = document.querySelectorAll('#artist-alley-scroll .aa-name');
+      function fit() {
+        names.forEach(el => {
+          el.style.fontSize = '';
+          el.style.overflowWrap = '';
+          let size = parseFloat(getComputedStyle(el).fontSize);
+          while (el.scrollWidth > el.clientWidth && size > 7.5) {
+            size -= 0.5;
+            el.style.fontSize = size + 'px';
+          }
+          // Still too wide at the smallest size: let it break across the two lines
+          if (el.scrollWidth > el.clientWidth) el.style.overflowWrap = 'anywhere';
+        });
+      }
+      window.addEventListener('load', fit);
+      let t;
+      window.addEventListener('resize', () => { clearTimeout(t); t = setTimeout(fit, 150); });
     })();
   </script>
 </body>
