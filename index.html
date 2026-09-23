@@ -37,6 +37,8 @@
       overflow: hidden;
       min-height: 2.5em;
     }
+    /* Live site: Artist Alley shows avatars only for now (names + links still visible in local previews) */
+    html:not(.is-local) #artist-alley-scroll .aa-name { display: none; }
   </style>
   <script>
     if (location.protocol === 'file:' || ['localhost', '127.0.0.1', '[::1]', ''].includes(location.hostname)) {
@@ -1072,6 +1074,16 @@
       }
       requestAnimationFrame(tick);
     })();
+
+    // Live site: strip Artist Alley links and hover names for now (kept in local previews)
+    if (!document.documentElement.classList.contains('is-local')) {
+      document.querySelectorAll('#artist-alley-scroll a').forEach(a => {
+        a.removeAttribute('href');
+        a.removeAttribute('target');
+        a.removeAttribute('title');
+        a.removeAttribute('aria-label');
+      });
+    }
 
     // Shrink Artist Alley names that are a single word too long for the tile (e.g. COZYLAMBSTUDIO)
     (function () {
