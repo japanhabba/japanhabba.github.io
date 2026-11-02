@@ -39,6 +39,15 @@
     }
     /* Live site: Artist Alley shows avatars only for now (names + links still visible in local previews) */
     html:not(.is-local) #artist-alley-scroll .aa-name { display: none; }
+    /* KonfHub poster rows and FAQ */
+    .poster-row { scroll-snap-type: x mandatory; scrollbar-width: thin; scrollbar-color: #DB2777 #FCE7F3; }
+    .poster-row > * { scroll-snap-align: start; }
+    .poster-row img, .poster-grid img { height: auto; }
+    .faq summary { list-style: none; }
+    .faq summary::-webkit-details-marker { display: none; }
+    .faq summary::after { content: '+'; float: right; color: #DB2777; font-weight: 600; }
+    .faq details[open] summary::after { content: '\2212'; }
+    .bullets { list-style: disc; padding-left: 1.25rem; }
   </style>
   <script>
     if (location.protocol === 'file:' || ['localhost', '127.0.0.1', '[::1]', ''].includes(location.hostname)) {
@@ -59,6 +68,8 @@
       <!-- Desktop Links -->
       <div class="hidden md:flex items-center gap-8 text-sm text-gray-600">
         <a href="https://konfhub.com/japan-habba-2027" target="_blank" rel="noopener" class="hover:text-brand-pink-600 transition">Tickets</a>
+        <a href="#habba-live" class="hover:text-brand-pink-600 transition">Habba Live</a>
+        <a href="#faq" class="hover:text-brand-pink-600 transition">FAQ</a>
         <a href="#video" class="hover:text-brand-pink-600 transition">Video</a>
         <a href="#gallery" class="hover:text-brand-pink-600 transition">Gallery</a>
         <a href="#sponsorship" class="hover:text-brand-pink-600 transition">Sponsorship</a>
@@ -79,6 +90,8 @@
     <!-- Mobile Dropdown Menu -->
     <div id="mobile-menu" class="hidden md:hidden bg-white border-b border-gray-100 px-6 py-4 space-y-3">
       <a href="https://konfhub.com/japan-habba-2027" target="_blank" rel="noopener" class="block text-sm text-gray-600 hover:text-brand-pink-600 transition">Tickets</a>
+      <a href="#habba-live" class="block text-sm text-gray-600 hover:text-brand-pink-600 transition">Habba Live</a>
+      <a href="#faq" class="block text-sm text-gray-600 hover:text-brand-pink-600 transition">FAQ</a>
       <a href="#video" class="block text-sm text-gray-600 hover:text-brand-pink-600 transition">Video</a>
       <a href="#gallery" class="block text-sm text-gray-600 hover:text-brand-pink-600 transition">Gallery</a>
       <a href="#sponsorship" class="block text-sm text-gray-600 hover:text-brand-pink-600 transition">Sponsorship</a>
@@ -133,6 +146,139 @@
         <a href="https://chat.whatsapp.com/LK1a5IY4JYOFFztgeli7HM" target="_blank" rel="noopener" class="hover:text-brand-pink-600 transition" title="WhatsApp" aria-label="WhatsApp">
           <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.149-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.173.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.36-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.887-9.885 9.887m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
         </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- About (from KonfHub) -->
+  <section id="what-is" class="px-6 py-16 border-t border-gray-100">
+    <div class="max-w-3xl mx-auto">
+      <h2 class="text-xl font-semibold text-gray-900 text-center mb-6">What is Japan Habba?</h2>
+      <p class="text-gray-600 leading-relaxed">
+        Japan Habba is India's only Mega Japan event. The 2027 edition is at Chamara Vajra, Bengaluru. Organised by the Japan Habba Society since 2008, the event brings together performing artists, exhibitors, cosplayers, food vendors, and fans of Japanese culture for two days of celebrations.
+      </p>
+      <p class="mt-4 text-gray-600 leading-relaxed">
+        Japan Habba 2027 is the 21st edition, scheduled for January 9&ndash;10, 2027. With over 25,000 expected attendees, 150 exhibitors, 40+ international guests, and day-long performances across 5 stages, it is the definitive Japanese culture event in India.
+      </p>
+
+      <h3 class="mt-8 text-sm font-semibold text-gray-900">Get ready to experience:</h3>
+      <ul class="bullets mt-3 space-y-2 text-sm text-gray-600 text-left leading-relaxed">
+        <li>Traditional experiences like Yukata wearing, Japanese calligraphy, samurai workshops, and much more!</li>
+        <li>An expo with over 150+ booths, cutting across Japanese culture in all its forms</li>
+        <li>An authentic and expansive Japanese food court</li>
+        <li>Japanese products and only authentic, licensed anime merchandise</li>
+        <li>India's largest vetted artist alley with a strict no AI and dropshipping policy</li>
+        <li>The Hobby Zone, featuring communities such as Plamo India, Bangalore Card Show, India-39 and Shin Beyblade Kommunity</li>
+        <li>Habba Specials: special guests that span everything from Samurai Culture to Voice Acting</li>
+        <li>Musical and dance performances on the Butai, our flagship stage</li>
+        <li>Fan Panels, workshops and contests on our Panels &amp; Workshops Stage</li>
+        <li>Hands-on traditional and samurai workshops at the Dojo</li>
+        <li>Day Stage takes you behind the scenes with international anime, manga and video game industry creative guests</li>
+        <li>The Versus Festival, back after 2 years in its full format, featuring Street Fighter 6, Super Smash Bros. Ultimate, UNDER NIGHT IN-BIRTH II Sys:Celes and Pok&eacute;mon Champions!</li>
+      </ul>
+    </div>
+    <div class="max-w-5xl mx-auto mt-8">
+      <div class="poster-row flex gap-4 overflow-x-auto pb-4">
+          <img src="images/konfhub/about-01.png" alt="100+ experiences: the beauty of traditional Japan" loading="lazy" class="w-64 sm:w-72 shrink-0 rounded-xl border border-gray-100">
+          <img src="images/konfhub/about-02.png" alt="Paradise for anime fans: cosplay, anime quiz, official merch, fan panels" loading="lazy" class="w-64 sm:w-72 shrink-0 rounded-xl border border-gray-100">
+          <img src="images/konfhub/about-03.png" alt="10+ A-lister artists" loading="lazy" class="w-64 sm:w-72 shrink-0 rounded-xl border border-gray-100">
+          <img src="images/konfhub/about-04.png" alt="35+ authentic Japanese food court, 40+ Artist Alley, Hobby Area" loading="lazy" class="w-64 sm:w-72 shrink-0 rounded-xl border border-gray-100">
+          <img src="images/konfhub/about-05.png" alt="The Versus Festival: India's largest esports event" loading="lazy" class="w-64 sm:w-72 shrink-0 rounded-xl border border-gray-100">
+      </div>
+    </div>
+  </section>
+
+  <!-- Habba Specials & Habba Live (from KonfHub) -->
+  <section id="habba-live" class="px-6 py-16 border-t border-gray-100">
+    <div class="max-w-3xl mx-auto">
+      <h2 class="text-xl font-semibold text-gray-900 text-center mb-6">Habba Specials &amp; Habba Live</h2>
+      <h3 class="text-sm font-semibold text-gray-900">What are Habba Specials?</h3>
+      <p class="mt-2 text-gray-600 leading-relaxed">
+        Unique guests from Japan, integrated right into the main Japan Habba programming! No additional purchase necessary.
+      </p>
+      <h3 class="mt-6 text-sm font-semibold text-gray-900">What is Habba Live?</h3>
+      <p class="mt-2 text-gray-600 leading-relaxed">
+        A brand new project, Habba Live is a flagship concert event from 6 PM &ndash; 10 PM, held at the same venue as Japan Habba. The line-up of Habba Live includes professional voice actors (seiyuu), anime song singers, idols, VSynth performers, game musicians, and more! Access to Habba Live requires the new &ldquo;Japan Habba + Habba Live&rdquo; ticket, which includes access to Japan Habba on the same day for free.
+      </p>
+      <h3 class="mt-6 text-sm font-semibold text-gray-900">Meet &amp; Greet</h3>
+      <p class="mt-2 text-gray-600 leading-relaxed">
+        Meet some of our guests up close. Meet &amp; Greet passes are sold separately and aren't on sale yet.
+      </p>
+    </div>
+    <div class="max-w-5xl mx-auto mt-8">
+      <div class="poster-row flex gap-4 overflow-x-auto pb-4">
+          <img src="images/konfhub/about-06.png" alt="Habba Specials: samurai, voice actors, anime studios, VTubers and more" loading="lazy" class="w-64 sm:w-72 shrink-0 rounded-xl border border-gray-100">
+          <img src="images/konfhub/about-07.png" alt="Habba Live Saturday line-up (6-10 PM)" loading="lazy" class="w-64 sm:w-72 shrink-0 rounded-xl border border-gray-100">
+          <img src="images/konfhub/about-08.png" alt="Habba Live Sunday line-up (6-10 PM)" loading="lazy" class="w-64 sm:w-72 shrink-0 rounded-xl border border-gray-100">
+          <img src="images/konfhub/about-09.png" alt="Habba Live seating layout and prices" loading="lazy" class="w-64 sm:w-72 shrink-0 rounded-xl border border-gray-100">
+          <img src="images/konfhub/about-10.png" alt="Meet and Greet guests" loading="lazy" class="w-64 sm:w-72 shrink-0 rounded-xl border border-gray-100">
+      </div>
+    </div>
+  </section>
+
+  <!-- Tickets & FAQ (from KonfHub) -->
+  <section id="tickets" class="px-6 py-16 border-t border-gray-100">
+    <div class="max-w-3xl mx-auto">
+      <h2 class="text-xl font-semibold text-gray-900 text-center mb-2">Tickets</h2>
+      <p class="text-sm text-gray-500 text-center">Chamara Vajra, Jayamahal Main Road, Bengaluru &middot; Jan 9, 9:00 AM &ndash; Jan 10, 10:00 PM</p>
+      <div class="poster-grid mt-8 grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <img src="images/konfhub/about-11.png" alt="Japan Habba (exhibition only) ticket inclusions" loading="lazy" class="w-full rounded-xl border border-gray-100">
+        <img src="images/konfhub/about-12.png" alt="Japan Habba + Habba Live (exhibition and concert) ticket inclusions" loading="lazy" class="w-full rounded-xl border border-gray-100">
+      </div>
+      <div class="mt-8 text-center">
+        <a href="https://konfhub.com/japan-habba-2027" target="_blank" rel="noopener" class="inline-block rounded-md bg-brand-pink-600 hover:bg-brand-pink-700 px-6 py-3 text-sm font-semibold text-white transition">Get Tickets on KonfHub</a>
+      </div>
+
+      <h2 id="faq" class="mt-16 text-xl font-semibold text-gray-900 text-center mb-6">Frequently Asked Questions</h2>
+      <div class="faq divide-y border-t border-b text-left">
+        <details class="py-4">
+          <summary class="cursor-pointer text-sm font-semibold text-gray-900">Is there an age limit?</summary>
+          <p class="mt-2 text-sm text-gray-600 leading-relaxed">Japan Habba is open to all ages.</p>
+        </details>
+        <details class="py-4">
+          <summary class="cursor-pointer text-sm font-semibold text-gray-900">Do children need tickets?</summary>
+          <p class="mt-2 text-sm text-gray-600 leading-relaxed">Children ages 3&ndash;10 need a Rs. 50 exhibition ticket (covers both days). Children below 3 are free for the exhibition. Concert requires a full ticket regardless of age.</p>
+        </details>
+        <details class="py-4">
+          <summary class="cursor-pointer text-sm font-semibold text-gray-900">Can I upgrade from an Exhibition ticket to a Concert ticket later?</summary>
+          <p class="mt-2 text-sm text-gray-600 leading-relaxed">No. Tickets can't be exchanged or upgraded after purchase. Concert tickets already include exhibition access. If you want the concert experience, buy the concert ticket directly.</p>
+        </details>
+        <details class="py-4">
+          <summary class="cursor-pointer text-sm font-semibold text-gray-900">Can I attend only the concert without the exhibition?</summary>
+          <p class="mt-2 text-sm text-gray-600 leading-relaxed">No. Concert tickets include exhibition access by default. There's no concert-only ticket.</p>
+        </details>
+        <details class="py-4">
+          <summary class="cursor-pointer text-sm font-semibold text-gray-900">Can I buy tickets for both days separately instead of the Both Days pass?</summary>
+          <p class="mt-2 text-sm text-gray-600 leading-relaxed">Yes. You can buy Day 1 and Day 2 individually. The Both Days pass is priced at exactly 2x the single-day price (no discount). It's a convenience option.</p>
+        </details>
+        <details class="py-4">
+          <summary class="cursor-pointer text-sm font-semibold text-gray-900">Is the ticket price inclusive of GST?</summary>
+          <p class="mt-2 text-sm text-gray-600 leading-relaxed">Yes. All listed prices are inclusive of GST. A platform processing fee of 4.5% + GST is added at checkout (e.g. ~Rs. 25 on a Rs. 499 ticket). The total payable amount is shown before payment confirmation.</p>
+        </details>
+        <details class="py-4">
+          <summary class="cursor-pointer text-sm font-semibold text-gray-900">What is the refund policy?</summary>
+          <p class="mt-2 text-sm text-gray-600 leading-relaxed">All ticket sales are final and non-refundable. Refunds will only be issued if the event is cancelled in full by the organizers. No refunds for partial cancellations, lineup changes, or schedule modifications.</p>
+        </details>
+        <details class="py-4">
+          <summary class="cursor-pointer text-sm font-semibold text-gray-900">How can I make a group booking?</summary>
+          <p class="mt-2 text-sm text-gray-600 leading-relaxed">Email <a href="mailto:ticketing@japanhabba.org" class="text-brand-pink-600 hover:underline">ticketing@japanhabba.org</a> and our team will assist you.</p>
+        </details>
+        <details class="py-4">
+          <summary class="cursor-pointer text-sm font-semibold text-gray-900">I pre-registered for Japan Habba. Do I still need a ticket?</summary>
+          <p class="mt-2 text-sm text-gray-600 leading-relaxed">Yes. Pre-registration was a survey to measure interest. It doesn't guarantee entry or reserve a ticket. You still need to purchase a ticket.</p>
+        </details>
+        <details class="py-4">
+          <summary class="cursor-pointer text-sm font-semibold text-gray-900">What languages are events in?</summary>
+          <p class="mt-2 text-sm text-gray-600 leading-relaxed">Primarily English and Japanese. Some activities will be in Kannada or other Indian languages.</p>
+        </details>
+        <details class="py-4">
+          <summary class="cursor-pointer text-sm font-semibold text-gray-900">Is parking available?</summary>
+          <p class="mt-2 text-sm text-gray-600 leading-relaxed">Parking is limited and first-come, first-served. The organizers are not responsible for vehicle safety.</p>
+        </details>
+        <details class="py-4">
+          <summary class="cursor-pointer text-sm font-semibold text-gray-900">How do I contact you for ticketing issues?</summary>
+          <p class="mt-2 text-sm text-gray-600 leading-relaxed">Email <a href="mailto:ticketing@japanhabba.org" class="text-brand-pink-600 hover:underline">ticketing@japanhabba.org</a>. We respond within 2 business days.</p>
+        </details>
       </div>
     </div>
   </section>
