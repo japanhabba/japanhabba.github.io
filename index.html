@@ -47,7 +47,6 @@
     .faq summary::-webkit-details-marker { display: none; }
     .faq summary::after { content: '+'; float: right; color: #DB2777; font-weight: 600; }
     .faq details[open] summary::after { content: '\2212'; }
-    .bullets { list-style: disc; padding-left: 1.25rem; }
   </style>
   <script>
     if (location.protocol === 'file:' || ['localhost', '127.0.0.1', '[::1]', ''].includes(location.hostname)) {
@@ -68,9 +67,9 @@
       <!-- Desktop Links -->
       <div class="hidden md:flex items-center gap-8 text-sm text-gray-600">
         <a href="https://konfhub.com/japan-habba-2027" target="_blank" rel="noopener" class="hover:text-brand-pink-600 transition">Tickets</a>
+        <a href="#video" class="hover:text-brand-pink-600 transition">Video</a>
         <a href="#habba-live" class="hover:text-brand-pink-600 transition">Habba Live</a>
         <a href="#faq" class="hover:text-brand-pink-600 transition">FAQ</a>
-        <a href="#video" class="hover:text-brand-pink-600 transition">Video</a>
         <a href="#gallery" class="hover:text-brand-pink-600 transition">Gallery</a>
         <a href="#sponsorship" class="hover:text-brand-pink-600 transition">Sponsorship</a>
         <a href="#supporters" class="hover:text-brand-pink-600 transition">Supporters</a>
@@ -90,9 +89,9 @@
     <!-- Mobile Dropdown Menu -->
     <div id="mobile-menu" class="hidden md:hidden bg-white border-b border-gray-100 px-6 py-4 space-y-3">
       <a href="https://konfhub.com/japan-habba-2027" target="_blank" rel="noopener" class="block text-sm text-gray-600 hover:text-brand-pink-600 transition">Tickets</a>
+      <a href="#video" class="block text-sm text-gray-600 hover:text-brand-pink-600 transition">Video</a>
       <a href="#habba-live" class="block text-sm text-gray-600 hover:text-brand-pink-600 transition">Habba Live</a>
       <a href="#faq" class="block text-sm text-gray-600 hover:text-brand-pink-600 transition">FAQ</a>
-      <a href="#video" class="block text-sm text-gray-600 hover:text-brand-pink-600 transition">Video</a>
       <a href="#gallery" class="block text-sm text-gray-600 hover:text-brand-pink-600 transition">Gallery</a>
       <a href="#sponsorship" class="block text-sm text-gray-600 hover:text-brand-pink-600 transition">Sponsorship</a>
       <a href="#supporters" class="block text-sm text-gray-600 hover:text-brand-pink-600 transition">Supporters</a>
@@ -150,6 +149,35 @@
     </div>
   </section>
 
+  <!-- Video Section -->
+  <section id="video" class="px-6 py-16 border-t border-gray-100">
+    <div class="max-w-3xl mx-auto">
+      <h2 class="text-xl font-semibold text-gray-900 text-center mb-6">Japan Habba 2025 Aftervideo</h2>
+      <div class="relative w-full aspect-video rounded-lg overflow-hidden border border-gray-200 bg-black">
+        <iframe class="absolute inset-0 w-full h-full" src="https://www.youtube.com/embed/MEmic029WUM" title="Japan Habba Highlight Reel Video" frameborder="0" referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+      </div>
+
+      <!-- Key facts -->
+      <div class="mt-8 grid grid-cols-1 sm:grid-cols-3 gap-4">
+        <div class="rounded-xl bg-brand-pink-50 px-5 py-6 text-center">
+          <p class="text-3xl font-bold tracking-tight text-brand-pink-600 tabular-nums">15,000+</p>
+          <p class="mt-1 text-sm font-semibold text-gray-900">Real daily footfall</p>
+          <p class="mt-1 text-xs text-gray-500">3&times; for-profit anime events</p>
+        </div>
+        <div class="rounded-xl bg-brand-pink-50 px-5 py-6 text-center">
+          <p class="text-3xl font-bold tracking-tight text-brand-pink-600 tabular-nums">3M+</p>
+          <p class="mt-1 text-sm font-semibold text-gray-900">Social media impressions</p>
+          <p class="mt-1 text-xs text-gray-500">All organic: we went viral!</p>
+        </div>
+        <div class="rounded-xl bg-brand-pink-50 px-5 py-6 text-center">
+          <p class="text-3xl font-bold tracking-tight text-brand-pink-600 tabular-nums">120+</p>
+          <p class="mt-1 text-sm font-semibold text-gray-900">Exhibitors &amp; sponsors</p>
+          <p class="mt-1 text-xs text-gray-500">70% stalls sold out completely</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- About (from KonfHub) -->
   <section id="what-is" class="px-6 py-16 border-t border-gray-100">
     <div class="max-w-3xl mx-auto">
@@ -161,21 +189,6 @@
         Japan Habba 2027 is the 21st edition, scheduled for January 9&ndash;10, 2027. With over 25,000 expected attendees, 150 exhibitors, 40+ international guests, and day-long performances across 5 stages, it is the definitive Japanese culture event in India.
       </p>
 
-      <h3 class="mt-8 text-sm font-semibold text-gray-900">Get ready to experience:</h3>
-      <ul class="bullets mt-3 space-y-2 text-sm text-gray-600 text-left leading-relaxed">
-        <li>Traditional experiences like Yukata wearing, Japanese calligraphy, samurai workshops, and much more!</li>
-        <li>An expo with over 150+ booths, cutting across Japanese culture in all its forms</li>
-        <li>An authentic and expansive Japanese food court</li>
-        <li>Japanese products and only authentic, licensed anime merchandise</li>
-        <li>India's largest vetted artist alley with a strict no AI and dropshipping policy</li>
-        <li>The Hobby Zone, featuring communities such as Plamo India, Bangalore Card Show, India-39 and Shin Beyblade Kommunity</li>
-        <li>Habba Specials: special guests that span everything from Samurai Culture to Voice Acting</li>
-        <li>Musical and dance performances on the Butai, our flagship stage</li>
-        <li>Fan Panels, workshops and contests on our Panels &amp; Workshops Stage</li>
-        <li>Hands-on traditional and samurai workshops at the Dojo</li>
-        <li>Day Stage takes you behind the scenes with international anime, manga and video game industry creative guests</li>
-        <li>The Versus Festival, back after 2 years in its full format, featuring Street Fighter 6, Super Smash Bros. Ultimate, UNDER NIGHT IN-BIRTH II Sys:Celes and Pok&eacute;mon Champions!</li>
-      </ul>
     </div>
     <div class="max-w-5xl mx-auto mt-8">
       <div class="poster-row flex gap-4 overflow-x-auto pb-4">
@@ -279,35 +292,6 @@
           <summary class="cursor-pointer text-sm font-semibold text-gray-900">How do I contact you for ticketing issues?</summary>
           <p class="mt-2 text-sm text-gray-600 leading-relaxed">Email <a href="mailto:ticketing@japanhabba.org" class="text-brand-pink-600 hover:underline">ticketing@japanhabba.org</a>. We respond within 2 business days.</p>
         </details>
-      </div>
-    </div>
-  </section>
-
-  <!-- Video Section -->
-  <section id="video" class="px-6 py-16 border-t border-gray-100">
-    <div class="max-w-3xl mx-auto">
-      <h2 class="text-xl font-semibold text-gray-900 text-center mb-6">Japan Habba 2025 Aftervideo</h2>
-      <div class="relative w-full aspect-video rounded-lg overflow-hidden border border-gray-200 bg-black">
-        <iframe class="absolute inset-0 w-full h-full" src="https://www.youtube.com/embed/MEmic029WUM" title="Japan Habba Highlight Reel Video" frameborder="0" referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-      </div>
-
-      <!-- Key facts -->
-      <div class="mt-8 grid grid-cols-1 sm:grid-cols-3 gap-4">
-        <div class="rounded-xl bg-brand-pink-50 px-5 py-6 text-center">
-          <p class="text-3xl font-bold tracking-tight text-brand-pink-600 tabular-nums">15,000+</p>
-          <p class="mt-1 text-sm font-semibold text-gray-900">Real daily footfall</p>
-          <p class="mt-1 text-xs text-gray-500">3&times; for-profit anime events</p>
-        </div>
-        <div class="rounded-xl bg-brand-pink-50 px-5 py-6 text-center">
-          <p class="text-3xl font-bold tracking-tight text-brand-pink-600 tabular-nums">3M+</p>
-          <p class="mt-1 text-sm font-semibold text-gray-900">Social media impressions</p>
-          <p class="mt-1 text-xs text-gray-500">All organic: we went viral!</p>
-        </div>
-        <div class="rounded-xl bg-brand-pink-50 px-5 py-6 text-center">
-          <p class="text-3xl font-bold tracking-tight text-brand-pink-600 tabular-nums">120+</p>
-          <p class="mt-1 text-sm font-semibold text-gray-900">Exhibitors &amp; sponsors</p>
-          <p class="mt-1 text-xs text-gray-500">70% stalls sold out completely</p>
-        </div>
       </div>
     </div>
   </section>
