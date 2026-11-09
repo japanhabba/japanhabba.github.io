@@ -1,0 +1,154 @@
+/*
+  Dark mode for japanhabba.org.
+
+  The pages use a pre-built Tailwind file (output.css) with light colours baked in.
+  Instead of adding `dark:` classes to every element, this file remaps the colour
+  utilities the pages use whenever <html> has the `dark` class (set by theme.js).
+
+  If you use a new colour class on a page, add its dark version here.
+*/
+
+/* ---------- Theme toggle button (both themes) ---------- */
+.theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.25rem;
+  height: 2.25rem;
+  border-radius: 9999px;
+  color: #4B5563;
+  transition: color .15s, background-color .15s;
+}
+.theme-toggle:hover { color: #DB2777; background-color: #FDF2F8; }
+.theme-toggle:focus-visible { outline: 2px solid #EC4899; outline-offset: 2px; }
+.theme-toggle svg { width: 1.25rem; height: 1.25rem; }
+.theme-toggle .icon-sun { display: none; }
+html.dark .theme-toggle .icon-sun { display: block; }
+html.dark .theme-toggle .icon-moon { display: none; }
+html.dark .theme-toggle { color: #D1D5DB; }
+html.dark .theme-toggle:hover { color: #F472B6; background-color: rgba(236, 72, 153, .15); }
+
+/* ---------- Palette ---------- */
+html.dark {
+  color-scheme: dark;
+  --jh-bg: #121017;          /* page */
+  --jh-surface: #1C1923;     /* cards, header, modals */
+  --jh-surface-2: #26222F;   /* raised / hovered surface */
+  --jh-line: rgba(255, 255, 255, .09);
+  --jh-line-strong: rgba(255, 255, 255, .18);
+  --jh-pink-tint: rgba(236, 72, 153, .13);
+  --jh-pink-tint-strong: rgba(236, 72, 153, .22);
+  --jh-pink-line: rgba(236, 72, 153, .25);
+  --jh-pink-text: #F9A8D4;   /* pink-300 */
+  --jh-pink-accent: #F472B6; /* pink-400 */
+  background-color: var(--jh-bg);
+}
+
+/* Smooth hand-off when the user flips the toggle (class added briefly by theme.js) */
+html.theme-transition,
+html.theme-transition *,
+html.theme-transition *::before,
+html.theme-transition *::after {
+  transition: background-color .25s ease, border-color .25s ease, color .25s ease !important;
+}
+
+/* ---------- Backgrounds ---------- */
+html.dark body,
+html.dark .bg-pattern { background-color: var(--jh-bg); }
+html.dark .bg-pattern { background-image: radial-gradient(rgba(236, 72, 153, .08) 1px, transparent 1px); }
+
+html.dark .bg-white,
+html.dark .bg-\[\#FAF8F5\] { background-color: var(--jh-surface); }
+html.dark .bg-gray-50 { background-color: #17151D; }
+html.dark .bg-gray-100 { background-color: var(--jh-surface-2); }
+html.dark .hover\:bg-gray-200:hover { background-color: #332E3D; }
+html.dark .bg-gray-900 { background-color: #0B0A0F; }
+
+html.dark .bg-brand-pink-50,
+html.dark .bg-pink-50 { background-color: var(--jh-pink-tint); }
+html.dark .bg-brand-pink-50\/50 { background-color: rgba(236, 72, 153, .07); }
+html.dark .bg-brand-pink-500\/5 { background-color: rgba(236, 72, 153, .10); }
+html.dark .hover\:bg-brand-pink-100:hover { background-color: var(--jh-pink-tint-strong); }
+html.dark .bg-indigo-50 { background-color: rgba(99, 102, 241, .16); }
+html.dark .bg-amber-50 { background-color: rgba(245, 158, 11, .16); }
+html.dark .bg-red-50 { background-color: rgba(239, 68, 68, .16); }
+
+/* Keep the coloured buttons' hover states working (they'd otherwise lose to .bg-* above) */
+html.dark .hover\:bg-brand-pink-600:hover { background-color: #DB2777; }
+html.dark .hover\:bg-brand-pink-700:hover { background-color: #BE185D; }
+
+/* ---------- Text ---------- */
+html.dark body { color: #E5E7EB; }
+html.dark .text-gray-900 { color: #F3F4F6; }
+html.dark .text-gray-800 { color: #E5E7EB; }
+html.dark .text-gray-700 { color: #D1D5DB; }
+html.dark .text-gray-600 { color: #B6BAC3; }
+html.dark .text-gray-500 { color: #9CA3AF; }
+/* gray-400 / gray-300 are already light enough on a dark background */
+
+html.dark .text-brand-pink-700 { color: var(--jh-pink-text); }
+html.dark .text-brand-pink-600 { color: var(--jh-pink-accent); }
+html.dark .text-brand-indigo-800 { color: #A5B4FC; }
+html.dark .text-brand-gold-600 { color: #FBBF24; }
+html.dark .text-red-500 { color: #F87171; }
+
+/* Hover / group states, re-declared so they still beat the remapped base colours */
+html.dark .hover\:text-brand-pink-600:hover,
+html.dark .group:hover .group-hover\:text-brand-pink-600 { color: var(--jh-pink-accent); }
+html.dark .hover\:text-brand-pink-700:hover { color: var(--jh-pink-text); }
+html.dark .hover\:text-gray-600:hover,
+html.dark .hover\:text-gray-700:hover { color: #F3F4F6; }
+html.dark .hover\:text-white:hover { color: #fff; }
+
+/* ---------- Borders, rings, dividers ---------- */
+html.dark .border-gray-100 { border-color: var(--jh-line); }
+html.dark .border-gray-200 { border-color: rgba(255, 255, 255, .12); }
+html.dark .border-gray-300 { border-color: var(--jh-line-strong); }
+html.dark .hover\:border-gray-400:hover { border-color: rgba(255, 255, 255, .35); }
+html.dark .border-pink-50,
+html.dark .border-pink-100,
+html.dark .border-brand-pink-100 { border-color: var(--jh-pink-line); }
+html.dark .border-pink-100\/50,
+html.dark .border-brand-pink-100\/40 { border-color: rgba(236, 72, 153, .16); }
+html.dark .hover\:border-brand-pink-200:hover { border-color: rgba(236, 72, 153, .5); }
+html.dark .border-white { border-color: var(--jh-surface-2); }
+html.dark .divide-gray-200\/70 > :not([hidden]) ~ :not([hidden]) { border-color: var(--jh-line); }
+
+html.dark .ring-gray-100 { --tw-ring-color: rgba(255, 255, 255, .10); }
+html.dark .ring-brand-pink-100\/50 { --tw-ring-color: rgba(236, 72, 153, .2); }
+html.dark .hover\:ring-brand-pink-300:hover,
+html.dark .group:hover .group-hover\:ring-brand-pink-300 { --tw-ring-color: #F472B6; }
+html.dark .group:focus-visible .group-focus-visible\:ring-brand-pink-500 { --tw-ring-color: #EC4899; }
+
+/* Shadows read as smudges on dark; make them darker and tighter */
+html.dark .shadow-sm { --tw-shadow: 0 1px 2px 0 rgba(0, 0, 0, .4); }
+html.dark .hover\:shadow-md:hover { --tw-shadow: 0 6px 16px -4px rgba(0, 0, 0, .6); }
+html.dark .hover-lift:hover { box-shadow: 0 12px 30px -10px rgba(236, 72, 153, .25); }
+
+/* ---------- Page-specific pieces ---------- */
+/* Header: kojin's frosted header */
+html.dark .glass-nav {
+  background: rgba(18, 16, 23, .8);
+  border-bottom-color: rgba(236, 72, 153, .15);
+}
+
+/* Guest card tags, social link pills, FAQ markers (home page inline styles) */
+html.dark .card-tags > span { background: var(--jh-pink-tint); color: var(--jh-pink-text); }
+html.dark .social-link { border-color: var(--jh-line-strong); color: #D1D5DB; }
+html.dark .social-link:hover { border-color: rgba(236, 72, 153, .5); color: var(--jh-pink-accent); }
+html.dark .faq summary::after { color: var(--jh-pink-accent); }
+
+/* Scrollbars on horizontal rows */
+html.dark .poster-row,
+html.dark #gallery-scroll { scrollbar-color: #DB2777 var(--jh-surface-2) !important; }
+
+/* Sponsor & supporter logos are designed for white; give them a light tile so dark ink stays visible */
+html.dark img[src*="sponsors/"],
+html.dark img[src*="supporters/"] {
+  background-color: #fff;
+  padding: .4rem .6rem;
+  border-radius: .6rem;
+}
+
+/* Text selection */
+html.dark ::selection { background: rgba(236, 72, 153, .4); color: #fff; }
