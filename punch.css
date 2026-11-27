@@ -254,18 +254,8 @@ body.jh-body { background: var(--ink); color: var(--on-dark); }
 .jh-dark .faq details a { color: var(--brick); }
 .faq summary::after { color: var(--brick) !important; font-size: 1.1rem; line-height: 1; }
 
-/* ---------- Gallery mosaic ---------- */
-.jh-mosaic {
-  display: grid; gap: .5rem; grid-template-columns: repeat(2, 1fr); grid-auto-rows: 1fr;
-  padding: .5rem; border: 3px solid var(--gold); border-radius: 18px; background: rgba(22, 37, 74, .35);
-}
-@media (min-width: 640px) { .jh-mosaic { grid-template-columns: repeat(4, 1fr); } }
-@media (min-width: 1024px) { .jh-mosaic { grid-template-columns: repeat(5, 1fr); } }
-.jh-mosaic .gallery-item { position: relative; display: block; width: 100%; aspect-ratio: 1; overflow: hidden; border-radius: 10px; }
-.jh-mosaic .gallery-item.big { grid-column: span 2; grid-row: span 2; aspect-ratio: auto; }
-.jh-mosaic .gallery-item img { width: 100%; height: 100%; object-fit: cover; transition: transform .5s; }
-.jh-mosaic .gallery-item:hover img { transform: scale(1.06); }
-.jh-mosaic .gallery-item:focus-visible { outline: 3px solid var(--gold-light); outline-offset: 2px; }
+/* ---------- Gallery (original autoscroll strip, gold scrollbar) ---------- */
+#gallery-scroll { scrollbar-color: var(--gold) rgba(255, 255, 255, .1) !important; }
 
 /* ---------- Sponsors / supporters / staff on the light panel ---------- */
 .jh-paper .jh-tier { display: flex; align-items: center; justify-content: center; gap: .9rem; font-family: var(--font-display); font-weight: 700; letter-spacing: .2em; color: var(--brick); }
@@ -284,7 +274,7 @@ body.jh-body { background: var(--ink); color: var(--on-dark); }
 ::selection { background: rgba(243, 201, 113, .45); color: var(--ink); }
 
 @media (prefers-reduced-motion: reduce) {
-  .guest-card, .guest-card img, .jh-btn, .jh-mosaic .gallery-item img { transition: none !important; }
+  .guest-card, .guest-card img, .jh-btn, 
   .guest-card:hover, .jh-btn:hover { transform: none; }
-  .guest-card:hover img, .jh-mosaic .gallery-item:hover img { transform: none; }
+  .guest-card:hover img { transform: none; }
 }

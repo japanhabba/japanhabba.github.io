@@ -939,10 +939,6 @@ video {
   display: flow-root;
 }
 
-.\!grid {
-  display: grid !important;
-}
-
 .grid {
   display: grid;
 }

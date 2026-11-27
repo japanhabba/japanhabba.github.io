@@ -20,7 +20,7 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&display=swap">
 
   <!-- Flyer theme (colours, hero, guest tiles); see the notes at the top of the file -->
-  <link rel="stylesheet" href="./punch.css?v=2">
+  <link rel="stylesheet" href="./punch.css?v=3">
   <link rel="preload" as="image" href="images/punch/hero-art.webp">
 
   <style>
@@ -701,8 +701,8 @@
     <div class="max-w-5xl mx-auto">
       <h2 class="jh-title text-center mb-6">Gallery &mdash; Japan Habba 2025</h2>
 
-      <div id="gallery-grid" class="jh-mosaic">
-        <!-- Tiles injected by script -->
+      <div id="gallery-scroll" class="flex gap-4 overflow-x-auto pb-4 scroll-smooth [-webkit-overflow-scrolling:touch] [touch-action:pan-x]" style="scrollbar-width: thin; scrollbar-color: #DB2777 #FCE7F3;">
+        <!-- Cards injected + duplicated by script for seamless autoscroll -->
       </div>
     </div>
   </section>
@@ -1650,7 +1650,7 @@
       document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && !modal.classList.contains('hidden')) close(); });
     })();
 
-    // Gallery mosaic + lightbox
+    // Gallery auto-scroll with seamless wrap-around + lightbox
     (function () {
       const files = [
         "DSC04526.jpg", "DSC04574.jpg", "DSC04779.jpg", "DSC05154.jpg",
@@ -1658,14 +1658,19 @@
         "DSC08047.jpg", "DSC08134.jpg", "DSC08743.jpg", "DSC08796.jpg",
         "ARJ01845.jpg", "IMG_7992.JPG", "IMG_8004.JPG", "IMG_8023.JPG", "IMG_8114.JPG"
       ];
-      const grid = document.getElementById('gallery-grid');
-      if (!grid) return;
+      const scroller = document.getElementById('gallery-scroll');
+      if (!scroller) return;
 
-      // Photo mosaic like the flyer: the first photo is a large 2x2 tile
-      grid.innerHTML = files.map((file, i) => `
-        <button type="button" data-full="images/gallery/${file}" class="gallery-item${i === 0 ? ' big' : ''}" aria-label="Open photo ${i + 1} of ${files.length}">
-          <img src="images/gallery/thumbs/${file}" alt="Japan Habba 2025" loading="lazy">
-        </button>`).join('');
+      const cardHTML = (file) => `
+        <div class="w-64 sm:w-72 md:w-80 flex-shrink-0">
+          <button type="button" data-full="images/gallery/${file}" class="gallery-item block w-full rounded-lg overflow-hidden border border-gray-200 transition group cursor-pointer">
+            <img src="images/gallery/thumbs/${file}" alt="Japan Habba Gallery" loading="lazy" class="w-full aspect-[4/3] object-cover group-hover:scale-105 transition duration-500">
+          </button>
+        </div>`;
+
+      const set = files.map(cardHTML).join('');
+      // Duplicate the set so the scroll can wrap seamlessly
+      scroller.innerHTML = set + set;
 
       // Lightbox
       const lightbox = document.getElementById('gallery-lightbox');
@@ -1696,8 +1701,11 @@
       // Expose for inline onclick
       window.closeGalleryLightbox = closeGalleryLightbox;
 
-      grid.querySelectorAll('.gallery-item').forEach((btn, i) => {
-        btn.addEventListener('click', () => openLightboxAt(i));
+      scroller.querySelectorAll('.gallery-item').forEach((btn, i) => {
+        btn.addEventListener('click', () => {
+          // Map the (possibly duplicated) index back to the original set
+          openLightboxAt(i % files.length);
+        });
       });
       lightbox.querySelector('.gallery-prev').addEventListener('click', (e) => {
         e.stopPropagation();
@@ -1717,6 +1725,26 @@
         else if (e.key === 'ArrowRight') showAt(current + 1);
       });
 
+      let paused = false;
+      scroller.addEventListener('mouseenter', () => paused = true);
+      scroller.addEventListener('mouseleave', () => paused = false);
+      scroller.addEventListener('touchstart', () => paused = true, { passive: true });
+      scroller.addEventListener('touchend', () => paused = false);
+      scroller.addEventListener('touchcancel', () => paused = false);
+
+      const SPEED = 10; // px per frame
+      function tick() {
+        if (!paused && !lightboxOpen) {
+          scroller.scrollLeft += SPEED;
+          // When we've scrolled past the first (original) set, jump back seamlessly
+          const half = scroller.scrollWidth / 2;
+          if (scroller.scrollLeft >= half) {
+            scroller.scrollLeft -= half;
+          }
+        }
+        requestAnimationFrame(tick);
+      }
+      requestAnimationFrame(tick);
     })();
 
     // Artist Alley auto-scroll (same scrollLeft-based technique as the gallery,
