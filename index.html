@@ -20,7 +20,7 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&display=swap">
 
   <!-- Flyer theme (colours, hero, guest tiles); see the notes at the top of the file -->
-  <link rel="stylesheet" href="./punch.css?v=9">
+  <link rel="stylesheet" href="./punch.css?v=11">
   <link rel="preload" as="image" href="images/punch/kanna.webp">
   <link rel="preload" as="image" href="images/punch/hero-waves.webp">
 
@@ -139,13 +139,38 @@
       <div class="jh-hero-art jh-hero-stage" role="img" aria-label="Japan Habba mascot in a red kimono with a fan, stepping out of a round shoji window. Culture, anime, concert, workshops, food, higher education, arcade, shopping.">
         <div class="jh-layer jh-window" style="left:3.103%; top:13.353%; width:93.621%">
           <img class="jh-win-waves" src="images/punch/hero-waves.webp" alt="" width="1090" height="1087" fetchpriority="high">
-          <div class="jh-win-rays"></div>
           <div class="jh-win-glow"></div>
-          <div class="jh-win-sky"><img class="jh-win-clouds" src="images/punch/hero-clouds.webp" alt="" width="956" height="858"></div>
+          <div class="jh-win-sky"><img class="jh-win-clouds" src="images/punch/hero-clouds.webp" alt="" width="956" height="858"><img class="jh-win-clouds jh-clouds-b" src="images/punch/hero-clouds.webp" alt="" width="956" height="858"></div>
           <img class="jh-win-frame" src="images/punch/hero-frame.webp" alt="" width="1090" height="1087">
         </div>
         <img class="jh-layer jh-hero-kanna" src="images/punch/kanna.webp" alt="" width="973" height="1681" style="left:13.414%; top:0.786%; width:66.155%" fetchpriority="high">
-        <img class="jh-layer jh-hero-front" src="images/punch/hero-front.webp" alt="" width="1144" height="790" style="left:0.690%; top:37.092%; width:98.621%">
+        <img class="jh-layer jh-hero-front" src="images/punch/hero-logo.webp" alt="" width="1030" height="358" style="left:5.862%; top:37.092%; width:88.793%">
+        <svg class="jh-layer jh-hero-arc" viewBox="8 88 580 674" aria-hidden="true" focusable="false">
+          <defs>
+            <!-- Bottom half of the ring, left to right: the tagline sits just outside it -->
+            <path id="jh-arc-path" d="M 18.0 449 A 279.5 279.5 0 0 0 577.0 449" fill="none"/>
+            <!-- Bottom of the ring, left to right, just inside the words: the spark's track -->
+            <path id="jh-ring-path" d="M 31.0 449 A 266.5 266.5 0 0 0 564.0 449" fill="none"/>
+            <filter id="jh-arc-glow" x="-20%" y="-20%" width="140%" height="140%">
+              <feMorphology in="SourceAlpha" operator="dilate" radius=".9" result="thick"/>
+              <feFlood flood-color="#5A3A12"/><feComposite in2="thick" operator="in" result="edge"/>
+              <feGaussianBlur in="thick" stdDeviation="1.6" result="soft"/>
+              <feFlood flood-color="#E0A93B" flood-opacity=".9"/><feComposite in2="soft" operator="in" result="glow"/>
+              <feMerge><feMergeNode in="glow"/><feMergeNode in="edge"/><feMergeNode in="SourceGraphic"/></feMerge>
+            </filter>
+            <filter id="jh-arc-flare" x="-30%" y="-60%" width="160%" height="220%">
+              <feGaussianBlur in="SourceAlpha" stdDeviation="4" result="b"/>
+              <feFlood flood-color="#FFC94D"/><feComposite in2="b" operator="in" result="g"/>
+              <feMerge><feMergeNode in="g"/><feMergeNode in="g"/><feMergeNode in="g"/><feMergeNode in="SourceGraphic"/></feMerge>
+            </filter>
+            <radialGradient id="jh-spark-g">
+              <stop offset="0" stop-color="#fff"/><stop offset=".35" stop-color="#FFE3A0"/><stop offset="1" stop-color="#F3C971" stop-opacity="0"/>
+            </radialGradient>
+          </defs>
+          <text class="jh-arc-text" filter="url(#jh-arc-glow)"><textPath href="#jh-arc-path" startOffset="0.6%" textLength="864.9" lengthAdjust="spacing"><tspan class="w">CULTURE</tspan><tspan class="dot"> · </tspan><tspan class="w">ANIME</tspan><tspan class="dot"> · </tspan><tspan class="w">CONCERT</tspan><tspan class="dot"> · </tspan><tspan class="w">WORKSHOPS</tspan><tspan class="dot"> · </tspan><tspan class="w">FOOD</tspan><tspan class="dot"> · </tspan><tspan class="w">HIGHER EDUCATION</tspan><tspan class="dot"> · </tspan><tspan class="w">ARCADE</tspan><tspan class="dot"> · </tspan><tspan class="w">SHOPPING</tspan></textPath></text>
+          <text class="jh-arc-text jh-arc-flare" filter="url(#jh-arc-flare)"><textPath href="#jh-arc-path" startOffset="0.6%" textLength="864.9" lengthAdjust="spacing"><tspan class="w">CULTURE</tspan><tspan class="dot"> · </tspan><tspan class="w">ANIME</tspan><tspan class="dot"> · </tspan><tspan class="w">CONCERT</tspan><tspan class="dot"> · </tspan><tspan class="w">WORKSHOPS</tspan><tspan class="dot"> · </tspan><tspan class="w">FOOD</tspan><tspan class="dot"> · </tspan><tspan class="w">HIGHER EDUCATION</tspan><tspan class="dot"> · </tspan><tspan class="w">ARCADE</tspan><tspan class="dot"> · </tspan><tspan class="w">SHOPPING</tspan></textPath></text>
+          <circle class="jh-spark" r="15" fill="url(#jh-spark-g)" cx="31.0" cy="449"/>
+        </svg>
       </div>
 
       <div class="text-center lg:text-left pb-4">
@@ -1632,6 +1657,48 @@
         iconClose.classList.add('hidden');
       });
     });
+
+    // Hero: a spark travels round the window's ring and lights up each word of the tagline as it passes
+    (function () {
+      const svg = document.querySelector('.jh-hero-arc');
+      if (!svg || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+      const ring = svg.querySelector('#jh-ring-path');
+      const spark = svg.querySelector('.jh-spark');
+      const words = [...svg.querySelectorAll('.jh-arc-text:not(.jh-arc-flare) .w')];
+      const flares = [...svg.querySelectorAll('.jh-arc-flare .w')];
+      const CX = 297.5, CY = 449, SWEEP = 6000, REST = 1800; // ms
+      let centres = [];
+      function measure() {
+        const text = svg.querySelector('.jh-arc-text:not(.jh-arc-flare)');
+        let i = 0;
+        centres = words.map(w => {
+          const n = w.textContent.length;
+          const a = text.getStartPositionOfChar(i), b = text.getEndPositionOfChar(i + n - 1);
+          i += n + 3; // the " · " separator
+          return Math.atan2((a.y + b.y) / 2 - CY, (a.x + b.x) / 2 - CX);
+        });
+      }
+      const total = ring.getTotalLength();
+      let start = null;
+      function frame(t) {
+        if (start === null) start = t;
+        const e = (t - start) % (SWEEP + REST);
+        const moving = e < SWEEP;
+        const p = ring.getPointAtLength(Math.min(e / SWEEP, 1) * total);
+        spark.setAttribute('cx', p.x); spark.setAttribute('cy', p.y);
+        spark.classList.toggle('on', moving && e > 150 && e < SWEEP - 250);
+        const ang = Math.atan2(p.y - CY, p.x - CX);
+        words.forEach((w, k) => {
+          let d = Math.abs(ang - centres[k]); d = Math.min(d, 2 * Math.PI - d);
+          const lit = moving && d < 0.2;
+          w.classList.toggle('lit', lit);
+          flares[k].classList.toggle('lit', lit);
+        });
+        requestAnimationFrame(frame);
+      }
+      (document.fonts ? document.fonts.ready : Promise.resolve()).then(() => { measure(); requestAnimationFrame(frame); });
+      window.addEventListener('resize', measure);
+    })();
 
     // Guest cards: open a modal with the guest's bio
     (function () {
