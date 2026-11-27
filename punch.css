@@ -130,19 +130,28 @@ body.jh-body { background: var(--ink); color: var(--on-dark); }
 .jh-window > * { position: absolute; inset: 0; width: 100%; height: 100%; }
 .jh-win-glow {
   background: radial-gradient(closest-side at 50% 46%, rgba(255, 214, 140, .55), rgba(255, 170, 120, .18) 55%, transparent 100%);
+  mix-blend-mode: screen; opacity: .6;
+  animation: jh-glow 4s ease-in-out infinite alternate;
+}
+/* Slow-turning light rays behind Kanna */
+.jh-win-rays {
+  background: repeating-conic-gradient(from 0deg at 50% 46%, rgba(255, 236, 190, .38) 0deg 7deg, transparent 7deg 22deg);
+  -webkit-mask-image: radial-gradient(closest-side at 50% 46%, #000 15%, rgba(0, 0, 0, .55) 55%, transparent 95%);
+          mask-image: radial-gradient(closest-side at 50% 46%, #000 15%, rgba(0, 0, 0, .55) 55%, transparent 95%);
   mix-blend-mode: screen; opacity: .55;
-  animation: jh-glow 7s ease-in-out infinite alternate;
+  animation: jh-spin 50s linear infinite;
 }
 /* Clouds only show in the opening between the shoji panels, as on the poster */
 .jh-win-sky { clip-path: inset(0 22.1% 0 22.1%); }
-.jh-win-clouds { position: absolute; left: 9.208%; top: 11.993%; width: 87.661%; height: auto; animation: jh-drift 22s ease-in-out infinite alternate; }
-.jh-hero-kanna { animation: jh-float 6s ease-in-out infinite alternate; }
+.jh-win-clouds { position: absolute; left: 9.208%; top: 11.993%; width: 87.661%; height: auto; animation: jh-drift 9s ease-in-out infinite alternate; }
+.jh-hero-kanna { animation: jh-float 3.2s ease-in-out infinite alternate; }
 
-@keyframes jh-glow  { from { opacity: .35; transform: scale(.94); } to { opacity: .8; transform: scale(1.04); } }
-@keyframes jh-drift { from { transform: translateX(-7%); } to { transform: translateX(7%); } }
-@keyframes jh-float { from { transform: translateY(0); } to { transform: translateY(-1.2%); } }
+@keyframes jh-glow  { from { opacity: .25; transform: scale(.85); } to { opacity: 1; transform: scale(1.12); } }
+@keyframes jh-spin  { to { transform: rotate(360deg); } }
+@keyframes jh-drift { from { transform: translateX(-16%); } to { transform: translateX(16%); } }
+@keyframes jh-float { from { transform: translateY(0); } to { transform: translateY(-2.4%); } }
 @media (prefers-reduced-motion: reduce) {
-  .jh-win-glow, .jh-win-clouds, .jh-hero-kanna { animation: none; }
+  .jh-win-glow, .jh-win-rays, .jh-win-clouds, .jh-hero-kanna { animation: none; }
 }
 .jh-hero-kanna { z-index: 1; }
 .jh-hero-front { z-index: 2; pointer-events: none; }
