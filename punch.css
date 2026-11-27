@@ -155,7 +155,8 @@ body.jh-body { background: var(--ink); color: var(--on-dark); }
 .jh-arc-text .w { transition: fill .35s ease; }
 .jh-arc-text .w.lit { fill: #FFD66E; }
 .jh-arc-text .dot { fill: var(--gold-light); }
-.jh-arc-flare { fill: #FFFFFF; }
+/* Lit word: solid bright gold with a crisp navy outline, so it stays readable */
+.jh-arc-flare { fill: #FFD66E; stroke: #16254A; stroke-width: 2.4px; stroke-linejoin: round; paint-order: stroke fill; }
 .jh-arc-flare tspan { opacity: 0; transition: opacity .45s ease; }
 .jh-arc-flare .w.lit { opacity: 1; }
 .jh-spark { opacity: 0; transition: opacity .3s; mix-blend-mode: screen; }

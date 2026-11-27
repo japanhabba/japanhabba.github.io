@@ -20,7 +20,7 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&display=swap">
 
   <!-- Flyer theme (colours, hero, guest tiles); see the notes at the top of the file -->
-  <link rel="stylesheet" href="./punch.css?v=11">
+  <link rel="stylesheet" href="./punch.css?v=12">
   <link rel="preload" as="image" href="images/punch/kanna.webp">
   <link rel="preload" as="image" href="images/punch/hero-waves.webp">
 
@@ -159,9 +159,9 @@
               <feMerge><feMergeNode in="glow"/><feMergeNode in="edge"/><feMergeNode in="SourceGraphic"/></feMerge>
             </filter>
             <filter id="jh-arc-flare" x="-30%" y="-60%" width="160%" height="220%">
-              <feGaussianBlur in="SourceAlpha" stdDeviation="4" result="b"/>
-              <feFlood flood-color="#FFC94D"/><feComposite in2="b" operator="in" result="g"/>
-              <feMerge><feMergeNode in="g"/><feMergeNode in="g"/><feMergeNode in="g"/><feMergeNode in="SourceGraphic"/></feMerge>
+              <feGaussianBlur in="SourceAlpha" stdDeviation="2.4" result="b"/>
+              <feFlood flood-color="#FFC94D" flood-opacity=".55"/><feComposite in2="b" operator="in" result="g"/>
+              <feMerge><feMergeNode in="g"/><feMergeNode in="SourceGraphic"/></feMerge>
             </filter>
             <radialGradient id="jh-spark-g">
               <stop offset="0" stop-color="#fff"/><stop offset=".35" stop-color="#FFE3A0"/><stop offset="1" stop-color="#F3C971" stop-opacity="0"/>
