@@ -133,28 +133,34 @@ body.jh-body { background: var(--ink); color: var(--on-dark); }
   mix-blend-mode: screen; opacity: .6;
   animation: jh-glow 4s ease-in-out infinite alternate;
 }
-/* Slow-turning light rays behind Kanna */
-.jh-win-rays {
-  background: repeating-conic-gradient(from 0deg at 50% 46%, rgba(255, 236, 190, .38) 0deg 7deg, transparent 7deg 22deg);
-  -webkit-mask-image: radial-gradient(closest-side at 50% 46%, #000 15%, rgba(0, 0, 0, .55) 55%, transparent 95%);
-          mask-image: radial-gradient(closest-side at 50% 46%, #000 15%, rgba(0, 0, 0, .55) 55%, transparent 95%);
-  mix-blend-mode: screen; opacity: .55;
-  animation: jh-spin 50s linear infinite;
-}
 /* Clouds only show in the opening between the shoji panels, as on the poster */
 .jh-win-sky { clip-path: inset(0 22.1% 0 22.1%); }
-.jh-win-clouds { position: absolute; left: 9.208%; top: 11.993%; width: 87.661%; height: auto; animation: jh-drift 9s ease-in-out infinite alternate; }
+.jh-win-clouds { position: absolute; left: 9.208%; top: 11.993%; width: 87.661%; height: auto; animation: jh-drift 30s linear infinite; }
+/* A second copy one period (114% of the layer's width) to the left: as the first
+   drifts out on the right, the second arrives where it started, so the loop is seamless */
+.jh-clouds-b { left: calc(9.208% - 87.661% * 1.14); }
 .jh-hero-kanna { animation: jh-float 3.2s ease-in-out infinite alternate; }
 
 @keyframes jh-glow  { from { opacity: .25; transform: scale(.85); } to { opacity: 1; transform: scale(1.12); } }
-@keyframes jh-spin  { to { transform: rotate(360deg); } }
-@keyframes jh-drift { from { transform: translateX(-16%); } to { transform: translateX(16%); } }
+@keyframes jh-drift { from { transform: translateX(0); } to { transform: translateX(114%); } }
 @keyframes jh-float { from { transform: translateY(0); } to { transform: translateY(-2.4%); } }
 @media (prefers-reduced-motion: reduce) {
-  .jh-win-glow, .jh-win-rays, .jh-win-clouds, .jh-hero-kanna { animation: none; }
+  .jh-win-glow, .jh-win-clouds, .jh-hero-kanna { animation: none; }
 }
 .jh-hero-kanna { z-index: 1; }
 .jh-hero-front { z-index: 2; pointer-events: none; }
+/* Tagline round the ring: real text on a curve, lit word by word as the spark passes */
+.jh-hero-arc { z-index: 3; inset: 0; width: 100%; height: 100%; overflow: visible; pointer-events: none; }
+.jh-arc-text { font-family: var(--font-display); font-weight: 600; font-size: 12.5px; fill: #FFF4DC; }
+.jh-arc-text .w { transition: fill .35s ease; }
+.jh-arc-text .w.lit { fill: #FFD66E; }
+.jh-arc-text .dot { fill: var(--gold-light); }
+/* Lit word: solid bright gold with a crisp navy outline, so it stays readable */
+.jh-arc-flare { fill: #FFD66E; stroke: #16254A; stroke-width: 2.4px; stroke-linejoin: round; paint-order: stroke fill; }
+.jh-arc-flare tspan { opacity: 0; transition: opacity .45s ease; }
+.jh-arc-flare .w.lit { opacity: 1; }
+.jh-spark { opacity: 0; transition: opacity .3s; mix-blend-mode: screen; }
+.jh-spark.on { opacity: 1; }
 .jh-hero h1 { font-family: var(--font-display); font-weight: 800; letter-spacing: -.01em; color: #fff; text-shadow: 0 3px 0 rgba(111, 51, 40, .55); }
 .jh-hero .lede { color: #F1E9F0; }
 .jh-venue { font-family: var(--font-display); color: var(--gold-light); font-weight: 600; letter-spacing: .04em; }
