@@ -2958,10 +2958,6 @@ video {
     margin-top: 2rem;
   }
 
-  .sm\:block {
-    display: block;
-  }
-
   .sm\:flex {
     display: flex;
   }
@@ -3238,6 +3234,10 @@ video {
 
   .lg\:mt-24 {
     margin-top: 6rem;
+  }
+
+  .lg\:block {
+    display: block;
   }
 
   .lg\:flex {
