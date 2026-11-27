@@ -9,7 +9,7 @@
   <link rel="canonical" href="https://japanhabba.org/" />
 
   <!-- Tailwind CSS -->
-  <link rel="stylesheet" href="./output.css?v=34">
+  <link rel="stylesheet" href="./output.css?v=35">
 
   <meta name="theme-color" content="#16254A">
 
@@ -20,7 +20,7 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&display=swap">
 
   <!-- Flyer theme (colours, hero, guest tiles); see the notes at the top of the file -->
-  <link rel="stylesheet" href="./punch.css?v=7">
+  <link rel="stylesheet" href="./punch.css?v=8">
   <link rel="preload" as="image" href="images/punch/kanna.webp">
   <link rel="preload" as="image" href="images/punch/hero-waves.webp">
 
@@ -155,7 +155,6 @@
         <div class="mt-8 flex flex-col sm:flex-row sm:flex-wrap items-center justify-center lg:justify-start gap-3">
           <a href="https://konfhub.com/japan-habba-2027" target="_blank" rel="noopener" class="jh-btn jh-btn-gold w-full sm:w-auto">Get Tickets</a>
           <a href="https://forms.gle/a8B1CTyzRt7bXRp88" target="_blank" class="jh-btn jh-btn-ghost w-full sm:w-auto">Partner as a Sponsor</a>
-          <a href="#video" class="jh-btn jh-btn-ghost w-full sm:w-auto">Watch Video</a>
         </div>
 
       <!-- Social Links -->
@@ -643,12 +642,42 @@
     <div class="max-w-3xl mx-auto">
       <h2 class="jh-title text-center mb-2">Tickets</h2>
       <p class="text-sm text-gray-500 text-center">Chamara Vajra, Jayamahal Main Road, Bengaluru &middot; Jan 9, 9:00 AM &ndash; Jan 10, 10:00 PM</p>
-      <div class="poster-grid mt-8 grid grid-cols-1 sm:grid-cols-2 gap-4">
-        <img src="images/konfhub/about-11.webp" alt="Japan Habba (exhibition only) ticket inclusions" loading="lazy" class="w-full rounded-xl border border-gray-100">
-        <img src="images/konfhub/about-12.webp" alt="Japan Habba + Habba Live (exhibition and concert) ticket inclusions" loading="lazy" class="w-full rounded-xl border border-gray-100">
+      <div class="jh-tickets mt-8">
+        <table>
+          <caption class="sr-only">What each ticket includes</caption>
+          <thead>
+            <tr>
+              <td></td>
+              <th scope="col"><span class="k">Japan Habba</span><span class="t">Exhibition only</span></th>
+              <th scope="col" class="hi"><span class="k">Japan Habba + Habba Live</span><span class="t">Exhibition + Concert</span></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">150+ sales, food &amp; artist stalls<span class="d">100+ experiences &amp; 6 stages &middot; 10:00 AM &ndash; 10:00 PM</span></th>
+              <td class="yes"><span class="jh-tick" role="img" aria-label="Included">&#10003;</span></td><td class="yes"><span class="jh-tick" role="img" aria-label="Included">&#10003;</span></td>
+            </tr>
+            <tr>
+              <th scope="row">Habba Specials<span class="d">Guests from Japan on the main programme</span></th>
+              <td class="yes"><span class="jh-tick" role="img" aria-label="Included">&#10003;</span></td><td class="yes"><span class="jh-tick" role="img" aria-label="Included">&#10003;</span></td>
+            </tr>
+            <tr>
+              <th scope="row">The Versus Festival<span class="d">India&rsquo;s largest esports event</span></th>
+              <td class="yes"><span class="jh-tick" role="img" aria-label="Included">&#10003;</span></td><td class="yes"><span class="jh-tick" role="img" aria-label="Included">&#10003;</span></td>
+            </tr>
+            <tr>
+              <th scope="row">Habba Live pro concert<span class="d">6:00 PM &ndash; 10:00 PM</span></th>
+              <td class="no"><span class="jh-cross" role="img" aria-label="Not included">&#10005;</span></td><td class="yes"><span class="jh-tick" role="img" aria-label="Included">&#10003;</span></td>
+            </tr>
+            <tr>
+              <th scope="row">Closed-door Meet &amp; Greets<span class="d">December onwards</span></th>
+              <td class="sep" colspan="2"><span>Ticketed separately</span></td>
+            </tr>
+          </tbody>
+        </table>
       </div>
       <div class="mt-8 text-center">
-        <a href="https://konfhub.com/japan-habba-2027" target="_blank" rel="noopener" class="inline-block rounded-md bg-brand-pink-600 hover:bg-brand-pink-700 px-6 py-3 text-sm font-semibold text-white transition">Get Tickets on KonfHub</a>
+        <a href="https://konfhub.com/japan-habba-2027" target="_blank" rel="noopener" class="jh-btn jh-btn-gold">Get Tickets on KonfHub</a>
       </div>
 
       <h2 id="faq" class="mt-16 jh-title text-center mb-6">Frequently Asked Questions</h2>

@@ -273,6 +273,28 @@ body.jh-body { background: var(--ink); color: var(--on-dark); }
 #guest-modal .social-link { border-color: rgba(219, 177, 88, .6); color: var(--ink); background: #fff; }
 #guest-modal .social-link:hover { border-color: var(--brick); color: var(--brick); }
 
+/* ---------- Ticket comparison table ---------- */
+.jh-tickets { background: var(--cream); border: 3px solid var(--gold); border-radius: 18px; overflow: hidden; box-shadow: 0 24px 50px -24px rgba(0, 0, 0, .55); }
+.jh-tickets table { width: 100%; border-collapse: collapse; color: var(--ink); table-layout: fixed; }
+.jh-tickets thead th { width: 27%; padding: 1rem .5rem .9rem; text-align: center; vertical-align: bottom; background: var(--ink); color: #fff; font-family: var(--font-display); }
+.jh-tickets thead td { background: var(--ink); }
+.jh-tickets thead th.hi { background: linear-gradient(180deg, #2B3F7A, var(--ink)); box-shadow: inset 0 4px 0 var(--gold-light); }
+.jh-tickets thead .k { display: block; font-size: .6rem; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: var(--gold-light); }
+.jh-tickets thead .t { display: block; margin-top: .25rem; font-size: clamp(.82rem, .7rem + .5vw, 1.05rem); font-weight: 800; line-height: 1.15; }
+.jh-tickets tbody th { padding: .95rem 1rem; text-align: left; font-family: var(--font-display); font-weight: 700; font-size: clamp(.82rem, .75rem + .3vw, .98rem); line-height: 1.25; }
+.jh-tickets tbody th .d { display: block; margin-top: .2rem; font-family: 'Inter', sans-serif; font-weight: 400; font-size: .76rem; color: #5B6383; }
+.jh-tickets tbody tr + tr > * { border-top: 1px solid rgba(219, 177, 88, .45); }
+.jh-tickets tbody td { text-align: center; vertical-align: middle; padding: .6rem .25rem; }
+.jh-tickets tbody td.yes:last-child, .jh-tickets tbody td.no:last-child { background: rgba(243, 201, 113, .16); }
+.jh-tick, .jh-cross { display: inline-flex; align-items: center; justify-content: center; width: 1.9rem; height: 1.9rem; border-radius: 9999px; font-weight: 800; font-size: .95rem; line-height: 1; }
+.jh-tick { background: var(--ink); color: var(--gold-light); box-shadow: 0 0 0 2px var(--gold); }
+.jh-cross { background: transparent; color: rgba(161, 68, 53, .75); box-shadow: inset 0 0 0 2px rgba(161, 68, 53, .35); font-size: .8rem; }
+.jh-tickets td.sep span { display: inline-block; padding: .3rem .75rem; border-radius: 9999px; border: 1.5px dashed var(--brick); color: var(--brick); font-family: var(--font-display); font-weight: 700; font-size: .68rem; letter-spacing: .1em; text-transform: uppercase; }
+@media (max-width: 480px) {
+  .jh-tickets thead th { width: 29%; }
+  .jh-tickets tbody th { padding: .8rem .7rem; }
+}
+
 /* ---------- Poster rows, FAQ ---------- */
 .poster-row img, .poster-grid img { border: 2px solid var(--gold) !important; }
 .jh-dark .faq { border: 0 !important; display: grid; gap: .6rem; }
