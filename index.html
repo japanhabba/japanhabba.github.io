@@ -9,24 +9,22 @@
   <link rel="canonical" href="https://japanhabba.org/" />
 
   <!-- Tailwind CSS -->
-  <link rel="stylesheet" href="./output.css?v=32">
+  <link rel="stylesheet" href="./output.css?v=33">
 
-  <!-- Dark mode: apply saved/system theme before paint (see theme.js) -->
-  <meta name="color-scheme" content="light dark">
-  <meta name="theme-color" content="#ffffff">
-  <link rel="stylesheet" href="./theme.css?v=1">
-  <script>
-    (function () {
-      var t = null; try { t = localStorage.getItem('jh-theme'); } catch (e) {}
-      if (t === 'dark' || (!t && window.matchMedia('(prefers-color-scheme: dark)').matches)) document.documentElement.classList.add('dark');
-    })();
-  </script>
+  <meta name="theme-color" content="#16254A">
 
-  <!-- Inter Font -->
+  <!-- Fonts: Inter (body), Poppins (headings, after the 2027 flyer) -->
   <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&display=swap">
+
+  <!-- Flyer theme (colours, hero, guest tiles); see the notes at the top of the file -->
+  <link rel="stylesheet" href="./punch.css?v=3">
+  <link rel="preload" as="image" href="images/punch/hero-art.webp">
 
   <style>
-    * { font-family: 'Inter', sans-serif; }
+    body { font-family: 'Inter', sans-serif; }
 
     .marquee-viewport {
       -ms-overflow-style: none;
@@ -74,37 +72,32 @@
     }
   </script>
 </head>
-<body class="bg-white min-h-screen flex flex-col text-gray-800 antialiased">
+<body class="jh-body min-h-screen flex flex-col antialiased">
 
   <!-- Navigation Header -->
-  <header class="sticky top-0 z-50 bg-white border-b border-gray-100">
-    <nav class="flex items-center justify-between max-w-5xl mx-auto px-6 py-4">
-      <a href="#" class="flex items-center gap-3 focus:outline-none">
-        <img class="h-10 w-auto" src="images/jh-pink.png" alt="Japan Habba Logo">
+  <header class="jh-header sticky top-0 z-50">
+    <nav class="jh-nav flex items-center justify-between gap-6 max-w-6xl mx-auto px-5 py-3">
+      <a href="#" class="flex items-center gap-3 shrink-0 focus:outline-none">
+        <img class="h-9 w-auto" src="images/punch/logo.webp" alt="Japan Habba Logo" width="300" height="104">
         <span class="sr-only">Japan Habba 2027</span>
       </a>
 
       <!-- Desktop Links -->
-      <div class="hidden md:flex items-center gap-8 text-sm text-gray-600">
-        <a href="https://konfhub.com/japan-habba-2027" target="_blank" rel="noopener" class="hover:text-brand-pink-600 transition">Tickets</a>
-        <a href="#video" class="hover:text-brand-pink-600 transition">Video</a>
-        <a href="#habba-live" class="hover:text-brand-pink-600 transition">Habba Live</a>
-        <a href="#guests" class="hover:text-brand-pink-600 transition">Guests</a>
-        <a href="#faq" class="hover:text-brand-pink-600 transition">FAQ</a>
-        <a href="#gallery" class="hover:text-brand-pink-600 transition">Gallery</a>
-        <a href="#sponsorship" class="hover:text-brand-pink-600 transition">Sponsorship</a>
-        <a href="#supporters" class="hover:text-brand-pink-600 transition">Supporters</a>
-        <a href="#confirmed-sponsors" class="hover:text-brand-pink-600 transition">Sponsors</a>
-        <a href="#committee" class="hover:text-brand-pink-600 transition">Staff</a>
+      <div class="hidden lg:flex items-center gap-5 xl:gap-6 text-sm">
+        <a href="#video" class="jh-navlink">Video</a>
+        <a href="#habba-live" class="jh-navlink">Habba Live</a>
+        <a href="#guests" class="jh-navlink">Guests</a>
+        <a href="#faq" class="jh-navlink">FAQ</a>
+        <a href="#gallery" class="jh-navlink">Gallery</a>
+        <a href="#sponsorship" class="jh-navlink">Sponsorship</a>
+        <a href="#supporters" class="jh-navlink">Supporters</a>
+        <a href="#confirmed-sponsors" class="jh-navlink">Sponsors</a>
+        <a href="#committee" class="jh-navlink">Staff</a>
       </div>
 
-      <!-- Mobile Menu Button -->
-      <div class="flex items-center gap-4">
-        <button type="button" class="theme-toggle" data-theme-toggle aria-label="Switch to dark mode" title="Dark mode">
-          <svg class="icon-moon" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
-          <svg class="icon-sun" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path stroke-linecap="round" d="M12 2v2m0 16v2M4.93 4.93l1.41 1.41m11.32 11.32l1.41 1.41M2 12h2m16 0h2M4.93 19.07l1.41-1.41m11.32-11.32l1.41-1.41"/></svg>
-        </button>
-        <button id="mobile-menu-btn" type="button" class="md:hidden text-gray-600 hover:text-brand-pink-600 focus:outline-none" aria-label="Toggle Navigation Menu">
+      <div class="flex items-center gap-3">
+        <a href="https://konfhub.com/japan-habba-2027" target="_blank" rel="noopener" class="jh-btn jh-btn-gold !py-2 !px-4 !text-xs">Tickets</a>
+        <button id="mobile-menu-btn" type="button" class="jh-menu-btn lg:hidden focus:outline-none" aria-label="Toggle Navigation Menu">
           <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path id="menu-icon-open" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
             <path id="menu-icon-close" class="hidden" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
@@ -114,102 +107,113 @@
     </nav>
 
     <!-- Mobile Dropdown Menu -->
-    <div id="mobile-menu" class="hidden md:hidden bg-white border-b border-gray-100 px-6 py-4 space-y-3">
-      <a href="https://konfhub.com/japan-habba-2027" target="_blank" rel="noopener" class="block text-sm text-gray-600 hover:text-brand-pink-600 transition">Tickets</a>
-      <a href="#video" class="block text-sm text-gray-600 hover:text-brand-pink-600 transition">Video</a>
-      <a href="#habba-live" class="block text-sm text-gray-600 hover:text-brand-pink-600 transition">Habba Live</a>
-      <a href="#guests" class="block text-sm text-gray-600 hover:text-brand-pink-600 transition">Guests</a>
-      <a href="#faq" class="block text-sm text-gray-600 hover:text-brand-pink-600 transition">FAQ</a>
-      <a href="#gallery" class="block text-sm text-gray-600 hover:text-brand-pink-600 transition">Gallery</a>
-      <a href="#sponsorship" class="block text-sm text-gray-600 hover:text-brand-pink-600 transition">Sponsorship</a>
-      <a href="#supporters" class="block text-sm text-gray-600 hover:text-brand-pink-600 transition">Supporters</a>
-      <a href="#confirmed-sponsors" class="block text-sm text-gray-600 hover:text-brand-pink-600 transition">Sponsors</a>
-      <a href="#committee" class="block text-sm text-gray-600 hover:text-brand-pink-600 transition">Staff</a>
+    <div id="mobile-menu" class="hidden lg:hidden px-6 py-4 space-y-3">
+      <a href="https://konfhub.com/japan-habba-2027" target="_blank" rel="noopener" class="block text-sm transition">Tickets</a>
+      <a href="#video" class="block text-sm transition">Video</a>
+      <a href="#habba-live" class="block text-sm transition">Habba Live</a>
+      <a href="#guests" class="block text-sm transition">Guests</a>
+      <a href="#faq" class="block text-sm transition">FAQ</a>
+      <a href="#gallery" class="block text-sm transition">Gallery</a>
+      <a href="#sponsorship" class="block text-sm transition">Sponsorship</a>
+      <a href="#supporters" class="block text-sm transition">Supporters</a>
+      <a href="#confirmed-sponsors" class="block text-sm transition">Sponsors</a>
+      <a href="#committee" class="block text-sm transition">Staff</a>
     </div>
   </header>
 
-  <!-- Hero Section -->
-  <section id="about" class="px-6 pt-20 pb-16 text-center">
-    <div class="max-w-2xl mx-auto">
-      <p class="text-sm font-medium text-brand-pink-600">Chamara Vajra, Bengaluru &middot; January 9&ndash;10, 2027</p>
+  <!-- Hero Section (after the 2027 poster) -->
+  <section id="about" class="jh-hero px-5 pb-28 sm:pb-32">
+    <img src="images/punch/cloud.webp" alt="" aria-hidden="true" class="jh-cloud hidden sm:block" style="left:-2rem; top:38%">
+    <img src="images/punch/cloud.webp" alt="" aria-hidden="true" class="jh-cloud hidden sm:block" style="right:-3rem; top:18%; transform:scaleX(-1)">
+    <img src="images/punch/daruma.webp" alt="" aria-hidden="true" class="jh-daruma hidden md:block" width="260" height="290">
+    <img src="images/punch/mark.webp" alt="" aria-hidden="true" class="jh-mark hidden md:block" width="240" height="344">
 
-      <h1 class="mt-3 text-4xl sm:text-5xl font-bold tracking-tight text-gray-900">
-        Japan Habba 2027
-      </h1>
+    <div class="jh-banner">
+      <img src="images/punch/banner.webp?v=2" alt="" aria-hidden="true" width="1400" height="407">
+      <p class="jh-banner-text"><span class="d">9<sup>th</sup> &amp; 10<sup>th</sup> January 2027</span><span class="s">(Saturday &amp; Sunday)</span></p>
+    </div>
 
-      <p class="mt-4 text-gray-600">
-        India's biggest celebration of Japanese culture, back for its 21st edition.
-      </p>
+    <div class="max-w-6xl mx-auto grid lg:grid-cols-[1.05fr_1fr] items-center gap-6 lg:gap-12 -mt-2 sm:-mt-6">
+      <img src="images/punch/hero-art.webp" width="1160" height="1314" fetchpriority="high"
+           alt="Japan Habba mascot in a red kimono with a fan, stepping out of a round shoji window. Culture, anime, concert, workshops, food, higher education, arcade, shopping."
+           class="jh-hero-art">
 
-      <div class="mt-8 flex flex-col sm:flex-row items-center justify-center gap-3">
-        <a href="https://konfhub.com/japan-habba-2027" target="_blank" rel="noopener" class="w-full sm:w-auto rounded-md bg-brand-pink-600 hover:bg-brand-pink-700 px-6 py-3 text-sm font-semibold text-white transition">
-          Get Tickets
-        </a>
-        <a href="https://forms.gle/a8B1CTyzRt7bXRp88" target="_blank" class="w-full sm:w-auto rounded-md border border-gray-300 hover:border-gray-400 px-6 py-3 text-sm font-semibold text-gray-700 transition">
-          Partner as a Sponsor
-        </a>
-        <a href="#video" class="w-full sm:w-auto rounded-md border border-gray-300 hover:border-gray-400 px-6 py-3 text-sm font-semibold text-gray-700 transition">
-          Watch Video
-        </a>
-      </div>
+      <div class="text-center lg:text-left pb-4">
+        <p class="jh-venue text-sm sm:text-base">Chamara Vajra, Bengaluru &middot; January 9&ndash;10, 2027</p>
+        <h1 class="mt-3 text-5xl sm:text-6xl">Japan Habba 2027</h1>
+        <p class="lede mt-4 text-lg max-w-md mx-auto lg:mx-0">India's biggest celebration of Japanese culture, back for its 21st edition.</p>
+
+        <div class="mt-8 flex flex-col sm:flex-row sm:flex-wrap items-center justify-center lg:justify-start gap-3">
+          <a href="https://konfhub.com/japan-habba-2027" target="_blank" rel="noopener" class="jh-btn jh-btn-gold w-full sm:w-auto">Get Tickets</a>
+          <a href="https://forms.gle/a8B1CTyzRt7bXRp88" target="_blank" class="jh-btn jh-btn-ghost w-full sm:w-auto">Partner as a Sponsor</a>
+          <a href="#video" class="jh-btn jh-btn-ghost w-full sm:w-auto">Watch Video</a>
+        </div>
 
       <!-- Social Links -->
-      <div class="mt-10 flex flex-wrap items-center justify-center gap-4 text-gray-400">
-        <a href="https://www.instagram.com/japanhabba/" target="_blank" rel="noopener" class="hover:text-brand-pink-600 transition" title="Instagram" aria-label="Instagram">
-          <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.416 1.363.465 2.427.048 1.067.06 1.407.06 4.123v.08c0 2.643-.012 2.987-.06 4.043-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.416-2.427.465-1.067.048-1.407.06-4.123.06h-.08c-2.643 0-2.987-.012-4.043-.06-1.064-.049-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.416-1.363-.465-2.427-.047-1.024-.06-1.379-.06-3.808v-.63c0-2.43.013-2.784.06-3.808.049-1.064.218-1.791.465-2.427a4.902 4.902 0 011.153-1.772A4.902 4.902 0 015.45 2.525c.636-.247 1.363-.416 2.427-.465C8.901 2.013 9.256 2 11.685 2h.63zm-.081 1.802h-.468c-2.456 0-2.784.011-3.807.058-.975.045-1.504.207-1.857.344-.467.182-.8.398-1.15.748-.35.35-.566.683-.748 1.15-.137.353-.3.882-.344 1.857-.047 1.023-.058 1.351-.058 3.807v.468c0 2.456.011 2.784.058 3.807.045.975.207 1.504.344 1.857.182.466.399.8.748 1.15.35.35.683.566 1.15.748.353.137.882.3 1.857.344 1.054.048 1.37.058 4.041.058h.08c2.597 0 2.917-.01 3.96-.058.976-.045 1.505-.207 1.858-.344.466-.182.8-.398 1.15-.748.35-.35.566-.683.748-1.15.137-.353.3-.882.344-1.857.048-1.055.058-1.37.058-4.041v-.08c0-2.597-.01-2.917-.058-3.96-.045-.976-.207-1.505-.344-1.858a3.097 3.097 0 00-.748-1.15 3.098 3.098 0 00-1.15-.748c-.353-.137-.882-.3-1.857-.344-1.023-.047-1.351-.058-3.807-.058zM12 6.865a5.135 5.135 0 110 10.27 5.135 5.135 0 010-10.27zm0 1.802a3.333 3.333 0 100 6.666 3.333 3.333 0 000-6.666zm5.338-3.205a1.2 1.2 0 110 2.4 1.2 1.2 0 010-2.4z" clip-rule="evenodd" /></svg>
+      <div class="jh-social mt-8 flex flex-wrap items-center justify-center lg:justify-start gap-5">
+        <a href="https://www.instagram.com/japanhabba/" target="_blank" rel="noopener" title="Instagram" aria-label="Instagram">
+          <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.416 1.363.465 2.427.048 1.067.06 1.407.06 4.123v.08c0 2.643-.012 2.987-.06 4.043-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.416-2.427.465-1.067.048-1.407.06-4.123.06h-.08c-2.643 0-2.987-.012-4.043-.06-1.064-.049-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.416-1.363-.465-2.427-.047-1.024-.06-1.379-.06-3.808v-.63c0-2.43.013-2.784.06-3.808.049-1.064.218-1.791.465-2.427a4.902 4.902 0 011.153-1.772A4.902 4.902 0 015.45 2.525c.636-.247 1.363-.416 2.427-.465C8.901 2.013 9.256 2 11.685 2h.63zm-.081 1.802h-.468c-2.456 0-2.784.011-3.807.058-.975.045-1.504.207-1.857.344-.467.182-.8.398-1.15.748-.35.35-.566.683-.748 1.15-.137.353-.3.882-.344 1.857-.047 1.023-.058 1.351-.058 3.807v.468c0 2.456.011 2.784.058 3.807.045.975.207 1.504.344 1.857.182.466.399.8.748 1.15.35.35.683.566 1.15.748.353.137.882.3 1.857.344 1.054.048 1.37.058 4.041.058h.08c2.597 0 2.917-.01 3.96-.058.976-.045 1.505-.207 1.858-.344.466-.182.8-.398 1.15-.748.35-.35.566-.683.748-1.15.137-.353.3-.882.344-1.857.048-1.055.058-1.37.058-4.041v-.08c0-2.597-.01-2.917-.058-3.96-.045-.976-.207-1.505-.344-1.858a3.097 3.097 0 00-.748-1.15 3.098 3.098 0 00-1.15-.748c-.353-.137-.882-.3-1.857-.344-1.023-.047-1.351-.058-3.807-.058zM12 6.865a5.135 5.135 0 110 10.27 5.135 5.135 0 010-10.27zm0 1.802a3.333 3.333 0 100 6.666 3.333 3.333 0 000-6.666zm5.338-3.205a1.2 1.2 0 110 2.4 1.2 1.2 0 010-2.4z" clip-rule="evenodd" /></svg>
         </a>
-        <a href="https://x.com/japanhabba25" target="_blank" rel="noopener" class="hover:text-brand-pink-600 transition" title="X (Twitter)" aria-label="X (Twitter)">
-          <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+        <a href="https://x.com/japanhabba25" target="_blank" rel="noopener" title="X (Twitter)" aria-label="X (Twitter)">
+          <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
         </a>
-        <a href="https://facebook.com/JapanHabbaBangalore" target="_blank" rel="noopener" class="hover:text-brand-pink-600 transition" title="Facebook" aria-label="Facebook">
-          <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" clip-rule="evenodd" /></svg>
+        <a href="https://facebook.com/JapanHabbaBangalore" target="_blank" rel="noopener" title="Facebook" aria-label="Facebook">
+          <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" clip-rule="evenodd" /></svg>
         </a>
-        <a href="https://www.youtube.com/@JapanHabba" target="_blank" rel="noopener" class="hover:text-brand-pink-600 transition" title="YouTube" aria-label="YouTube">
-          <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M23.498 6.163a3.003 3.003 0 00-2.11-2.11C19.518 3.5 12 3.5 12 3.5s-7.518 0-9.388.553a3.003 3.003 0 00-2.11 2.11C0 8.033 0 12 0 12s0 3.967.502 5.837a3.003 3.003 0 002.11 2.11C4.482 20.5 12 20.5 12 20.5s7.518 0 9.388-.553a3.003 3.003 0 002.11-2.11C24 15.967 24 12 24 12s0-3.967-.502-5.837zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" clip-rule="evenodd" /></svg>
+        <a href="https://www.youtube.com/@JapanHabba" target="_blank" rel="noopener" title="YouTube" aria-label="YouTube">
+          <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M23.498 6.163a3.003 3.003 0 00-2.11-2.11C19.518 3.5 12 3.5 12 3.5s-7.518 0-9.388.553a3.003 3.003 0 00-2.11 2.11C0 8.033 0 12 0 12s0 3.967.502 5.837a3.003 3.003 0 002.11 2.11C4.482 20.5 12 20.5 12 20.5s7.518 0 9.388-.553a3.003 3.003 0 002.11-2.11C24 15.967 24 12 24 12s0-3.967-.502-5.837zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" clip-rule="evenodd" /></svg>
         </a>
-        <a href="https://discord.gg/hepDvTcHny" target="_blank" rel="noopener" class="hover:text-brand-pink-600 transition" title="Discord" aria-label="Discord">
-          <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24"><path d="M20.317 4.369A19.79 19.79 0 0015.885 3c-.214.385-.463.902-.636 1.307a18.27 18.27 0 00-5.498 0A12.6 12.6 0 009.71 3 19.74 19.74 0 005.277 4.37C1.93 9.08.71 13.65.38 18.145a19.94 19.94 0 006.02 3.043c.486-.663.92-1.366 1.293-2.108a12.9 12.9 0 01-2.04-.978c.172-.126.34-.257.502-.392a14.2 14.2 0 0012.208 0c.164.139.332.27.502.392-.65.384-1.334.71-2.043.979.373.741.807 1.445 1.293 2.108a19.9 19.9 0 006.02-3.043c-.368-5.11-1.66-9.65-5.007-13.776zM8.302 15.476c-1.14 0-2.066-1.04-2.066-2.32 0-1.28.91-2.32 2.066-2.32 1.157 0 2.084 1.04 2.065 2.32 0 1.28-.91 2.32-2.065 2.32zm7.396 0c-1.14 0-2.065-1.04-2.065-2.32 0-1.28.91-2.32 2.065-2.32 1.157 0 2.084 1.04 2.065 2.32 0 1.28-.908 2.32-2.065 2.32z"/></svg>
+        <a href="https://discord.gg/hepDvTcHny" target="_blank" rel="noopener" title="Discord" aria-label="Discord">
+          <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24"><path d="M20.317 4.369A19.79 19.79 0 0015.885 3c-.214.385-.463.902-.636 1.307a18.27 18.27 0 00-5.498 0A12.6 12.6 0 009.71 3 19.74 19.74 0 005.277 4.37C1.93 9.08.71 13.65.38 18.145a19.94 19.94 0 006.02 3.043c.486-.663.92-1.366 1.293-2.108a12.9 12.9 0 01-2.04-.978c.172-.126.34-.257.502-.392a14.2 14.2 0 0012.208 0c.164.139.332.27.502.392-.65.384-1.334.71-2.043.979.373.741.807 1.445 1.293 2.108a19.9 19.9 0 006.02-3.043c-.368-5.11-1.66-9.65-5.007-13.776zM8.302 15.476c-1.14 0-2.066-1.04-2.066-2.32 0-1.28.91-2.32 2.066-2.32 1.157 0 2.084 1.04 2.065 2.32 0 1.28-.91 2.32-2.065 2.32zm7.396 0c-1.14 0-2.065-1.04-2.065-2.32 0-1.28.91-2.32 2.065-2.32 1.157 0 2.084 1.04 2.065 2.32 0 1.28-.908 2.32-2.065 2.32z"/></svg>
         </a>
-        <a href="https://chat.whatsapp.com/LK1a5IY4JYOFFztgeli7HM" target="_blank" rel="noopener" class="hover:text-brand-pink-600 transition" title="WhatsApp" aria-label="WhatsApp">
-          <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.149-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.173.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.36-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.887-9.885 9.887m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        <a href="https://chat.whatsapp.com/LK1a5IY4JYOFFztgeli7HM" target="_blank" rel="noopener" title="WhatsApp" aria-label="WhatsApp">
+          <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.149-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.173.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.36-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.887-9.885 9.887m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
         </a>
+      </div>
       </div>
     </div>
   </section>
 
+  <!-- Key facts (cream card from the flyer) -->
+  <div class="jh-stats px-5">
+    <div class="max-w-4xl mx-auto jh-stats-card">
+      <p class="jh-stats-head"><span class="jh-diamond">&#9670;</span>India's biggest celebration of Japanese culture<span class="jh-diamond">&#9670;</span></p>
+      <div class="grid grid-cols-1 sm:grid-cols-3">
+          <div class="jh-stat">
+            <p class="n">15,000+</p>
+            <p class="l">Real daily footfall</p>
+            <p class="x">3&times; for-profit anime events</p>
+          </div>
+          <div class="jh-stat">
+            <p class="n">3M+</p>
+            <p class="l">Social media impressions</p>
+            <p class="x">All organic: we went viral!</p>
+          </div>
+          <div class="jh-stat">
+            <p class="n">120+</p>
+            <p class="l">Exhibitors &amp; sponsors</p>
+            <p class="x">70% stalls sold out completely</p>
+          </div>
+      </div>
+      <a href="https://konfhub.com/japan-habba-2027" target="_blank" rel="noopener" class="jh-stats-foot">Tickets on <span>KonfHub</span> &middot; japanhabba.org</a>
+    </div>
+  </div>
+
   <!-- Video Section -->
-  <section id="video" class="px-6 py-16 border-t border-gray-100">
+  <section id="video" class="jh-dark jh-navy px-6 pt-28 pb-16 -mt-16">
     <div class="max-w-3xl mx-auto">
-      <h2 class="text-xl font-semibold text-gray-900 text-center mb-6">Japan Habba 2025 Aftervideo</h2>
+      <h2 class="jh-title text-center mb-6">Japan Habba 2025 Aftervideo</h2>
       <div class="relative w-full aspect-video rounded-lg overflow-hidden border border-gray-200 bg-black">
         <iframe class="absolute inset-0 w-full h-full" src="https://www.youtube.com/embed/MEmic029WUM" title="Japan Habba Highlight Reel Video" frameborder="0" referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
       </div>
 
-      <!-- Key facts -->
-      <div class="mt-8 grid grid-cols-1 sm:grid-cols-3 gap-4">
-        <div class="rounded-xl bg-brand-pink-50 px-5 py-6 text-center">
-          <p class="text-3xl font-bold tracking-tight text-brand-pink-600 tabular-nums">15,000+</p>
-          <p class="mt-1 text-sm font-semibold text-gray-900">Real daily footfall</p>
-          <p class="mt-1 text-xs text-gray-500">3&times; for-profit anime events</p>
-        </div>
-        <div class="rounded-xl bg-brand-pink-50 px-5 py-6 text-center">
-          <p class="text-3xl font-bold tracking-tight text-brand-pink-600 tabular-nums">3M+</p>
-          <p class="mt-1 text-sm font-semibold text-gray-900">Social media impressions</p>
-          <p class="mt-1 text-xs text-gray-500">All organic: we went viral!</p>
-        </div>
-        <div class="rounded-xl bg-brand-pink-50 px-5 py-6 text-center">
-          <p class="text-3xl font-bold tracking-tight text-brand-pink-600 tabular-nums">120+</p>
-          <p class="mt-1 text-sm font-semibold text-gray-900">Exhibitors &amp; sponsors</p>
-          <p class="mt-1 text-xs text-gray-500">70% stalls sold out completely</p>
-        </div>
-      </div>
     </div>
   </section>
 
   <!-- About (from KonfHub) -->
-  <section id="what-is" class="px-6 py-16 border-t border-gray-100">
+  <section id="what-is" class="jh-dark jh-navy px-6 py-16">
     <div class="max-w-3xl mx-auto">
-      <h2 class="text-xl font-semibold text-gray-900 text-center mb-6">What is Japan Habba?</h2>
+      <h2 class="jh-title text-center mb-6">What is Japan Habba?</h2>
       <p class="text-gray-600 leading-relaxed">
         Japan Habba is India's only Mega Japan event. The 2027 edition is at Chamara Vajra, Bengaluru. Organised by the Japan Habba Society since 2008, the event brings together performing artists, exhibitors, cosplayers, food vendors, and fans of Japanese culture for two days of celebrations.
       </p>
@@ -230,18 +234,18 @@
   </section>
 
   <!-- Habba Specials & Habba Live (from KonfHub) -->
-  <section id="habba-live" class="px-6 py-16 border-t border-gray-100">
+  <section id="habba-live" class="jh-dark jh-blue px-6 py-16">
     <div class="max-w-3xl mx-auto">
-      <h2 class="text-xl font-semibold text-gray-900 text-center mb-6">Habba Specials &amp; Habba Live</h2>
-      <h3 class="text-sm font-semibold text-gray-900">What are Habba Specials?</h3>
+      <h2 class="jh-title text-center mb-6">Habba Specials &amp; Habba Live</h2>
+      <h3 class="jh-eyebrow">What are Habba Specials?</h3>
       <p class="mt-2 text-gray-600 leading-relaxed">
         Unique guests from Japan, integrated right into the main Japan Habba programming! No additional purchase necessary.
       </p>
-      <h3 class="mt-6 text-sm font-semibold text-gray-900">What is Habba Live?</h3>
+      <h3 class="mt-6 jh-eyebrow">What is Habba Live?</h3>
       <p class="mt-2 text-gray-600 leading-relaxed">
         A brand new project, Habba Live is a flagship concert event from 6 PM &ndash; 10 PM, held at the same venue as Japan Habba. The line-up of Habba Live includes professional voice actors (seiyuu), anime song singers, idols, VSynth performers, game musicians, and more! Access to Habba Live requires the new &ldquo;Japan Habba + Habba Live&rdquo; ticket, which includes access to Japan Habba on the same day for free.
       </p>
-      <h3 class="mt-6 text-sm font-semibold text-gray-900">Meet &amp; Greet</h3>
+      <h3 class="mt-6 jh-eyebrow">Meet &amp; Greet</h3>
       <p class="mt-2 text-gray-600 leading-relaxed">
         Meet some of our guests up close. Meet &amp; Greet passes are sold separately and aren't on sale yet.
       </p>
@@ -258,9 +262,9 @@
   </section>
 
   <!-- Guests (photos + bios from the Drive "International Guests" folder) -->
-  <section id="guests" class="px-6 py-16 border-t border-gray-100">
+  <section id="guests" class="jh-dark jh-plum jh-guests px-6 py-16">
     <div class="max-w-5xl mx-auto">
-      <h2 class="text-xl font-semibold text-gray-900 text-center mb-2">Guests</h2>
+      <h2 class="jh-title text-center mb-2">Guests</h2>
       <p class="text-sm text-gray-500 text-center">Tap a guest to read more. More guests to be announced.</p>
       <div class="mt-12">
         <h3 class="text-base font-semibold text-gray-900">Habba Live</h3>
@@ -269,8 +273,7 @@
           <article class="guest flex flex-col" data-video="kI9WkTFc0yI" data-video-title="KANAPON REVOLUTION (live)">
             <button type="button" class="guest-card group text-left focus:outline-none" aria-haspopup="dialog">
               <img src="images/guests/2027/kanapon.webp" alt="Kanapon" loading="lazy" width="600" height="600" class="aspect-square w-full rounded-xl object-cover bg-brand-pink-50 ring-1 ring-gray-100 group-hover:ring-2 group-hover:ring-brand-pink-300 group-focus-visible:ring-2 group-focus-visible:ring-brand-pink-500 transition">
-              <span class="guest-name mt-2 block text-sm font-semibold text-gray-900 group-hover:text-brand-pink-600 transition">Kanapon</span>
-              <span class="guest-role block text-xs text-gray-500">Idol <span role="img" aria-label="Japan" title="Japan">🇯🇵</span></span>
+              <span class="jh-caption"><span class="guest-name mt-2 block text-sm font-semibold text-gray-900 group-hover:text-brand-pink-600 transition">Kanapon</span><span class="guest-role block text-xs text-gray-500">Idol <span role="img" aria-label="Japan" title="Japan">🇯🇵</span></span></span>
             </button>
             <div class="guest-bio hidden">
               <div class="flex flex-wrap gap-1.5"><span class="inline-block rounded-full bg-brand-pink-50 text-brand-pink-700 text-xs px-2.5 py-1">India’s most beloved idol</span><span class="inline-block rounded-full bg-brand-pink-50 text-brand-pink-700 text-xs px-2.5 py-1">NM</span></div>
@@ -280,8 +283,7 @@
           <article class="guest flex flex-col" data-video="57sE6RAFerk" data-video-title="Cool Me Down">
             <button type="button" class="guest-card group text-left focus:outline-none" aria-haspopup="dialog">
               <img src="images/guests/2027/mwk.webp" alt="Mwk" loading="lazy" width="600" height="600" class="aspect-square w-full rounded-xl object-cover bg-brand-pink-50 ring-1 ring-gray-100 group-hover:ring-2 group-hover:ring-brand-pink-300 group-focus-visible:ring-2 group-focus-visible:ring-brand-pink-500 transition">
-              <span class="guest-name mt-2 block text-sm font-semibold text-gray-900 group-hover:text-brand-pink-600 transition">Mwk</span>
-              <span class="guest-role block text-xs text-gray-500">Vocaloid producer <span role="img" aria-label="Japan" title="Japan">🇯🇵</span></span>
+              <span class="jh-caption"><span class="guest-name mt-2 block text-sm font-semibold text-gray-900 group-hover:text-brand-pink-600 transition">Mwk</span><span class="guest-role block text-xs text-gray-500">Vocaloid producer <span role="img" aria-label="Japan" title="Japan">🇯🇵</span></span></span>
               <span class="card-tags"><span>Hatsune Miku: Colorful Stage</span><span>GUNDAM×MIKU</span><span>Magic: The Gathering</span></span>
             </button>
             <div class="guest-bio hidden">
@@ -292,8 +294,7 @@
           <article class="guest flex flex-col" data-video="mO20a-BFIbA" data-video-title="Aqours – Aozora Jumping Heart">
             <button type="button" class="guest-card group text-left focus:outline-none" aria-haspopup="dialog">
               <img src="images/guests/2027/kanako-takatsuki.webp" alt="Kanako Takatsuki" loading="lazy" width="600" height="600" class="aspect-square w-full rounded-xl object-cover bg-brand-pink-50 ring-1 ring-gray-100 group-hover:ring-2 group-hover:ring-brand-pink-300 group-focus-visible:ring-2 group-focus-visible:ring-brand-pink-500 transition">
-              <span class="guest-name mt-2 block text-sm font-semibold text-gray-900 group-hover:text-brand-pink-600 transition">Kanako Takatsuki</span>
-              <span class="guest-role block text-xs text-gray-500">Voice actress &amp; singer <span role="img" aria-label="Japan" title="Japan">🇯🇵</span></span>
+              <span class="jh-caption"><span class="guest-name mt-2 block text-sm font-semibold text-gray-900 group-hover:text-brand-pink-600 transition">Kanako Takatsuki</span><span class="guest-role block text-xs text-gray-500">Voice actress &amp; singer <span role="img" aria-label="Japan" title="Japan">🇯🇵</span></span></span>
               <span class="card-tags"><span>Love Live! Sunshine!!</span><span>I Stand Upon a Million Lives</span><span>Koi to Uso</span></span>
             </button>
             <div class="guest-bio hidden">
@@ -304,8 +305,7 @@
           <article class="guest flex flex-col" data-video="22RQOgQhwxI" data-video-title="READY!!">
             <button type="button" class="guest-card group text-left focus:outline-none" aria-haspopup="dialog">
               <img src="images/guests/2027/eriko-nakamura.webp" alt="DJ Eriko Nakamura" loading="lazy" width="600" height="600" class="aspect-square w-full rounded-xl object-cover bg-brand-pink-50 ring-1 ring-gray-100 group-hover:ring-2 group-hover:ring-brand-pink-300 group-focus-visible:ring-2 group-focus-visible:ring-brand-pink-500 transition">
-              <span class="guest-name mt-2 block text-sm font-semibold text-gray-900 group-hover:text-brand-pink-600 transition">DJ Eriko Nakamura</span>
-              <span class="guest-role block text-xs text-gray-500">Voice actress, radio host &amp; DJ <span role="img" aria-label="Japan" title="Japan">🇯🇵</span></span>
+              <span class="jh-caption"><span class="guest-name mt-2 block text-sm font-semibold text-gray-900 group-hover:text-brand-pink-600 transition">DJ Eriko Nakamura</span><span class="guest-role block text-xs text-gray-500">Voice actress, radio host &amp; DJ <span role="img" aria-label="Japan" title="Japan">🇯🇵</span></span></span>
               <span class="card-tags"><span>THE IDOLM@STER</span><span>Trails in the Sky</span><span>Arknights</span></span>
             </button>
             <div class="guest-bio hidden">
@@ -316,8 +316,7 @@
           <article class="guest flex flex-col" data-video="SJfPUguJKxk" data-video-start="1150" data-video-end="1490" data-video-title="Lion (live at Macross F Galaxy Live Final 2025)">
             <button type="button" class="guest-card group text-left focus:outline-none" aria-haspopup="dialog">
               <img src="images/guests/2027/mayn.webp" alt="May’n" loading="lazy" width="600" height="600" class="aspect-square w-full rounded-xl object-cover bg-brand-pink-50 ring-1 ring-gray-100 group-hover:ring-2 group-hover:ring-brand-pink-300 group-focus-visible:ring-2 group-focus-visible:ring-brand-pink-500 transition">
-              <span class="guest-name mt-2 block text-sm font-semibold text-gray-900 group-hover:text-brand-pink-600 transition">May’n</span>
-              <span class="guest-role block text-xs text-gray-500">Singer <span role="img" aria-label="Japan" title="Japan">🇯🇵</span></span>
+              <span class="jh-caption"><span class="guest-name mt-2 block text-sm font-semibold text-gray-900 group-hover:text-brand-pink-600 transition">May’n</span><span class="guest-role block text-xs text-gray-500">Singer <span role="img" aria-label="Japan" title="Japan">🇯🇵</span></span></span>
               <span class="card-tags"><span>Macross Frontier</span><span>Accel World</span><span>Aria the Scarlet Ammo</span><span>Grand Blue Dreaming</span></span>
             </button>
             <div class="guest-bio hidden">
@@ -334,8 +333,7 @@
           <article class="guest flex flex-col" data-video="FgpdYKtqSKU" data-video-title="NM 【SE】">
             <button type="button" class="guest-card group text-left focus:outline-none" aria-haspopup="dialog">
               <img src="images/guests/2027/nm.webp" alt="NM" loading="lazy" width="600" height="600" class="aspect-square w-full rounded-xl object-cover bg-brand-pink-50 ring-1 ring-gray-100 group-hover:ring-2 group-hover:ring-brand-pink-300 group-focus-visible:ring-2 group-focus-visible:ring-brand-pink-500 transition">
-              <span class="guest-name mt-2 block text-sm font-semibold text-gray-900 group-hover:text-brand-pink-600 transition">NM</span>
-              <span class="guest-role block text-xs text-gray-500">Idol unit <span role="img" aria-label="Japan" title="Japan">🇯🇵</span></span>
+              <span class="jh-caption"><span class="guest-name mt-2 block text-sm font-semibold text-gray-900 group-hover:text-brand-pink-600 transition">NM</span><span class="guest-role block text-xs text-gray-500">Idol unit <span role="img" aria-label="Japan" title="Japan">🇯🇵</span></span></span>
             </button>
             <div class="guest-bio hidden">
               <div class="flex flex-wrap gap-1.5"><span class="inline-block rounded-full bg-brand-pink-50 text-brand-pink-700 text-xs px-2.5 py-1">Kanapon</span><span class="inline-block rounded-full bg-brand-pink-50 text-brand-pink-700 text-xs px-2.5 py-1">Erisuko</span></div>
@@ -345,8 +343,7 @@
           <article class="guest flex flex-col" data-video="4H4-9n5aR0w" data-video-title="Hanakoloid – Tamil">
             <button type="button" class="guest-card group text-left focus:outline-none" aria-haspopup="dialog">
               <img src="images/guests/2027/hanakoloid.webp" alt="Hanakoloid" loading="lazy" width="600" height="600" class="aspect-square w-full rounded-xl object-cover bg-brand-pink-50 ring-1 ring-gray-100 group-hover:ring-2 group-hover:ring-brand-pink-300 group-focus-visible:ring-2 group-focus-visible:ring-brand-pink-500 transition">
-              <span class="guest-name mt-2 block text-sm font-semibold text-gray-900 group-hover:text-brand-pink-600 transition">Hanakoloid</span>
-              <span class="guest-role block text-xs text-gray-500">UTAU voicebank &middot; 3DCG concert <span role="img" aria-label="India" title="India">🇮🇳</span></span>
+              <span class="jh-caption"><span class="guest-name mt-2 block text-sm font-semibold text-gray-900 group-hover:text-brand-pink-600 transition">Hanakoloid</span><span class="guest-role block text-xs text-gray-500">UTAU voicebank &middot; 3DCG concert <span role="img" aria-label="India" title="India">🇮🇳</span></span></span>
             </button>
             <div class="guest-bio hidden">
               <div class="flex flex-wrap gap-1.5"><span class="inline-block rounded-full bg-brand-pink-50 text-brand-pink-700 text-xs px-2.5 py-1">India’s first UTAU</span><span class="inline-block rounded-full bg-brand-pink-50 text-brand-pink-700 text-xs px-2.5 py-1">Sings in Tamil</span><span class="inline-block rounded-full bg-brand-pink-50 text-brand-pink-700 text-xs px-2.5 py-1">NHK New Japonism</span></div>
@@ -356,8 +353,7 @@
           <article class="guest flex flex-col" data-video="0me_7B2rRIE" data-video-title="SHINY DAYS">
             <button type="button" class="guest-card group text-left focus:outline-none" aria-haspopup="dialog">
               <img src="images/guests/2027/asaka.webp" alt="Asaka" loading="lazy" width="600" height="600" class="aspect-square w-full rounded-xl object-cover bg-brand-pink-50 ring-1 ring-gray-100 group-hover:ring-2 group-hover:ring-brand-pink-300 group-focus-visible:ring-2 group-focus-visible:ring-brand-pink-500 transition">
-              <span class="guest-name mt-2 block text-sm font-semibold text-gray-900 group-hover:text-brand-pink-600 transition">Asaka</span>
-              <span class="guest-role block text-xs text-gray-500">Anisong singer <span role="img" aria-label="Japan" title="Japan">🇯🇵</span></span>
+              <span class="jh-caption"><span class="guest-name mt-2 block text-sm font-semibold text-gray-900 group-hover:text-brand-pink-600 transition">Asaka</span><span class="guest-role block text-xs text-gray-500">Anisong singer <span role="img" aria-label="Japan" title="Japan">🇯🇵</span></span></span>
               <span class="card-tags"><span>Laid-Back Camp</span><span>Uma Musume</span><span>Higurashi</span></span>
             </button>
             <div class="guest-bio hidden">
@@ -368,8 +364,7 @@
           <article class="guest flex flex-col" data-video="cqwcH_WIP-8" data-video-title="It’s Going Down Now">
             <button type="button" class="guest-card group text-left focus:outline-none" aria-haspopup="dialog">
               <img src="images/guests/2027/lotus-juice.webp" alt="Lotus Juice" loading="lazy" width="600" height="600" class="aspect-square w-full rounded-xl object-cover bg-brand-pink-50 ring-1 ring-gray-100 group-hover:ring-2 group-hover:ring-brand-pink-300 group-focus-visible:ring-2 group-focus-visible:ring-brand-pink-500 transition">
-              <span class="guest-name mt-2 block text-sm font-semibold text-gray-900 group-hover:text-brand-pink-600 transition">Lotus Juice</span>
-              <span class="guest-role block text-xs text-gray-500">Rapper &amp; DJ <span role="img" aria-label="Japan" title="Japan">🇯🇵</span></span>
+              <span class="jh-caption"><span class="guest-name mt-2 block text-sm font-semibold text-gray-900 group-hover:text-brand-pink-600 transition">Lotus Juice</span><span class="guest-role block text-xs text-gray-500">Rapper &amp; DJ <span role="img" aria-label="Japan" title="Japan">🇯🇵</span></span></span>
               <span class="card-tags"><span>Persona 3</span><span>JoJo’s Bizarre Adventure</span><span>Soul Eater</span></span>
             </button>
             <div class="guest-bio hidden">
@@ -380,8 +375,7 @@
           <article class="guest flex flex-col" data-video="a6Fl1Xl1ogg" data-video-start="555" data-video-end="750" data-video-title="T:T (YouSeeBIGGIRL/T:T) – Hiroyuki Sawano Project emU, vocal Gemie">
             <button type="button" class="guest-card group text-left focus:outline-none" aria-haspopup="dialog">
               <img src="images/guests/2027/rin-gemie.webp" alt="R!N (Gemie)" loading="lazy" width="600" height="600" class="aspect-square w-full rounded-xl object-cover bg-brand-pink-50 ring-1 ring-gray-100 group-hover:ring-2 group-hover:ring-brand-pink-300 group-focus-visible:ring-2 group-focus-visible:ring-brand-pink-500 transition">
-              <span class="guest-name mt-2 block text-sm font-semibold text-gray-900 group-hover:text-brand-pink-600 transition">R!N (Gemie)</span>
-              <span class="guest-role block text-xs text-gray-500">Singer-songwriter <span role="img" aria-label="Japan" title="Japan">🇯🇵</span></span>
+              <span class="jh-caption"><span class="guest-name mt-2 block text-sm font-semibold text-gray-900 group-hover:text-brand-pink-600 transition">R!N (Gemie)</span><span class="guest-role block text-xs text-gray-500">Singer-songwriter <span role="img" aria-label="Japan" title="Japan">🇯🇵</span></span></span>
               <span class="card-tags"><span>Attack on Titan</span><span>Re:CREATORS</span><span>Gundam NT</span></span>
             </button>
             <div class="guest-bio hidden">
@@ -398,8 +392,7 @@
           <article class="guest flex flex-col" data-video="I_u8fS55ytQ" data-video-title="Sakura no Inochi">
             <button type="button" class="guest-card group text-left focus:outline-none" aria-haspopup="dialog">
               <img src="images/guests/2027/shiden-ryu.webp" alt="Shiden-ryu" loading="lazy" width="600" height="600" class="aspect-square w-full rounded-xl object-cover bg-brand-pink-50 ring-1 ring-gray-100 group-hover:ring-2 group-hover:ring-brand-pink-300 group-focus-visible:ring-2 group-focus-visible:ring-brand-pink-500 transition">
-              <span class="guest-name mt-2 block text-sm font-semibold text-gray-900 group-hover:text-brand-pink-600 transition">Shiden-ryu</span>
-              <span class="guest-role block text-xs text-gray-500">Samurai troupe <span role="img" aria-label="Japan" title="Japan">🇯🇵</span></span>
+              <span class="jh-caption"><span class="guest-name mt-2 block text-sm font-semibold text-gray-900 group-hover:text-brand-pink-600 transition">Shiden-ryu</span><span class="guest-role block text-xs text-gray-500">Samurai troupe <span role="img" aria-label="Japan" title="Japan">🇯🇵</span></span></span>
             </button>
             <div class="guest-bio hidden">
               <div class="flex flex-wrap gap-1.5"><span class="inline-block rounded-full bg-brand-pink-50 text-brand-pink-700 text-xs px-2.5 py-1">Samurai performance</span><span class="inline-block rounded-full bg-brand-pink-50 text-brand-pink-700 text-xs px-2.5 py-1">Swordsmanship</span></div>
@@ -409,8 +402,7 @@
           <article class="guest flex flex-col" data-local-only data-video="cB6xyfBOz3Q" data-video-title="DRUM TAO North American Tour 2026">
             <button type="button" class="guest-card group text-left focus:outline-none" aria-haspopup="dialog">
               <img src="images/guests/2027/drum-tao.webp" alt="DRUM TAO" loading="lazy" width="600" height="600" class="aspect-square w-full rounded-xl object-cover bg-brand-pink-50 ring-1 ring-gray-100 group-hover:ring-2 group-hover:ring-brand-pink-300 group-focus-visible:ring-2 group-focus-visible:ring-brand-pink-500 transition">
-              <span class="guest-name mt-2 block text-sm font-semibold text-gray-900 group-hover:text-brand-pink-600 transition">DRUM TAO</span>
-              <span class="guest-role block text-xs text-gray-500">Taiko performance troupe <span role="img" aria-label="Japan" title="Japan">🇯🇵</span></span>
+              <span class="jh-caption"><span class="guest-name mt-2 block text-sm font-semibold text-gray-900 group-hover:text-brand-pink-600 transition">DRUM TAO</span><span class="guest-role block text-xs text-gray-500">Taiko performance troupe <span role="img" aria-label="Japan" title="Japan">🇯🇵</span></span></span>
               <span class="card-tags"><span>Taiko</span><span>Live performance</span></span>
             </button>
             <div class="guest-bio hidden">
@@ -421,8 +413,7 @@
           <article class="guest flex flex-col" data-local-only data-video="AzZYXqUdp5o" data-video-title="TRIGUN STAMPEDE official trailer">
             <button type="button" class="guest-card group text-left focus:outline-none" aria-haspopup="dialog">
               <img src="images/guests/2027/kenji-muto.webp" alt="Kenji Muto" loading="lazy" width="600" height="600" class="aspect-square w-full rounded-xl object-cover bg-brand-pink-50 ring-1 ring-gray-100 group-hover:ring-2 group-hover:ring-brand-pink-300 group-focus-visible:ring-2 group-focus-visible:ring-brand-pink-500 transition">
-              <span class="guest-name mt-2 block text-sm font-semibold text-gray-900 group-hover:text-brand-pink-600 transition">Kenji Muto</span>
-              <span class="guest-role block text-xs text-gray-500">Anime director &middot; Studio Orange <span role="img" aria-label="Japan" title="Japan">🇯🇵</span></span>
+              <span class="jh-caption"><span class="guest-name mt-2 block text-sm font-semibold text-gray-900 group-hover:text-brand-pink-600 transition">Kenji Muto</span><span class="guest-role block text-xs text-gray-500">Anime director &middot; Studio Orange <span role="img" aria-label="Japan" title="Japan">🇯🇵</span></span></span>
               <span class="card-tags"><span>Trigun Stampede</span><span>Land of the Lustrous</span></span>
             </button>
             <div class="guest-bio hidden">
@@ -433,8 +424,7 @@
           <article class="guest flex flex-col" data-local-only data-video="ZOE7PLkuvJM" data-video-title="Leviathan official teaser">
             <button type="button" class="guest-card group text-left focus:outline-none" aria-haspopup="dialog">
               <img src="images/guests/2027/yoshihiro-watanabe.webp" alt="Yoshihiro “Nabe” Watanabe" loading="lazy" width="600" height="600" class="aspect-square w-full rounded-xl object-cover bg-brand-pink-50 ring-1 ring-gray-100 group-hover:ring-2 group-hover:ring-brand-pink-300 group-focus-visible:ring-2 group-focus-visible:ring-brand-pink-500 transition">
-              <span class="guest-name mt-2 block text-sm font-semibold text-gray-900 group-hover:text-brand-pink-600 transition">Yoshihiro “Nabe” Watanabe</span>
-              <span class="guest-role block text-xs text-gray-500">Anime producer &middot; Studio Orange <span role="img" aria-label="Japan" title="Japan">🇯🇵</span></span>
+              <span class="jh-caption"><span class="guest-name mt-2 block text-sm font-semibold text-gray-900 group-hover:text-brand-pink-600 transition">Yoshihiro “Nabe” Watanabe</span><span class="guest-role block text-xs text-gray-500">Anime producer &middot; Studio Orange <span role="img" aria-label="Japan" title="Japan">🇯🇵</span></span></span>
               <span class="card-tags"><span>BEASTARS</span><span>Trigun Stampede</span><span>Leviathan</span></span>
             </button>
             <div class="guest-bio hidden">
@@ -445,8 +435,7 @@
           <article class="guest flex flex-col" data-video="uKm1-1WP9-s" data-video-title="WataNare trailer">
             <button type="button" class="guest-card group text-left focus:outline-none" aria-haspopup="dialog">
               <img src="images/guests/2027/kanna-nakamura.webp" alt="Kanna Nakamura" loading="lazy" width="600" height="600" class="aspect-square w-full rounded-xl object-cover bg-brand-pink-50 ring-1 ring-gray-100 group-hover:ring-2 group-hover:ring-brand-pink-300 group-focus-visible:ring-2 group-focus-visible:ring-brand-pink-500 transition">
-              <span class="guest-name mt-2 block text-sm font-semibold text-gray-900 group-hover:text-brand-pink-600 transition">Kanna Nakamura</span>
-              <span class="guest-role block text-xs text-gray-500">Voice actress <span role="img" aria-label="Japan" title="Japan">🇯🇵</span></span>
+              <span class="jh-caption"><span class="guest-name mt-2 block text-sm font-semibold text-gray-900 group-hover:text-brand-pink-600 transition">Kanna Nakamura</span><span class="guest-role block text-xs text-gray-500">Voice actress <span role="img" aria-label="Japan" title="Japan">🇯🇵</span></span></span>
               <span class="card-tags"><span>Uma Musume</span><span>WataNare</span><span>When Will Ayumu Make His Move?</span></span>
             </button>
             <div class="guest-bio hidden">
@@ -457,8 +446,7 @@
           <article class="guest flex flex-col" data-local-only data-video="tWWGtQt5yUY" data-video-title="Attention! (MV)">
             <button type="button" class="guest-card group text-left focus:outline-none" aria-haspopup="dialog">
               <img src="images/guests/2027/relike.webp" alt="Re:♡" loading="lazy" width="600" height="600" class="aspect-square w-full rounded-xl object-cover bg-brand-pink-50 ring-1 ring-gray-100 group-hover:ring-2 group-hover:ring-brand-pink-300 group-focus-visible:ring-2 group-focus-visible:ring-brand-pink-500 transition">
-              <span class="guest-name mt-2 block text-sm font-semibold text-gray-900 group-hover:text-brand-pink-600 transition">Re:♡</span>
-              <span class="guest-role block text-xs text-gray-500">Idol group <span role="img" aria-label="Japan" title="Japan">🇯🇵</span></span>
+              <span class="jh-caption"><span class="guest-name mt-2 block text-sm font-semibold text-gray-900 group-hover:text-brand-pink-600 transition">Re:♡</span><span class="guest-role block text-xs text-gray-500">Idol group <span role="img" aria-label="Japan" title="Japan">🇯🇵</span></span></span>
               <span class="card-tags"><span>Idol group</span></span>
             </button>
             <div class="guest-bio hidden">
@@ -469,8 +457,7 @@
           <article class="guest flex flex-col" data-video="Cl-ExA9hwrU" data-video-title="IDOL♡Emo-tion (MV)">
             <button type="button" class="guest-card group text-left focus:outline-none" aria-haspopup="dialog">
               <img src="images/guests/2027/hitomi-aizawa.webp" alt="Hitomi Aizawa" loading="lazy" width="600" height="600" class="aspect-square w-full rounded-xl object-cover bg-brand-pink-50 ring-1 ring-gray-100 group-hover:ring-2 group-hover:ring-brand-pink-300 group-focus-visible:ring-2 group-focus-visible:ring-brand-pink-500 transition">
-              <span class="guest-name mt-2 block text-sm font-semibold text-gray-900 group-hover:text-brand-pink-600 transition">Hitomi Aizawa</span>
-              <span class="guest-role block text-xs text-gray-500">Self-produced idol <span role="img" aria-label="Japan" title="Japan">🇯🇵</span></span>
+              <span class="jh-caption"><span class="guest-name mt-2 block text-sm font-semibold text-gray-900 group-hover:text-brand-pink-600 transition">Hitomi Aizawa</span><span class="guest-role block text-xs text-gray-500">Self-produced idol <span role="img" aria-label="Japan" title="Japan">🇯🇵</span></span></span>
               <span class="card-tags"><span>Singer-songwriter</span><span>Choreography</span><span>Costume design</span></span>
             </button>
             <div class="guest-bio hidden">
@@ -487,8 +474,7 @@
           <article class="guest flex flex-col" data-video="JzS96auqau0" data-video-title="Evo Moment #37: Daigo vs Justin Wong, Evo 2004">
             <button type="button" class="guest-card group text-left focus:outline-none" aria-haspopup="dialog">
               <img src="images/guests/2027/justin-wong.webp" alt="Justin Wong" loading="lazy" width="600" height="600" class="aspect-square w-full rounded-xl object-cover bg-brand-pink-50 ring-1 ring-gray-100 group-hover:ring-2 group-hover:ring-brand-pink-300 group-focus-visible:ring-2 group-focus-visible:ring-brand-pink-500 transition">
-              <span class="guest-name mt-2 block text-sm font-semibold text-gray-900 group-hover:text-brand-pink-600 transition">Justin Wong</span>
-              <span class="guest-role block text-xs text-gray-500">Street Fighter <span role="img" aria-label="United States" title="United States">🇺🇸</span></span>
+              <span class="jh-caption"><span class="guest-name mt-2 block text-sm font-semibold text-gray-900 group-hover:text-brand-pink-600 transition">Justin Wong</span><span class="guest-role block text-xs text-gray-500">Street Fighter <span role="img" aria-label="United States" title="United States">🇺🇸</span></span></span>
               <span class="card-tags"><span>Multi-time EVO champion</span><span>Evo Moment #37</span><span>BASILISK FGC captain</span></span>
             </button>
             <div class="guest-bio hidden">
@@ -499,8 +485,7 @@
           <article class="guest flex flex-col">
             <button type="button" class="guest-card group text-left focus:outline-none" aria-haspopup="dialog">
               <img src="images/guests/2027/freeser.webp" alt="Freeser" loading="lazy" width="600" height="600" class="aspect-square w-full rounded-xl object-cover bg-brand-pink-50 ring-1 ring-gray-100 group-hover:ring-2 group-hover:ring-brand-pink-300 group-focus-visible:ring-2 group-focus-visible:ring-brand-pink-500 transition">
-              <span class="guest-name mt-2 block text-sm font-semibold text-gray-900 group-hover:text-brand-pink-600 transition">Freeser</span>
-              <span class="guest-role block text-xs text-gray-500">Street Fighter 6 <span role="img" aria-label="Australia" title="Australia">🇦🇺</span></span>
+              <span class="jh-caption"><span class="guest-name mt-2 block text-sm font-semibold text-gray-900 group-hover:text-brand-pink-600 transition">Freeser</span><span class="guest-role block text-xs text-gray-500">Street Fighter 6 <span role="img" aria-label="Australia" title="Australia">🇦🇺</span></span></span>
               <span class="card-tags"><span>2nd CPT Oceania 2024 &amp; 2025</span><span>OzHadou Nationals 18 champion</span></span>
             </button>
             <div class="guest-bio hidden">
@@ -511,8 +496,7 @@
           <article class="guest flex flex-col">
             <button type="button" class="guest-card group text-left focus:outline-none" aria-haspopup="dialog">
               <img src="images/guests/2027/ggnd.webp" alt="ggnd" loading="lazy" width="600" height="600" class="aspect-square w-full rounded-xl object-cover bg-brand-pink-50 ring-1 ring-gray-100 group-hover:ring-2 group-hover:ring-brand-pink-300 group-focus-visible:ring-2 group-focus-visible:ring-brand-pink-500 transition">
-              <span class="guest-name mt-2 block text-sm font-semibold text-gray-900 group-hover:text-brand-pink-600 transition">ggnd</span>
-              <span class="guest-role block text-xs text-gray-500">Street Fighter <span role="img" aria-label="Japan" title="Japan">🇯🇵</span></span>
+              <span class="jh-caption"><span class="guest-name mt-2 block text-sm font-semibold text-gray-900 group-hover:text-brand-pink-600 transition">ggnd</span><span class="guest-role block text-xs text-gray-500">Street Fighter <span role="img" aria-label="Japan" title="Japan">🇯🇵</span></span></span>
               <span class="card-tags"><span>FGC event organizer</span><span>EVO competitor</span></span>
             </button>
             <div class="guest-bio hidden">
@@ -523,8 +507,7 @@
           <article class="guest flex flex-col">
             <button type="button" class="guest-card group text-left focus:outline-none" aria-haspopup="dialog">
               <img src="images/guests/2027/koopa.webp" alt="Koopa" loading="lazy" width="600" height="600" class="aspect-square w-full rounded-xl object-cover bg-brand-pink-50 ring-1 ring-gray-100 group-hover:ring-2 group-hover:ring-brand-pink-300 group-focus-visible:ring-2 group-focus-visible:ring-brand-pink-500 transition">
-              <span class="guest-name mt-2 block text-sm font-semibold text-gray-900 group-hover:text-brand-pink-600 transition">Koopa</span>
-              <span class="guest-role block text-xs text-gray-500">Street Fighter 6 <span role="img" aria-label="Australia" title="Australia">🇦🇺</span></span>
+              <span class="jh-caption"><span class="guest-name mt-2 block text-sm font-semibold text-gray-900 group-hover:text-brand-pink-600 transition">Koopa</span><span class="guest-role block text-xs text-gray-500">Street Fighter 6 <span role="img" aria-label="Australia" title="Australia">🇦🇺</span></span></span>
               <span class="card-tags"><span>2nd Road to ENC 26 Oceania</span><span>Top 6 CPT Oceania 2026</span><span>3rd OzHadou Nationals 20</span></span>
             </button>
             <div class="guest-bio hidden">
@@ -535,8 +518,7 @@
           <article class="guest flex flex-col">
             <button type="button" class="guest-card group text-left focus:outline-none" aria-haspopup="dialog">
               <img src="images/guests/2027/sherryjenix.webp" alt="SherryJenix" loading="lazy" width="600" height="600" class="aspect-square w-full rounded-xl object-cover bg-brand-pink-50 ring-1 ring-gray-100 group-hover:ring-2 group-hover:ring-brand-pink-300 group-focus-visible:ring-2 group-focus-visible:ring-brand-pink-500 transition">
-              <span class="guest-name mt-2 block text-sm font-semibold text-gray-900 group-hover:text-brand-pink-600 transition">SherryJenix</span>
-              <span class="guest-role block text-xs text-gray-500">Street Fighter 6 <span role="img" aria-label="USA" title="USA">🇺🇸</span></span>
+              <span class="jh-caption"><span class="guest-name mt-2 block text-sm font-semibold text-gray-900 group-hover:text-brand-pink-600 transition">SherryJenix</span><span class="guest-role block text-xs text-gray-500">Street Fighter 6 <span role="img" aria-label="USA" title="USA">🇺🇸</span></span></span>
               <span class="card-tags"><span>Top 4 SFL Worlds 2019</span></span>
             </button>
             <div class="guest-bio hidden">
@@ -547,8 +529,7 @@
           <article class="guest flex flex-col">
             <button type="button" class="guest-card group text-left focus:outline-none" aria-haspopup="dialog">
               <img src="images/guests/2027/tantanmen.webp" alt="Tantanmen" loading="lazy" width="600" height="600" class="aspect-square w-full rounded-xl object-cover bg-brand-pink-50 ring-1 ring-gray-100 group-hover:ring-2 group-hover:ring-brand-pink-300 group-focus-visible:ring-2 group-focus-visible:ring-brand-pink-500 transition">
-              <span class="guest-name mt-2 block text-sm font-semibold text-gray-900 group-hover:text-brand-pink-600 transition">Tantanmen</span>
-              <span class="guest-role block text-xs text-gray-500">Street Fighter 6 <span role="img" aria-label="Japan" title="Japan">🇯🇵</span></span>
+              <span class="jh-caption"><span class="guest-name mt-2 block text-sm font-semibold text-gray-900 group-hover:text-brand-pink-600 transition">Tantanmen</span><span class="guest-role block text-xs text-gray-500">Street Fighter 6 <span role="img" aria-label="Japan" title="Japan">🇯🇵</span></span></span>
               <span class="card-tags"><span>5th EVO 2026</span><span>4th UFA Paris 2026</span></span>
             </button>
             <div class="guest-bio hidden">
@@ -559,8 +540,7 @@
           <article class="guest flex flex-col">
             <button type="button" class="guest-card group text-left focus:outline-none" aria-haspopup="dialog">
               <img src="images/guests/2027/dhir.webp" alt="Dhir" loading="lazy" width="600" height="600" class="aspect-square w-full rounded-xl object-cover bg-brand-pink-50 ring-1 ring-gray-100 group-hover:ring-2 group-hover:ring-brand-pink-300 group-focus-visible:ring-2 group-focus-visible:ring-brand-pink-500 transition">
-              <span class="guest-name mt-2 block text-sm font-semibold text-gray-900 group-hover:text-brand-pink-600 transition">Dhir</span>
-              <span class="guest-role block text-xs text-gray-500">Smash Ultimate <span role="img" aria-label="Canada" title="Canada">🇨🇦</span></span>
+              <span class="jh-caption"><span class="guest-name mt-2 block text-sm font-semibold text-gray-900 group-hover:text-brand-pink-600 transition">Dhir</span><span class="guest-role block text-xs text-gray-500">Smash Ultimate <span role="img" aria-label="Canada" title="Canada">🇨🇦</span></span></span>
               <span class="card-tags"><span>Battle of BC organizer</span></span>
             </button>
             <div class="guest-bio hidden">
@@ -571,8 +551,7 @@
           <article class="guest flex flex-col">
             <button type="button" class="guest-card group text-left focus:outline-none" aria-haspopup="dialog">
               <img src="images/guests/2027/kept.webp" alt="kept" loading="lazy" width="600" height="600" class="aspect-square w-full rounded-xl object-cover bg-brand-pink-50 ring-1 ring-gray-100 group-hover:ring-2 group-hover:ring-brand-pink-300 group-focus-visible:ring-2 group-focus-visible:ring-brand-pink-500 transition">
-              <span class="guest-name mt-2 block text-sm font-semibold text-gray-900 group-hover:text-brand-pink-600 transition">kept</span>
-              <span class="guest-role block text-xs text-gray-500">Smash Ultimate <span role="img" aria-label="Japan" title="Japan">🇯🇵</span></span>
+              <span class="jh-caption"><span class="guest-name mt-2 block text-sm font-semibold text-gray-900 group-hover:text-brand-pink-600 transition">kept</span><span class="guest-role block text-xs text-gray-500">Smash Ultimate <span role="img" aria-label="Japan" title="Japan">🇯🇵</span></span></span>
               <span class="card-tags"><span>Uprising 2022 champion</span><span>Best Villager</span></span>
             </button>
             <div class="guest-bio hidden">
@@ -583,8 +562,7 @@
           <article class="guest flex flex-col">
             <button type="button" class="guest-card group text-left focus:outline-none" aria-haspopup="dialog">
               <img src="images/guests/2027/lemonace.webp" alt="Lemonace" loading="lazy" width="600" height="600" class="aspect-square w-full rounded-xl object-cover bg-brand-pink-50 ring-1 ring-gray-100 group-hover:ring-2 group-hover:ring-brand-pink-300 group-focus-visible:ring-2 group-focus-visible:ring-brand-pink-500 transition">
-              <span class="guest-name mt-2 block text-sm font-semibold text-gray-900 group-hover:text-brand-pink-600 transition">Lemonace</span>
-              <span class="guest-role block text-xs text-gray-500">Smash Ultimate <span role="img" aria-label="Indonesia" title="Indonesia">🇮🇩</span></span>
+              <span class="jh-caption"><span class="guest-name mt-2 block text-sm font-semibold text-gray-900 group-hover:text-brand-pink-600 transition">Lemonace</span><span class="guest-role block text-xs text-gray-500">Smash Ultimate <span role="img" aria-label="Indonesia" title="Indonesia">🇮🇩</span></span></span>
               <span class="card-tags"><span>ACE-HIGH director</span><span>Indonesia’s top TO</span></span>
             </button>
             <div class="guest-bio hidden">
@@ -595,8 +573,7 @@
           <article class="guest flex flex-col">
             <button type="button" class="guest-card group text-left focus:outline-none" aria-haspopup="dialog">
               <img src="images/guests/2027/neo.webp" alt="Neo" loading="lazy" width="600" height="600" class="aspect-square w-full rounded-xl object-cover bg-brand-pink-50 ring-1 ring-gray-100 group-hover:ring-2 group-hover:ring-brand-pink-300 group-focus-visible:ring-2 group-focus-visible:ring-brand-pink-500 transition">
-              <span class="guest-name mt-2 block text-sm font-semibold text-gray-900 group-hover:text-brand-pink-600 transition">Neo</span>
-              <span class="guest-role block text-xs text-gray-500">Smash Ultimate <span role="img" aria-label="Indonesia" title="Indonesia">🇮🇩</span></span>
+              <span class="jh-caption"><span class="guest-name mt-2 block text-sm font-semibold text-gray-900 group-hover:text-brand-pink-600 transition">Neo</span><span class="guest-role block text-xs text-gray-500">Smash Ultimate <span role="img" aria-label="Indonesia" title="Indonesia">🇮🇩</span></span></span>
               <span class="card-tags"><span>Versus Festival 2025 champion</span><span>5th Super Smash Con 2023</span><span>FightClub Championship V</span></span>
             </button>
             <div class="guest-bio hidden">
@@ -607,8 +584,7 @@
           <article class="guest flex flex-col">
             <button type="button" class="guest-card group text-left focus:outline-none" aria-haspopup="dialog">
               <img src="images/guests/2027/raito.webp" alt="Raito" loading="lazy" width="600" height="600" class="aspect-square w-full rounded-xl object-cover bg-brand-pink-50 ring-1 ring-gray-100 group-hover:ring-2 group-hover:ring-brand-pink-300 group-focus-visible:ring-2 group-focus-visible:ring-brand-pink-500 transition">
-              <span class="guest-name mt-2 block text-sm font-semibold text-gray-900 group-hover:text-brand-pink-600 transition">Raito</span>
-              <span class="guest-role block text-xs text-gray-500">Smash Ultimate <span role="img" aria-label="Japan" title="Japan">🇯🇵</span></span>
+              <span class="jh-caption"><span class="guest-name mt-2 block text-sm font-semibold text-gray-900 group-hover:text-brand-pink-600 transition">Raito</span><span class="guest-role block text-xs text-gray-500">Smash Ultimate <span role="img" aria-label="Japan" title="Japan">🇯🇵</span></span></span>
               <span class="card-tags"><span>Sumabato 23 champion</span><span>PGR100 #38 (Smash 4)</span></span>
             </button>
             <div class="guest-bio hidden">
@@ -619,8 +595,7 @@
           <article class="guest flex flex-col">
             <button type="button" class="guest-card group text-left focus:outline-none" aria-haspopup="dialog">
               <img src="images/guests/2027/umeki.webp" alt="Umeki" loading="lazy" width="600" height="600" class="aspect-square w-full rounded-xl object-cover bg-brand-pink-50 ring-1 ring-gray-100 group-hover:ring-2 group-hover:ring-brand-pink-300 group-focus-visible:ring-2 group-focus-visible:ring-brand-pink-500 transition">
-              <span class="guest-name mt-2 block text-sm font-semibold text-gray-900 group-hover:text-brand-pink-600 transition">Umeki</span>
-              <span class="guest-role block text-xs text-gray-500">Smash Ultimate <span role="img" aria-label="Japan" title="Japan">🇯🇵</span></span>
+              <span class="jh-caption"><span class="guest-name mt-2 block text-sm font-semibold text-gray-900 group-hover:text-brand-pink-600 transition">Umeki</span><span class="guest-role block text-xs text-gray-500">Smash Ultimate <span role="img" aria-label="Japan" title="Japan">🇯🇵</span></span></span>
               <span class="card-tags"><span>5th Port Priority 8</span><span>Umebura organizer</span></span>
             </button>
             <div class="guest-bio hidden">
@@ -631,8 +606,7 @@
           <article class="guest flex flex-col">
             <button type="button" class="guest-card group text-left focus:outline-none" aria-haspopup="dialog">
               <img src="images/guests/2027/watch.webp" alt="watch" loading="lazy" width="600" height="600" class="aspect-square w-full rounded-xl object-cover bg-brand-pink-50 ring-1 ring-gray-100 group-hover:ring-2 group-hover:ring-brand-pink-300 group-focus-visible:ring-2 group-focus-visible:ring-brand-pink-500 transition">
-              <span class="guest-name mt-2 block text-sm font-semibold text-gray-900 group-hover:text-brand-pink-600 transition">watch</span>
-              <span class="guest-role block text-xs text-gray-500">Smash Melee <span role="img" aria-label="Japan" title="Japan">🇯🇵</span></span>
+              <span class="jh-caption"><span class="guest-name mt-2 block text-sm font-semibold text-gray-900 group-hover:text-brand-pink-600 transition">watch</span><span class="guest-role block text-xs text-gray-500">Smash Melee <span role="img" aria-label="Japan" title="Japan">🇯🇵</span></span></span>
               <span class="card-tags"><span>VGBootCamp organizer</span><span>ZETA DIVISION</span></span>
             </button>
             <div class="guest-bio hidden">
@@ -643,8 +617,7 @@
           <article class="guest flex flex-col">
             <button type="button" class="guest-card group text-left focus:outline-none" aria-haspopup="dialog">
               <img src="images/guests/2027/wstx.webp" alt="WSTX" loading="lazy" width="600" height="600" class="aspect-square w-full rounded-xl object-cover bg-brand-pink-50 ring-1 ring-gray-100 group-hover:ring-2 group-hover:ring-brand-pink-300 group-focus-visible:ring-2 group-focus-visible:ring-brand-pink-500 transition">
-              <span class="guest-name mt-2 block text-sm font-semibold text-gray-900 group-hover:text-brand-pink-600 transition">WSTX</span>
-              <span class="guest-role block text-xs text-gray-500">Controller pop-up <span role="img" aria-label="Australia" title="Australia">🇦🇺</span></span>
+              <span class="jh-caption"><span class="guest-name mt-2 block text-sm font-semibold text-gray-900 group-hover:text-brand-pink-600 transition">WSTX</span><span class="guest-role block text-xs text-gray-500">Controller pop-up <span role="img" aria-label="Australia" title="Australia">🇦🇺</span></span></span>
             </button>
             <div class="guest-bio hidden">
               <div class="flex flex-wrap gap-1.5"><span class="inline-block rounded-full bg-brand-pink-50 text-brand-pink-700 text-xs px-2.5 py-1">Arcade sticks</span><span class="inline-block rounded-full bg-brand-pink-50 text-brand-pink-700 text-xs px-2.5 py-1">Leverless controllers</span><span class="inline-block rounded-full bg-brand-pink-50 text-brand-pink-700 text-xs px-2.5 py-1">Made in Australia</span></div>
@@ -657,9 +630,9 @@
   </section>
 
   <!-- Tickets & FAQ (from KonfHub) -->
-  <section id="tickets" class="px-6 py-16 border-t border-gray-100">
+  <section id="tickets" class="jh-dark jh-rose px-6 py-16">
     <div class="max-w-3xl mx-auto">
-      <h2 class="text-xl font-semibold text-gray-900 text-center mb-2">Tickets</h2>
+      <h2 class="jh-title text-center mb-2">Tickets</h2>
       <p class="text-sm text-gray-500 text-center">Chamara Vajra, Jayamahal Main Road, Bengaluru &middot; Jan 9, 9:00 AM &ndash; Jan 10, 10:00 PM</p>
       <div class="poster-grid mt-8 grid grid-cols-1 sm:grid-cols-2 gap-4">
         <img src="images/konfhub/about-11.webp" alt="Japan Habba (exhibition only) ticket inclusions" loading="lazy" class="w-full rounded-xl border border-gray-100">
@@ -669,7 +642,7 @@
         <a href="https://konfhub.com/japan-habba-2027" target="_blank" rel="noopener" class="inline-block rounded-md bg-brand-pink-600 hover:bg-brand-pink-700 px-6 py-3 text-sm font-semibold text-white transition">Get Tickets on KonfHub</a>
       </div>
 
-      <h2 id="faq" class="mt-16 text-xl font-semibold text-gray-900 text-center mb-6">Frequently Asked Questions</h2>
+      <h2 id="faq" class="mt-16 jh-title text-center mb-6">Frequently Asked Questions</h2>
       <div class="faq divide-y border-t border-b text-left">
         <details class="py-4">
           <summary class="cursor-pointer text-sm font-semibold text-gray-900">Is there an age limit?</summary>
@@ -724,9 +697,9 @@
   </section>
 
   <!-- Gallery Section -->
-  <section id="gallery" class="px-6 py-16 border-t border-gray-100">
+  <section id="gallery" class="jh-dark jh-brick px-6 py-16">
     <div class="max-w-5xl mx-auto">
-      <h2 class="text-xl font-semibold text-gray-900 text-center mb-6">Gallery &mdash; Japan Habba 2025</h2>
+      <h2 class="jh-title text-center mb-6">Gallery &mdash; Japan Habba 2025</h2>
 
       <div id="gallery-scroll" class="flex gap-4 overflow-x-auto pb-4 scroll-smooth [-webkit-overflow-scrolling:touch] [touch-action:pan-x]" style="scrollbar-width: thin; scrollbar-color: #DB2777 #FCE7F3;">
         <!-- Cards injected + duplicated by script for seamless autoscroll -->
@@ -735,9 +708,9 @@
   </section>
 
   <!-- Sponsorship Section -->
-  <section id="sponsorship" class="px-6 py-16 border-t border-gray-100">
+  <section id="sponsorship" class="jh-dark jh-ox px-6 py-16">
     <div class="max-w-2xl mx-auto text-center">
-      <h2 class="text-xl font-semibold text-gray-900">Sponsorship</h2>
+      <h2 class="jh-title">Sponsorship</h2>
       <p class="mt-2 text-gray-600 text-sm">
         Interested in partnering with Japan Habba 2027?<br>Fill out the form and our team will reach out with details.
       </p>
@@ -768,9 +741,9 @@
   </section>
 
   <!-- Supporters Section -->
-  <section id="supporters" class="px-6 py-16 border-t border-gray-100">
+  <section id="supporters" class="jh-paper px-6 pt-16 pb-8 border-t-4 border-[#DBB158]">
     <div class="max-w-5xl mx-auto">
-      <h2 class="text-xl font-semibold text-gray-900 text-center mb-10">Supporters</h2>
+      <h2 class="jh-title text-center mb-10">Supporters</h2>
 
       <!-- Grid of Diplomatic & Main Supporters -->
       <div class="flex flex-wrap items-center justify-center gap-10">
@@ -820,15 +793,15 @@
   </section>
 
   <!-- Confirmed Sponsors & Exhibitors Section -->
-  <section id="confirmed-sponsors" class="px-6 py-16 border-t border-gray-100">
+  <section id="confirmed-sponsors" class="jh-paper px-6 py-8">
     <div class="max-w-4xl mx-auto">
-      <h2 class="text-xl font-semibold text-gray-900 text-center mb-10">Confirmed Sponsors &amp; Exhibitors</h2>
+      <h2 class="jh-title text-center mb-10">Confirmed Sponsors &amp; Exhibitors</h2>
 
       <div class="space-y-12 text-center">
 
         <!-- Premium Sponsors -->
         <div>
-          <p class="text-xs font-semibold uppercase tracking-wide text-gray-400 mb-5">Premium Sponsors</p>
+          <p class="jh-tier text-xs font-semibold uppercase tracking-wide text-gray-400 mb-5">Premium Sponsors</p>
           <div class="grid grid-cols-2 sm:grid-cols-4 gap-6 items-center justify-items-center max-w-3xl mx-auto">
             <a href="https://corp.rakuten.co.in/" target="_blank" class="p-2 w-full flex flex-col items-center justify-center gap-2 h-28 group" title="Rakuten India">
               <div class="h-16 w-full flex items-center justify-center"><img src="images/sponsors/2027/rakuten.webp" alt="Rakuten Logo" class="max-h-12 max-w-full object-contain"></div>
@@ -851,7 +824,7 @@
 
         <!-- The Versus Festival -->
         <div>
-          <p class="text-xs font-semibold uppercase tracking-wide text-gray-400 mb-5">The Versus Festival</p>
+          <p class="jh-tier text-xs font-semibold uppercase tracking-wide text-gray-400 mb-5">The Versus Festival</p>
           <div class="grid grid-cols-2 gap-6 items-center justify-items-center max-w-xl mx-auto">
             <a href="https://www.capcom.com/" target="_blank" class="p-4 w-full flex items-center justify-center h-24 group" title="Capcom">
               <img src="images/sponsors/2027/capcom.webp" alt="Capcom Logo" class="max-h-10 max-w-full object-contain">
@@ -864,7 +837,7 @@
 
         <!-- Sponsors -->
         <div>
-          <p class="text-xs font-semibold uppercase tracking-wide text-gray-400 mb-5">Sponsors</p>
+          <p class="jh-tier text-xs font-semibold uppercase tracking-wide text-gray-400 mb-5">Sponsors</p>
           <div class="grid grid-cols-2 sm:grid-cols-4 gap-6 items-center justify-items-center max-w-3xl mx-auto">
             <a href="https://about.in.mercari.com/" target="_blank" class="p-4 w-full flex items-center justify-center h-20 group" title="Mercari">
               <img src="images/sponsors/2027/mercari.svg" alt="Mercari Logo" class="max-h-8 max-w-full object-contain">
@@ -922,7 +895,7 @@
 
         <!-- Exhibitors -->
         <div>
-          <p class="text-xs font-semibold uppercase tracking-wide text-gray-400 mb-5">Exhibitors</p>
+          <p class="jh-tier text-xs font-semibold uppercase tracking-wide text-gray-400 mb-5">Exhibitors</p>
           <div class="grid grid-cols-2 sm:grid-cols-4 gap-6 items-center justify-items-center max-w-3xl mx-auto">
             <a href="https://www.instagram.com/artbee.store/" target="_blank" class="p-4 w-full flex items-center justify-center h-20 group" title="Artbee">
               <img src="images/sponsors/2027/artbee.webp" alt="Artbee Logo" class="max-h-14 max-w-full object-contain">
@@ -974,7 +947,7 @@
 
         <!-- Food & Beverages -->
         <div>
-          <p class="text-xs font-semibold uppercase tracking-wide text-gray-400 mb-5">Food &amp; Beverages</p>
+          <p class="jh-tier text-xs font-semibold uppercase tracking-wide text-gray-400 mb-5">Food &amp; Beverages</p>
           <div class="grid grid-cols-2 sm:grid-cols-4 gap-6 items-center justify-items-center max-w-3xl mx-auto">
             <a href="https://www.instagram.com/kissaten.in/" target="_blank" class="p-4 w-full flex items-center justify-center h-20 group" title="Ame's Japanese Kissaten">
               <img src="images/sponsors/2027/ames-kissaten.webp" alt="Ame's Japanese Kissaten Logo" class="max-h-14 max-w-full object-contain">
@@ -1041,7 +1014,7 @@
 
         <!-- Hobby Area -->
         <div>
-          <p class="text-xs font-semibold uppercase tracking-wide text-gray-400 mb-5">Hobby Area</p>
+          <p class="jh-tier text-xs font-semibold uppercase tracking-wide text-gray-400 mb-5">Hobby Area</p>
           <div class="grid grid-cols-2 sm:grid-cols-4 gap-6 items-center justify-items-center max-w-3xl mx-auto">
             <a href="https://www.instagram.com/39sindia/" target="_blank" class="p-4 w-full flex items-center justify-center h-20 group" title="India-39">
               <img src="images/sponsors/2027/india-39.webp" alt="India-39 Logo" class="max-h-14 max-w-full object-contain">
@@ -1063,7 +1036,7 @@
 
         <!-- Artist Alley -->
         <div>
-          <p class="text-xs font-semibold uppercase tracking-wide text-gray-400 mb-5 text-center">Artist Alley Exhibitors</p>
+          <p class="jh-tier text-xs font-semibold uppercase tracking-wide text-gray-400 mb-5 text-center">Artist Alley Exhibitors</p>
           <div id="artist-alley-scroll" class="marquee-viewport overflow-x-auto [-webkit-overflow-scrolling:touch] [touch-action:pan-x] [mask-image:linear-gradient(to_right,transparent,black_5%,black_95%,transparent)]">
             <div class="flex items-start gap-6 w-max">
             <a href="https://www.instagram.com/kalyani.symphonies/" target="_blank" title="Akiro" aria-label="Akiro" class="shrink-0 flex flex-col items-center gap-1 w-16 sm:w-20">
@@ -1436,9 +1409,9 @@
   </section>
 
   <!-- Staff Section -->
-  <section id="committee" class="px-6 py-16 border-t border-gray-100">
+  <section id="committee" class="jh-paper px-6 pt-8 pb-20">
     <div class="max-w-3xl mx-auto">
-      <h2 class="text-xl font-semibold text-gray-900 text-center mb-12">Staff</h2>
+      <h2 class="jh-title text-center mb-12">Staff</h2>
 
       <div class="grid md:grid-cols-2 md:gap-x-16 gap-y-8 md:gap-y-0 text-sm text-gray-800">
 
@@ -1504,7 +1477,7 @@
 
   <!-- Guest bio modal (filled from the clicked guest card) -->
   <div id="guest-modal" class="fixed inset-0 z-[60] hidden items-center justify-center p-4 bg-black/60" role="dialog" aria-modal="true" aria-labelledby="guest-modal-name">
-    <div class="relative w-full max-w-lg max-h-[90vh] overflow-y-auto rounded-2xl bg-white p-6 shadow-xl">
+    <div class="jh-paper relative w-full max-w-lg max-h-[90vh] overflow-y-auto rounded-2xl p-6 shadow-xl">
       <button type="button" id="guest-modal-close" class="absolute top-4 right-4 text-gray-400 hover:text-gray-700 transition" aria-label="Close">
         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
       </button>
@@ -1536,13 +1509,13 @@
   </div>
 
   <!-- Footer -->
-  <footer id="connect" class="bg-gray-900 text-white mt-auto">
+  <footer id="connect" class="jh-footer mt-auto">
     <div class="mx-auto max-w-5xl px-6 pt-12 pb-8">
       <div class="grid grid-cols-1 md:grid-cols-3 gap-10 border-b border-gray-800 pb-10">
 
         <!-- About Column -->
         <div>
-          <img class="h-9 w-auto" src="images/jh-pink.png" alt="Japan Habba Logo">
+          <img class="h-12 w-auto" src="images/punch/logo.webp" alt="Japan Habba Logo" width="300" height="104">
         </div>
 
         <!-- Quick Links -->
@@ -1822,6 +1795,5 @@
       window.addEventListener('resize', () => { clearTimeout(t); t = setTimeout(fit, 150); });
     })();
   </script>
-  <script src="./theme.js?v=1"></script>
 </body>
 </html>
