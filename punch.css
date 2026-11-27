@@ -121,6 +121,13 @@ body.jh-body { background: var(--ink); color: var(--on-dark); }
 .jh-banner-text .d sup { font-size: .55em; }
 .jh-banner-text .s { display: block; margin-top: .2em; font-weight: 500; font-size: clamp(.7rem, 2.7cqi, 1.05rem); color: #E6E9F5; }
 .jh-hero-art { width: 100%; max-width: 560px; margin: 0 auto; filter: drop-shadow(0 24px 40px rgba(22, 37, 74, .45)); }
+/* Layered hero: window background, Kanna, then logo + tagline arc in front.
+   Positions (inline styles) are percentages of the poster's artwork frame. */
+.jh-hero-stage { position: relative; aspect-ratio: 580 / 674; }
+.jh-layer { position: absolute; height: auto; max-width: none; user-select: none; -webkit-user-drag: none; }
+.jh-hero-bg { z-index: 0; border-radius: 50%; }
+.jh-hero-kanna { z-index: 1; }
+.jh-hero-front { z-index: 2; pointer-events: none; }
 .jh-hero h1 { font-family: var(--font-display); font-weight: 800; letter-spacing: -.01em; color: #fff; text-shadow: 0 3px 0 rgba(111, 51, 40, .55); }
 .jh-hero .lede { color: #F1E9F0; }
 .jh-venue { font-family: var(--font-display); color: var(--gold-light); font-weight: 600; letter-spacing: .04em; }

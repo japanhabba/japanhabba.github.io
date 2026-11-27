@@ -20,8 +20,9 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&display=swap">
 
   <!-- Flyer theme (colours, hero, guest tiles); see the notes at the top of the file -->
-  <link rel="stylesheet" href="./punch.css?v=5">
-  <link rel="preload" as="image" href="images/punch/hero-art.webp">
+  <link rel="stylesheet" href="./punch.css?v=6">
+  <link rel="preload" as="image" href="images/punch/kanna.webp">
+  <link rel="preload" as="image" href="images/punch/hero-bg.webp">
 
   <style>
     body { font-family: 'Inter', sans-serif; }
@@ -134,9 +135,12 @@
     </div>
 
     <div class="max-w-6xl mx-auto grid lg:grid-cols-[1.05fr_1fr] items-center gap-6 lg:gap-12 -mt-2 sm:-mt-6">
-      <img src="images/punch/hero-art.webp" width="1160" height="1314" fetchpriority="high"
-           alt="Japan Habba mascot in a red kimono with a fan, stepping out of a round shoji window. Culture, anime, concert, workshops, food, higher education, arcade, shopping."
-           class="jh-hero-art">
+      <!-- Hero art in layers so the background can take effects without touching Kanna -->
+      <div class="jh-hero-art jh-hero-stage" role="img" aria-label="Japan Habba mascot in a red kimono with a fan, stepping out of a round shoji window. Culture, anime, concert, workshops, food, higher education, arcade, shopping.">
+        <img class="jh-layer jh-hero-bg" src="images/punch/hero-bg.webp" alt="" width="1086" height="1084" style="left:3.103%; top:13.353%; width:93.621%" fetchpriority="high">
+        <img class="jh-layer jh-hero-kanna" src="images/punch/kanna.webp" alt="" width="973" height="1681" style="left:13.414%; top:0.786%; width:66.155%" fetchpriority="high">
+        <img class="jh-layer jh-hero-front" src="images/punch/hero-front.webp" alt="" width="1144" height="790" style="left:0.690%; top:37.092%; width:98.621%">
+      </div>
 
       <div class="text-center lg:text-left pb-4">
         <p class="jh-venue text-sm sm:text-base">Chamara Vajra, Bengaluru &middot; January 9&ndash;10, 2027</p>
