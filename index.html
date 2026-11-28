@@ -20,7 +20,7 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&display=swap">
 
   <!-- Flyer theme (colours, hero, guest tiles); see the notes at the top of the file -->
-  <link rel="stylesheet" href="./punch.css?v=15">
+  <link rel="stylesheet" href="./punch.css?v=16">
   <link rel="preload" as="image" href="images/punch/kanna.webp">
   <link rel="preload" as="image" href="images/punch/hero-waves.webp">
 
@@ -236,6 +236,11 @@
       <h2 class="jh-title text-center mb-6">Japan Habba 2025 Aftervideo</h2>
       <div class="relative w-full aspect-video rounded-lg overflow-hidden border border-gray-200 bg-black">
         <iframe id="aftervideo" class="absolute inset-0 w-full h-full" src="https://www.youtube.com/embed/MEmic029WUM?enablejsapi=1&amp;mute=1&amp;playsinline=1&amp;rel=0&amp;loop=1&amp;playlist=MEmic029WUM" title="Japan Habba Highlight Reel Video" frameborder="0" referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+        <button type="button" id="aftervideo-sound" class="jh-sound-btn" aria-pressed="false" hidden>
+          <svg class="ic-off" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 5 6 9H2v6h4l5 4V5z"/><path d="m23 9-6 6M17 9l6 6"/></svg>
+          <svg class="ic-on" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 5 6 9H2v6h4l5 4V5z"/><path d="M15.5 8.5a5 5 0 0 1 0 7M19 5a10 10 0 0 1 0 14"/></svg>
+          <span class="lbl">Tap for sound</span>
+        </button>
       </div>
 
     </div>
@@ -1655,28 +1660,44 @@
       });
     });
 
-    // Aftervideo: play (muted, as browsers require for autoplay) while it's on screen, pause when it isn't.
-    // Uses the YouTube player's postMessage API. Skipped for visitors who prefer reduced motion.
+    // Aftervideo: play (muted, as browsers require for autoplay) while it's on screen, pause when it isn't,
+    // with an explicit sound button over it. Uses the YouTube player's postMessage API.
+    // Visitors who prefer reduced motion get the sound button but no autoplay.
     (function () {
       const frame = document.getElementById('aftervideo');
-      if (!frame || !('IntersectionObserver' in window)) return;
-      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-      const send = (func) => frame.contentWindow && frame.contentWindow.postMessage(
-        JSON.stringify({ event: 'command', func: func, args: [] }), 'https://www.youtube.com');
-      let visible = false, userPaused = false;
+      if (!frame) return;
+      const autoplay = 'IntersectionObserver' in window && !window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      const send = (func, args) => frame.contentWindow && frame.contentWindow.postMessage(
+        JSON.stringify({ event: 'command', func: func, args: args || [] }), 'https://www.youtube.com');
+      const soundBtn = document.getElementById('aftervideo-sound');
+      let visible = false, userPaused = false, muted = true;
+      function showSound(isMuted) {
+        muted = isMuted;
+        soundBtn.setAttribute('aria-pressed', String(!isMuted));
+        soundBtn.classList.toggle('is-on', !isMuted);
+        soundBtn.querySelector('.lbl').textContent = isMuted ? 'Tap for sound' : 'Mute';
+      }
+      // Explicit sound toggle over the video (the player's own speaker icon is easy to miss)
+      soundBtn.hidden = false;
+      soundBtn.addEventListener('click', () => {
+        if (muted) { send('unMute'); send('setVolume', [100]); userPaused = false; send('playVideo'); showSound(false); }
+        else { send('mute'); showSound(true); }
+      });
       // Don't fight the visitor: if they pause it themselves, stop autoplaying
       window.addEventListener('message', (e) => {
         if (e.origin !== 'https://www.youtube.com' || e.source !== frame.contentWindow) return;
         let data; try { data = JSON.parse(e.data); } catch (err) { return; }
         if (data.event === 'onStateChange' && data.info === 2 && visible) userPaused = true;
+        // Keep the button in step if the visitor uses the player's own volume controls
+        if (data.event === 'infoDelivery' && data.info && typeof data.info.muted === 'boolean' && data.info.muted !== muted) showSound(data.info.muted);
       });
       frame.addEventListener('load', () => {
         // Ask the player to report state changes, and catch up if it's already on screen
         frame.contentWindow.postMessage(JSON.stringify({ event: 'listening', id: 'aftervideo' }), 'https://www.youtube.com');
         frame.contentWindow.postMessage(JSON.stringify({ event: 'command', func: 'addEventListener', args: ['onStateChange'] }), 'https://www.youtube.com');
-        if (visible && !userPaused) send('playVideo');
+        if (autoplay && visible && !userPaused) send('playVideo');
       });
-      new IntersectionObserver((entries) => {
+      if (autoplay) new IntersectionObserver((entries) => {
         entries.forEach((entry) => {
           visible = entry.isIntersecting;
           if (visible && !userPaused) send('playVideo');
