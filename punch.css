@@ -152,13 +152,10 @@ body.jh-body { background: var(--ink); color: var(--on-dark); }
 /* Tagline round the ring: real text on a curve, lit word by word as the spark passes */
 .jh-hero-arc { z-index: 3; inset: 0; width: 100%; height: 100%; overflow: visible; pointer-events: none; }
 .jh-arc-text { font-family: var(--font-display); font-weight: 600; font-size: 12.5px; letter-spacing: 3.54px; fill: #FFF4DC; } /* spacing fills the half circle in Poppins; fine-tuned by script */
-.jh-arc-text .w { transition: fill .35s ease; }
-.jh-arc-text .w.lit { fill: #FFD66E; }
 .jh-arc-text .dot { fill: var(--gold-light); }
-/* Lit word: solid bright gold with a crisp navy outline, so it stays readable */
-.jh-arc-flare { fill: #FFD66E; stroke: #16254A; stroke-width: 2.4px; stroke-linejoin: round; paint-order: stroke fill; }
-.jh-arc-flare tspan { opacity: 0; transition: opacity .45s ease; }
-.jh-arc-flare .w.lit { opacity: 1; }
+/* Top copy: no filter. A lit word turns solid gold with a crisp navy outline */
+.jh-arc-top .w { stroke: rgba(22, 37, 74, 0); stroke-width: 2.4px; stroke-linejoin: round; paint-order: stroke fill; transition: fill .3s ease, stroke .3s ease; }
+.jh-arc-top .w.lit { fill: #FFD66E; stroke: #16254A; }
 .jh-spark { opacity: 0; transition: opacity .3s; mix-blend-mode: screen; }
 .jh-spark.on { opacity: 1; }
 .jh-hero h1 { font-family: var(--font-display); font-weight: 800; letter-spacing: -.01em; color: #fff; text-shadow: 0 3px 0 rgba(111, 51, 40, .55); }

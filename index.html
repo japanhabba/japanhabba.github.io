@@ -20,7 +20,7 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&display=swap">
 
   <!-- Flyer theme (colours, hero, guest tiles); see the notes at the top of the file -->
-  <link rel="stylesheet" href="./punch.css?v=13">
+  <link rel="stylesheet" href="./punch.css?v=14">
   <link rel="preload" as="image" href="images/punch/kanna.webp">
   <link rel="preload" as="image" href="images/punch/hero-waves.webp">
 
@@ -158,17 +158,14 @@
               <feFlood flood-color="#E0A93B" flood-opacity=".9"/><feComposite in2="soft" operator="in" result="glow"/>
               <feMerge><feMergeNode in="glow"/><feMergeNode in="edge"/><feMergeNode in="SourceGraphic"/></feMerge>
             </filter>
-            <filter id="jh-arc-flare" x="-30%" y="-60%" width="160%" height="220%">
-              <feGaussianBlur in="SourceAlpha" stdDeviation="2.4" result="b"/>
-              <feFlood flood-color="#FFC94D" flood-opacity=".55"/><feComposite in2="b" operator="in" result="g"/>
-              <feMerge><feMergeNode in="g"/><feMergeNode in="SourceGraphic"/></feMerge>
-            </filter>
             <radialGradient id="jh-spark-g">
               <stop offset="0" stop-color="#fff"/><stop offset=".35" stop-color="#FFE3A0"/><stop offset="1" stop-color="#F3C971" stop-opacity="0"/>
             </radialGradient>
           </defs>
-          <text class="jh-arc-text" filter="url(#jh-arc-glow)"><textPath href="#jh-arc-path" startOffset="0.6%"><tspan class="w">CULTURE</tspan><tspan class="dot"> · </tspan><tspan class="w">ANIME</tspan><tspan class="dot"> · </tspan><tspan class="w">CONCERT</tspan><tspan class="dot"> · </tspan><tspan class="w">WORKSHOPS</tspan><tspan class="dot"> · </tspan><tspan class="w">FOOD</tspan><tspan class="dot"> · </tspan><tspan class="w">HIGHER EDUCATION</tspan><tspan class="dot"> · </tspan><tspan class="w">ARCADE</tspan><tspan class="dot"> · </tspan><tspan class="w">SHOPPING</tspan></textPath></text>
-          <text class="jh-arc-text jh-arc-flare" filter="url(#jh-arc-flare)"><textPath href="#jh-arc-path" startOffset="0.6%"><tspan class="w">CULTURE</tspan><tspan class="dot"> · </tspan><tspan class="w">ANIME</tspan><tspan class="dot"> · </tspan><tspan class="w">CONCERT</tspan><tspan class="dot"> · </tspan><tspan class="w">WORKSHOPS</tspan><tspan class="dot"> · </tspan><tspan class="w">FOOD</tspan><tspan class="dot"> · </tspan><tspan class="w">HIGHER EDUCATION</tspan><tspan class="dot"> · </tspan><tspan class="w">ARCADE</tspan><tspan class="dot"> · </tspan><tspan class="w">SHOPPING</tspan></textPath></text>
+          <!-- Static copy carrying the gold-brown glow; it never changes. The plain copy on top lights a word by colour only,
+               because browsers don't reliably repaint a filtered text when one word inside it changes. -->
+          <text class="jh-arc-text jh-arc-halo" filter="url(#jh-arc-glow)"><textPath href="#jh-arc-path" startOffset="0.6%"><tspan class="w">CULTURE</tspan><tspan class="dot"> · </tspan><tspan class="w">ANIME</tspan><tspan class="dot"> · </tspan><tspan class="w">CONCERT</tspan><tspan class="dot"> · </tspan><tspan class="w">WORKSHOPS</tspan><tspan class="dot"> · </tspan><tspan class="w">FOOD</tspan><tspan class="dot"> · </tspan><tspan class="w">HIGHER EDUCATION</tspan><tspan class="dot"> · </tspan><tspan class="w">ARCADE</tspan><tspan class="dot"> · </tspan><tspan class="w">SHOPPING</tspan></textPath></text>
+          <text class="jh-arc-text jh-arc-top"><textPath href="#jh-arc-path" startOffset="0.6%"><tspan class="w">CULTURE</tspan><tspan class="dot"> · </tspan><tspan class="w">ANIME</tspan><tspan class="dot"> · </tspan><tspan class="w">CONCERT</tspan><tspan class="dot"> · </tspan><tspan class="w">WORKSHOPS</tspan><tspan class="dot"> · </tspan><tspan class="w">FOOD</tspan><tspan class="dot"> · </tspan><tspan class="w">HIGHER EDUCATION</tspan><tspan class="dot"> · </tspan><tspan class="w">ARCADE</tspan><tspan class="dot"> · </tspan><tspan class="w">SHOPPING</tspan></textPath></text>
           <circle class="jh-spark" r="15" fill="url(#jh-spark-g)" cx="31.0" cy="449"/>
         </svg>
       </div>
@@ -1668,9 +1665,8 @@
       const R = 279.5, ARC = Math.PI * R * 0.985, OFFSET = Math.PI * R * 0.006;
       const CX = 297.5, CY = 449, SWEEP = 6000, REST = 1800; // ms
       const texts = [...svg.querySelectorAll('.jh-arc-text')];
-      const base = texts[0];
+      const base = svg.querySelector('.jh-arc-top');
       const words = [...base.querySelectorAll('.w')];
-      const flares = [...svg.querySelectorAll('.jh-arc-flare .w')];
       let centres = []; // angle of each word's middle, same convention as Math.atan2 (left = PI, bottom = PI/2, right = 0)
       function layout() {
         const cs = getComputedStyle(base);
@@ -1713,8 +1709,7 @@
         words.forEach((w, k) => {
           let d = Math.abs(ang - centres[k]); d = Math.min(d, 2 * Math.PI - d);
           const lit = moving && d < 0.2;
-          w.classList.toggle('lit', lit);
-          flares[k].classList.toggle('lit', lit);
+          if (w.classList.contains('lit') !== lit) w.classList.toggle('lit', lit);
         });
         requestAnimationFrame(frame);
       }
