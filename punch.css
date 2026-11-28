@@ -135,14 +135,14 @@ body.jh-body { background: var(--ink); color: var(--on-dark); }
 }
 /* Clouds only show in the opening between the shoji panels, as on the poster */
 .jh-win-sky { clip-path: inset(0 22.1% 0 22.1%); }
-.jh-win-clouds { position: absolute; left: 9.208%; top: 11.993%; width: 87.661%; height: auto; animation: jh-drift 30s linear infinite; }
-/* A second copy one period (114% of the layer's width) to the left: as the first
-   drifts out on the right, the second arrives where it started, so the loop is seamless */
-.jh-clouds-b { left: calc(9.208% - 87.661% * 1.14); }
+.jh-win-clouds { position: absolute; left: 9.208%; top: 11.993%; width: 97.823%; height: auto; animation: jh-drift 34s linear infinite; }
+/* A second copy one period (112% of the window) to the left: as the first drifts out
+   on the right, the second arrives where it started, so the loop is seamless */
+.jh-clouds-b { left: -102.792%; }
 .jh-hero-kanna { animation: jh-float 3.2s ease-in-out infinite alternate; }
 
 @keyframes jh-glow  { from { opacity: .25; transform: scale(.85); } to { opacity: 1; transform: scale(1.12); } }
-@keyframes jh-drift { from { transform: translateX(0); } to { transform: translateX(114%); } }
+@keyframes jh-drift { from { transform: translateX(0); } to { transform: translateX(114.492%); } }
 @keyframes jh-float { from { transform: translateY(0); } to { transform: translateY(-2.4%); } }
 @media (prefers-reduced-motion: reduce) {
   .jh-win-glow, .jh-win-clouds, .jh-hero-kanna { animation: none; }
