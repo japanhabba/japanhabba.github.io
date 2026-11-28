@@ -1662,35 +1662,44 @@
     (function () {
       const svg = document.querySelector('.jh-hero-arc');
       if (!svg) return;
-      // Spread the tagline over the whole half circle. Done with letter-spacing (works in every
-      // browser) rather than textLength, which Firefox ignores on text that follows a path.
-      const ARC = Math.PI * 279.5 * 0.985;
+      // The tagline sits on the bottom half of a circle (radius R), starting OFFSET along it.
+      // Letter widths come from the font itself (canvas measureText), not from the browser's
+      // layout of text on a path, which differs between browsers (Firefox reports it unreliably).
+      const R = 279.5, ARC = Math.PI * R * 0.985, OFFSET = Math.PI * R * 0.006;
+      const CX = 297.5, CY = 449, SWEEP = 6000, REST = 1800; // ms
       const texts = [...svg.querySelectorAll('.jh-arc-text')];
-      function fit() {
-        const t = texts[0];
-        const ls = parseFloat(getComputedStyle(t).letterSpacing) || 0;
-        const extra = (ARC - t.getComputedTextLength()) / t.getNumberOfChars();
-        if (Math.abs(extra) > 0.01) texts.forEach(el => { el.style.letterSpacing = (ls + extra) + 'px'; });
+      const base = texts[0];
+      const words = [...base.querySelectorAll('.w')];
+      const flares = [...svg.querySelectorAll('.jh-arc-flare .w')];
+      let centres = []; // angle of each word's middle, same convention as Math.atan2 (left = PI, bottom = PI/2, right = 0)
+      function layout() {
+        const cs = getComputedStyle(base);
+        const ctx = document.createElement('canvas').getContext('2d');
+        ctx.font = cs.fontWeight + ' ' + cs.fontSize + ' ' + cs.fontFamily;
+        const chars = [...base.textContent];
+        const widths = chars.map(ch => ctx.measureText(ch).width);
+        // Spread the letters so the line fills the half circle; letter-spacing works in every
+        // browser, unlike textLength, which Firefox ignores on text that follows a path.
+        const ls = (ARC - widths.reduce((a, b) => a + b, 0)) / chars.length;
+        texts.forEach(el => { el.style.letterSpacing = ls + 'px'; });
+        let pos = OFFSET, k = 0, inWord = null, wordStart = 0;
+        const isWordChar = ch => ch !== ' ' && ch !== '\u00b7';
+        centres = [];
+        chars.forEach((ch, n) => {
+          if (isWordChar(ch) && inWord === null) { inWord = k; wordStart = pos; }
+          pos += widths[n] + ls;
+          const next = chars[n + 1];
+          if (inWord !== null && (next === undefined || !isWordChar(next) && !(next === ' ' && isWordChar(chars[n + 2] || '')))) {
+            centres.push(Math.PI - ((wordStart + pos - ls) / 2) / R);
+            inWord = null; k++;
+          }
+        });
       }
       const ready = document.fonts ? document.fonts.ready : Promise.resolve();
-      ready.then(fit);
+      ready.then(layout);
       if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
       const ring = svg.querySelector('#jh-ring-path');
       const spark = svg.querySelector('.jh-spark');
-      const words = [...svg.querySelectorAll('.jh-arc-text:not(.jh-arc-flare) .w')];
-      const flares = [...svg.querySelectorAll('.jh-arc-flare .w')];
-      const CX = 297.5, CY = 449, SWEEP = 6000, REST = 1800; // ms
-      let centres = [];
-      function measure() {
-        const text = svg.querySelector('.jh-arc-text:not(.jh-arc-flare)');
-        let i = 0;
-        centres = words.map(w => {
-          const n = w.textContent.length;
-          const a = text.getStartPositionOfChar(i), b = text.getEndPositionOfChar(i + n - 1);
-          i += n + 3; // the " · " separator
-          return Math.atan2((a.y + b.y) / 2 - CY, (a.x + b.x) / 2 - CX);
-        });
-      }
       const total = ring.getTotalLength();
       let start = null;
       function frame(t) {
@@ -1709,8 +1718,7 @@
         });
         requestAnimationFrame(frame);
       }
-      ready.then(() => { measure(); requestAnimationFrame(frame); });
-      window.addEventListener('resize', measure);
+      ready.then(() => requestAnimationFrame(frame));
     })();
 
     // Guest cards: open a modal with the guest's bio
