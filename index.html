@@ -235,7 +235,7 @@
     <div class="max-w-3xl mx-auto">
       <h2 class="jh-title text-center mb-6">Japan Habba 2025 Aftervideo</h2>
       <div class="relative w-full aspect-video rounded-lg overflow-hidden border border-gray-200 bg-black">
-        <iframe class="absolute inset-0 w-full h-full" src="https://www.youtube.com/embed/MEmic029WUM" title="Japan Habba Highlight Reel Video" frameborder="0" referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+        <iframe id="aftervideo" class="absolute inset-0 w-full h-full" src="https://www.youtube.com/embed/MEmic029WUM?enablejsapi=1&amp;mute=1&amp;playsinline=1&amp;rel=0&amp;loop=1&amp;playlist=MEmic029WUM" title="Japan Habba Highlight Reel Video" frameborder="0" referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
       </div>
 
     </div>
@@ -1654,6 +1654,36 @@
         iconClose.classList.add('hidden');
       });
     });
+
+    // Aftervideo: play (muted, as browsers require for autoplay) while it's on screen, pause when it isn't.
+    // Uses the YouTube player's postMessage API. Skipped for visitors who prefer reduced motion.
+    (function () {
+      const frame = document.getElementById('aftervideo');
+      if (!frame || !('IntersectionObserver' in window)) return;
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+      const send = (func) => frame.contentWindow && frame.contentWindow.postMessage(
+        JSON.stringify({ event: 'command', func: func, args: [] }), 'https://www.youtube.com');
+      let visible = false, userPaused = false;
+      // Don't fight the visitor: if they pause it themselves, stop autoplaying
+      window.addEventListener('message', (e) => {
+        if (e.origin !== 'https://www.youtube.com' || e.source !== frame.contentWindow) return;
+        let data; try { data = JSON.parse(e.data); } catch (err) { return; }
+        if (data.event === 'onStateChange' && data.info === 2 && visible) userPaused = true;
+      });
+      frame.addEventListener('load', () => {
+        // Ask the player to report state changes, and catch up if it's already on screen
+        frame.contentWindow.postMessage(JSON.stringify({ event: 'listening', id: 'aftervideo' }), 'https://www.youtube.com');
+        frame.contentWindow.postMessage(JSON.stringify({ event: 'command', func: 'addEventListener', args: ['onStateChange'] }), 'https://www.youtube.com');
+        if (visible && !userPaused) send('playVideo');
+      });
+      new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          visible = entry.isIntersecting;
+          if (visible && !userPaused) send('playVideo');
+          else if (!visible) send('pauseVideo');
+        });
+      }, { threshold: 0.5 }).observe(frame);
+    })();
 
     // Hero: a spark travels round the window's ring and lights up each word of the tagline as it passes
     (function () {
