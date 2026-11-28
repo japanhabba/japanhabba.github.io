@@ -20,7 +20,7 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&display=swap">
 
   <!-- Flyer theme (colours, hero, guest tiles); see the notes at the top of the file -->
-  <link rel="stylesheet" href="./punch.css?v=12">
+  <link rel="stylesheet" href="./punch.css?v=13">
   <link rel="preload" as="image" href="images/punch/kanna.webp">
   <link rel="preload" as="image" href="images/punch/hero-waves.webp">
 
@@ -167,8 +167,8 @@
               <stop offset="0" stop-color="#fff"/><stop offset=".35" stop-color="#FFE3A0"/><stop offset="1" stop-color="#F3C971" stop-opacity="0"/>
             </radialGradient>
           </defs>
-          <text class="jh-arc-text" filter="url(#jh-arc-glow)"><textPath href="#jh-arc-path" startOffset="0.6%" textLength="864.9" lengthAdjust="spacing"><tspan class="w">CULTURE</tspan><tspan class="dot"> · </tspan><tspan class="w">ANIME</tspan><tspan class="dot"> · </tspan><tspan class="w">CONCERT</tspan><tspan class="dot"> · </tspan><tspan class="w">WORKSHOPS</tspan><tspan class="dot"> · </tspan><tspan class="w">FOOD</tspan><tspan class="dot"> · </tspan><tspan class="w">HIGHER EDUCATION</tspan><tspan class="dot"> · </tspan><tspan class="w">ARCADE</tspan><tspan class="dot"> · </tspan><tspan class="w">SHOPPING</tspan></textPath></text>
-          <text class="jh-arc-text jh-arc-flare" filter="url(#jh-arc-flare)"><textPath href="#jh-arc-path" startOffset="0.6%" textLength="864.9" lengthAdjust="spacing"><tspan class="w">CULTURE</tspan><tspan class="dot"> · </tspan><tspan class="w">ANIME</tspan><tspan class="dot"> · </tspan><tspan class="w">CONCERT</tspan><tspan class="dot"> · </tspan><tspan class="w">WORKSHOPS</tspan><tspan class="dot"> · </tspan><tspan class="w">FOOD</tspan><tspan class="dot"> · </tspan><tspan class="w">HIGHER EDUCATION</tspan><tspan class="dot"> · </tspan><tspan class="w">ARCADE</tspan><tspan class="dot"> · </tspan><tspan class="w">SHOPPING</tspan></textPath></text>
+          <text class="jh-arc-text" filter="url(#jh-arc-glow)"><textPath href="#jh-arc-path" startOffset="0.6%"><tspan class="w">CULTURE</tspan><tspan class="dot"> · </tspan><tspan class="w">ANIME</tspan><tspan class="dot"> · </tspan><tspan class="w">CONCERT</tspan><tspan class="dot"> · </tspan><tspan class="w">WORKSHOPS</tspan><tspan class="dot"> · </tspan><tspan class="w">FOOD</tspan><tspan class="dot"> · </tspan><tspan class="w">HIGHER EDUCATION</tspan><tspan class="dot"> · </tspan><tspan class="w">ARCADE</tspan><tspan class="dot"> · </tspan><tspan class="w">SHOPPING</tspan></textPath></text>
+          <text class="jh-arc-text jh-arc-flare" filter="url(#jh-arc-flare)"><textPath href="#jh-arc-path" startOffset="0.6%"><tspan class="w">CULTURE</tspan><tspan class="dot"> · </tspan><tspan class="w">ANIME</tspan><tspan class="dot"> · </tspan><tspan class="w">CONCERT</tspan><tspan class="dot"> · </tspan><tspan class="w">WORKSHOPS</tspan><tspan class="dot"> · </tspan><tspan class="w">FOOD</tspan><tspan class="dot"> · </tspan><tspan class="w">HIGHER EDUCATION</tspan><tspan class="dot"> · </tspan><tspan class="w">ARCADE</tspan><tspan class="dot"> · </tspan><tspan class="w">SHOPPING</tspan></textPath></text>
           <circle class="jh-spark" r="15" fill="url(#jh-spark-g)" cx="31.0" cy="449"/>
         </svg>
       </div>
@@ -1661,7 +1661,20 @@
     // Hero: a spark travels round the window's ring and lights up each word of the tagline as it passes
     (function () {
       const svg = document.querySelector('.jh-hero-arc');
-      if (!svg || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+      if (!svg) return;
+      // Spread the tagline over the whole half circle. Done with letter-spacing (works in every
+      // browser) rather than textLength, which Firefox ignores on text that follows a path.
+      const ARC = Math.PI * 279.5 * 0.985;
+      const texts = [...svg.querySelectorAll('.jh-arc-text')];
+      function fit() {
+        const t = texts[0];
+        const ls = parseFloat(getComputedStyle(t).letterSpacing) || 0;
+        const extra = (ARC - t.getComputedTextLength()) / t.getNumberOfChars();
+        if (Math.abs(extra) > 0.01) texts.forEach(el => { el.style.letterSpacing = (ls + extra) + 'px'; });
+      }
+      const ready = document.fonts ? document.fonts.ready : Promise.resolve();
+      ready.then(fit);
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
       const ring = svg.querySelector('#jh-ring-path');
       const spark = svg.querySelector('.jh-spark');
       const words = [...svg.querySelectorAll('.jh-arc-text:not(.jh-arc-flare) .w')];
@@ -1696,7 +1709,7 @@
         });
         requestAnimationFrame(frame);
       }
-      (document.fonts ? document.fonts.ready : Promise.resolve()).then(() => { measure(); requestAnimationFrame(frame); });
+      ready.then(() => { measure(); requestAnimationFrame(frame); });
       window.addEventListener('resize', measure);
     })();
 
